@@ -1,99 +1,34 @@
 /*jeg importer Open Sans fontet*/
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Tirra:wght@400;500;600;700;800;900&display=swap');
-/*jeg importer et sjovt font*/
 
+/*Jeg får ALT til at have fonyrt Tirra, en border box, og margener- og padding på 0*/
  * {
     font-family: "Tirra";
     margin:0;
     padding: 0;
     box-sizing: border-box;
 }
-
-.menu-wrapper {
-    position: fixed;
-    width: fit-content;
-    height: 100%;
-    left: 0;
-    top: 0;
-    z-index: 3;
-}
-
-.burger-icon {
-    position: fixed;
-    left: 1rem;
-    top: -0.5rem;
-    cursor: pointer;
-    font-size: 2rem;
-    color: blue;
-    z-index: 4;
-    transition: color 0.3s ease-in-out;
-}
-.topbar{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 2rem;
-    background-color: black;
-    z-index: 2;
-    opacity: 0.5;
-}
-.menu-wrapper:has(.sidebar:hover) .burger-icon, .burger-icon:hover{
-    color: white;
-}
-
-.sidebar {
-    position: relative;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    min-width: 15rem;
-    background-color: black;
-    color: white;
-    padding: 4rem 1rem;
-    box-sizing: border-box;
-    transition: 0.2s ease-in-out;
-}
-
-.burger-icon:hover + .sidebar, .sidebar:hover {
-    left: 0;
-    box-shadow: 0 0 10px 5px black;
-}
-.sidebar a{
-    font-size: 1.5;
-    display: block;
-    text-decoration: none;
-    opacity: 0.5;
-    transition: opacity 0.15s ease-in-out,
-    transform 0.15s ease-in-out;
-}
-
-.sidebar a:hover{
-    opacity: 1;
-    transform: translateX(0.5rem);
-    filter: drop-shadow(0,0 10px white);
-}
-
-
+/*Hvordan alt med klassen "page" skal se ud*/
 .page{
     width:100vw;
     height: 100vh;
     border:1px solid lightblue;
+    /*alt bliver inden for skærmen*/
     overflow: hidden;
     /* grid layout*/
     display:grid;
     place-items: center;
-    /* position fixed - klassen "show" viser pages*/
+    /* position fixed, selv hvis man scroller - kun klassen "show" viser pages*/
     position: fixed;
     left:-100vw;
     transition: 1s ease-in-out all;
 }
 
 .show{
-    left:0;
+    left: 0;
 }
-
-/* All div's inside pages are treated as full width grids*/
+/* Alle div'er inde i klassen "pages" er behandlet som grids på 100% bredde og højde,
+ og er placeret i midten*/
 .page div{
     width: 100%;
     height: 100%;
@@ -101,12 +36,11 @@
     place-items: center;
 
 }
-
+/*Sådan her skal alle vores header 1 overskrifter se ud*/
 h1{
     font-weight: 300;
     font-size: 3rem;
 }
-
 
 
 #page1{
@@ -131,7 +65,6 @@ h1{
     background-color: black;
     color: grey;
 }
-
 
 #page2{
     grid-template-columns: 3fr 2fr;
@@ -163,37 +96,49 @@ h1{
     color: aqua;
 }
 
+
 #page3{
-grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr 3fr;
+}
+#page3 .top{
+    grid-template-rows: 1fr 1fr;
 }
 
-#page3 .left{
-    grid-template-rows: 1fr 3fr;
-    background-color: hotpink;
+#page3 .bottom .bottomright{
+    grid-template-rows: 1fr 1fr 1fr;
 }
 
-
-#page3 .left .bottom{
-background-color: black;
-color: blue;
+#page3 .top .toptop{
+    background-color: red;
+    color: black;
+}
+#page3 .top .topbottom{
+    background-color: black;
+    color: red;
 }
 
-#page3 .right{
-    background-color: lightblue;
-    color: rgb(114, 137, 218);
+#page3 .bottom{
+    grid-template-columns: 1fr 1fr;
 }
 
-#page3 .right .box{
-    height: 70%;
-    width: 80%;
-    background-color: brown;
-    display: grid;
-    grid-template-rows: 1fr 6fr;
-}
-
-#page3 .right .box .bottom{
-    background-image: url(./assets/city.jpg);
+#page3 .bottom .bottomleft{
+    background-image: url(./assets/computerdude.jpg);
     background-size: cover;
+    background-position: center;
+    color: aquamarine;
+}
+#page3 .bottom .bottomright .bottomrighttop{
+    background-color: red;
+    color: black;
+}
+#page3 .bottom .bottomright .bottomrightmiddle{
+    background-color: black;
+    color: red;
+    
+}
+#page3 .bottom .bottomright .bottomrightbottom{
+    background-color: red;
+    color: black;
 }
 
 #page4{
@@ -208,8 +153,6 @@ color: blue;
     background-color: darkred;
     color: black;
 }
-
-
 
 #page5{
     grid-template-rows: 1fr 1fr;
@@ -230,17 +173,6 @@ color: blue;
     background-color: black;
     color: grey;
 }
-
-#page6{
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-}
-#page6 .left, #page6 .middle, #page6 .right{
-        background-color: rgb(239, 31, 135);
-}
-#page6 .middleleft, #page6 .middleright{
-    background-color: rgb(255, 159, 243);
-}
-
 
 #page7 {
     grid-template-columns: 1fr 1fr;
@@ -342,51 +274,4 @@ background-color: blueviolet;
 
 #page9 .right .rightbottom{
     background-color: tomato;
-}
-
-
-
-
-#page10{
-    grid-template-rows: 2fr 3fr;
-}
-#page10 .top{
-    grid-template-rows: 1fr 1fr;
-}
-
-#page10 .bottom .bottomright{
-    grid-template-rows: 1fr 1fr 1fr;
-}
-
-#page10 .top .toptop{
-    background-color: red;
-    color: black;
-}
-#page10 .top .topbottom{
-    background-color: black;
-    color: red;
-}
-
-#page10 .bottom{
-    grid-template-columns: 1fr 1fr;
-}
-
-#page10 .bottom .bottomleft{
-    background-image: url(./assets/computerdude.jpg);
-    background-size: cover;
-    background-position: center;
-    color: aquamarine;
-}
-#page10 .bottom .bottomright .bottomrighttop{
-    background-color: red;
-    color: black;
-}
-#page10 .bottom .bottomright .bottomrightmiddle{
-    background-color: black;
-    color: red;
-    
-}
-#page10 .bottom .bottomright .bottomrightbottom{
-    background-color: red;
-    color: black;
 }

@@ -1,0 +1,72 @@
+
+
+
+* {
+    font-family: "Tirra";
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.page{
+    width:100vw;
+    height: 100vh;
+    border:1px solid lightblue;
+    overflow: hidden;
+    /* grid layout*/
+    display:grid;
+    place-items: center;
+    /* position fixed - klassen "show" viser pages*/
+    position: fixed;
+    left:-100vw;
+    transition: 1s ease-in-out all;
+}
+
+.show{
+    left:0;
+}
+
+.page div{
+    width: 100%;
+    height: 100%;
+    display:grid;
+    place-items: center;
+
+}
+
+
+#page4{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#page4 .left1{
+    background-color: blue;
+    background-image: url(./assets/mango.jpg);
+    background: cover;
+    background-position: center;
+    color: magenta;
+}
+
+#page4 .middle1{
+    background-color: blueviolet;
+    background-image: url(./assets/mustardhorror.jpg);
+    background: cover;
+    background-position: center;
+    color: yellow;
+}
+
+#page4 .middle2{
+    background-color: chocolate;
+    background-image: url(./assets/67-horror.jpg);
+    background: cover;
+    background-position: center;
+    color: chartreuse;
+}
+
+#page4 .right{
+    background-color: chartreuse;
+    background-image:url(./assets/agartha.jpg);
+    background: cover;
+    background-position: center;
+}
