@@ -60,6 +60,7 @@
     box-shadow: 0 0 10px 5px black;
 }
 .sidebar a{
+    cursor: pointer;
     font-size: 1.5;
     display: block;
     text-decoration: none;
@@ -389,4 +390,8 @@ background-color: blueviolet;
 #page10 .bottom .bottomright .bottomrightbottom{
     background-color: red;
     color: black;
+}
+#page11{
+    background-image: url(./assets/ba-ba-ballin.jpg);
+    background-size: cover;
 }
