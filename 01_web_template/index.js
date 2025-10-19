@@ -5,20 +5,26 @@ var currentPage = "#page10" //Hvilken side er aktiv
 
 function setup() {
     console.log("P5 setup kaldt")
-    //Sæt event listeners op på menu
-    //variablet AllMenuItem, selecter alle a elementer under klassen sidebar
-   var allMenuItem = selectAll(".sidebar a")
-   console.log(allMenuItem)
-   allMenuItem.map(
-    function(item){
-        item.mousePressed(
-            function(){
-                shiftPage(item.attribute("action"))
-            }
-        )
-    }
-
-)
+    //Sæt menu op
+    //Trin 1: jeg laver en liste og sætter et array op ved at hente alle siderne
+    var allPages = selectAll(".page")
+   //løb listen igennem en for en
+   allPages.map(
+        page => {
+            //Lav et nyt "a" element
+            var menuItem = createElement("a")
+            //Sæt a taggets html til sidens titel
+            menuItem.html(page.attribute("title"))
+            //sæt a tagget ind i sidebaren
+            select(".sidebar").child(menuItem)
+            //sæt event listener på a tagget
+            menuItem.mousePressed(
+                ()=>{
+                    shiftPage("#" + page.attribute("id"))
+                }
+            )
+        }
+   )
 }
 
 function shiftPage(newPage){
