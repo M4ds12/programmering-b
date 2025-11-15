@@ -1,5 +1,5 @@
 //Globale variabler
-var currentPage = "#page10" //Hvilken side er aktiv
+var currentPage = "#page5" //Hvilken side er aktiv
 
 //P5 Setup() bliver kaldt EN gang før siden vises
 
@@ -8,6 +8,9 @@ function setup() {
     //Sæt menu op
     //Trin 1: jeg laver en liste og sætter et array op ved at hente alle siderne
     var allPages = selectAll(".page")
+    
+    //skift til current page
+    shiftPage(currentPage);
    //løb listen igennem en for en
    allPages.map(
         page => {

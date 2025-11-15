@@ -24,6 +24,14 @@ function setup() {
             )
         }
    )
+    window.addEventListener('hashchange', function() {
+        if (window.location.hash == "") {
+            return;
+        }
+        shiftPage(window.location.hash);
+        window.location.hash = ""
+        
+    })
  
 }
 
