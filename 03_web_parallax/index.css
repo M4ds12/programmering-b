@@ -3,9 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Tirra:wght@400;500;600;700;800;900&display=swap');
 
 
- * {
+* {
     font-family: "Tirra";
-    margin:0;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
@@ -29,7 +29,8 @@
     z-index: 4;
     transition: color 0.3s ease-in-out;
 }
-.topbar{
+
+.topbar {
     position: fixed;
     top: 0;
     left: 0;
@@ -39,7 +40,9 @@
     z-index: 2;
     opacity: 0.5;
 }
-.menu-wrapper:has(.sidebar:hover) .burger-icon, .burger-icon:hover{
+
+.menu-wrapper:has(.sidebar:hover) .burger-icon,
+.burger-icon:hover {
     color: white;
 }
 
@@ -56,125 +59,129 @@
     transition: 0.2s ease-in-out;
 }
 
-.burger-icon:hover + .sidebar, .sidebar:hover {
+.burger-icon:hover+.sidebar,
+.sidebar:hover {
     left: 0;
     box-shadow: 0 0 10px 5px black;
 }
-.sidebar a{
+
+.sidebar a {
     cursor: pointer;
     font-size: 1.5;
     display: block;
     text-decoration: none;
     opacity: 0.5;
     transition: opacity 0.15s ease-in-out,
-    transform 0.15s ease-in-out;
+        transform 0.15s ease-in-out;
 }
 
-.sidebar a:hover{
+.sidebar a:hover {
     opacity: 1;
     transform: translateX(0.5rem);
-    filter: drop-shadow(0,0 10px white);
+    filter: drop-shadow(0, 0 10px white);
 }
 
 
-.page{
-    width:100vw;
+.page {
+    width: 100vw;
     height: 100vh;
-    border:1px solid lightblue;
+    border: 1px solid lightblue;
     overflow: hidden;
     /* grid layout*/
-    display:grid;
+    display: grid;
     place-items: center;
     /* position fixed - klassen "show" viser pages*/
     position: fixed;
-    left:-100vw;
+    left: -100vw;
     transition: 1s ease-in-out all;
 }
 
-.show{
-    left:0;
+.show {
+    left: 0;
 }
 
 /* All div's inside pages are treated as full width grids*/
-.page div{
+.page div {
     width: 100%;
     height: 100%;
-    display:grid;
+    display: grid;
     place-items: center;
 
 }
 
-h1{
+h1 {
     font-weight: 300;
     font-size: 3rem;
 }
 
 
 
-input[type="checkbox"], label{
+input[type="checkbox"],
+label {
     display: inline;
 }
 
-#rebel{
+#rebel {
     font-family: 'Times New Roman', Times, serif;
     font-size: 13rem;
 }
 
-#page1{
+#page1 {
     overflow-y: scroll;
 }
 
-.page div.box{
-  width: 60%;
-  height: 60%;
-  padding: 4rem;
-  border: 1px solid lightblue;
-  place-items: center start;
+.page div.box {
+    width: 60%;
+    height: 60%;
+    padding: 4rem;
+    border: 1px solid lightblue;
+    place-items: center start;
 }
 
-#page1{
+#page1 {
     background-image: url(./assets/forest.png);
     background-size: cover;
     background-attachment: fixed;
 }
 
 
-.scroll{
+.scroll {
     min-height: 100%;
     overflow: scroll;
     padding: 20rem;
     gap: 2rem;
 }
 
-.box{
-max-width: 30vw;
-min-height: 40rem;
-grid-template-rows: 1fr 8fr;
-background-color: rgba(0,0,0,0.6);
-border-radius: 1rem;
-padding: 2rem;
-color: white;
+.box {
+    max-width: 30vw;
+    min-height: 40rem;
+    grid-template-rows: 1fr 8fr;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 1rem;
+    padding: 2rem;
+    color: white;
 }
 
-.box .top{
+.box .top {
     background-color: black;
     color: white;
     border-radius: 1rem;
 }
 
-#page2{
-    overflow:scroll;
+#page2 {
+    overflow-y: scroll;
 }
-.parallax{
-    height: 100vh;
+
+.parallax {
+    min-height: 100vh;
     background-attachment: fixed;
     background-size: cover;
 }
 
-.background1{
+.background1 {
     background-image: url(./assets/bird.png);
 }
 
-.background2{
+.background2 {
     background-image: url(./assets/forest.png);
 }
