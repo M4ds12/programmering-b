@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web template with P5.js</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+        integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./index.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.min.js"></script>
+</head>
+
+<body>
+    <div class="menu-wrapper">
+        <div class="burger-icon">☰</div>
+        <div class="sidebar">
+
+        </div>
+    </div>
+    <div class="topbar"></div>
+    <main>
+        <div class="page show" id="page1" title="Fixed background">
+         
+            <div class="page1Top">
+                <h2 id="rdr2Font">Red Dead Redemption <span id="redFont" style="color: red;">2</span></h2>
+            </div>
+            <div class="page1Bottom">
+                <div class="left" id="theButton"></div>
+                <div class="right">
+                    <div class="boxTop"><h2>Hvad går det ud på? </h2></div>
+                    <div class="boxBottom">
+                        <h3 id="font2">Red Dead Redemption 2 er et third- og first person open world action adventure spil udviklet af Rockstar Games, udgivet i 2018, læs mere til venstre!</h3>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            
+    
+        <div class="page" id="page2" title="fixed parallax">
+            <div class="background1 parallax"></div>
+            <div class="background2 parallax">
+                <h1>Hej med dig</h1>
+            </div>
+            <div class="background1 parallax">
+                <h1>I am a parrot</h1>
+            </div>
+        </div>
+
+    </main>
+    <script src="index.js"></script>
+</body>
+
+</html>
