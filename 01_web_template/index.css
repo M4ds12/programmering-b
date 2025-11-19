@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Tirra:wght@400;500;600;700;800;900&display=swap');
 
 
- * {
+* {
     font-family: "Tirra";
-    margin:0;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
@@ -28,7 +28,8 @@
     z-index: 4;
     transition: color 0.3s ease-in-out;
 }
-.topbar{
+
+.topbar {
     position: fixed;
     top: 0;
     left: 0;
@@ -38,7 +39,9 @@
     z-index: 2;
     opacity: 0.5;
 }
-.menu-wrapper:has(.sidebar:hover) .burger-icon, .burger-icon:hover{
+
+.menu-wrapper:has(.sidebar:hover) .burger-icon,
+.burger-icon:hover {
     color: white;
 }
 
@@ -55,136 +58,143 @@
     transition: 0.2s ease-in-out;
 }
 
-.burger-icon:hover + .sidebar, .sidebar:hover {
+.burger-icon:hover+.sidebar,
+.sidebar:hover {
     left: 0;
     box-shadow: 0 0 10px 5px black;
 }
-.sidebar a{
+
+.sidebar a {
     cursor: pointer;
     font-size: 1.5;
     display: block;
     text-decoration: none;
     opacity: 0.5;
     transition: opacity 0.15s ease-in-out,
-    transform 0.15s ease-in-out;
+        transform 0.15s ease-in-out;
 }
 
-.sidebar a:hover{
+.sidebar a:hover {
     opacity: 1;
     transform: translateX(0.5rem);
-    filter: drop-shadow(0,0 10px white);
+    filter: drop-shadow(0, 0 10px white);
 }
 
 
-.page{
-    width:100vw;
+.page {
+    width: 100vw;
     height: 100vh;
-    border:1px solid lightblue;
+    border: 1px solid lightblue;
     overflow: hidden;
     /* grid layout*/
-    display:grid;
+    display: grid;
     place-items: center;
     /* position fixed - klassen "show" viser pages*/
     position: fixed;
-    left:-100vw;
+    left: -100vw;
     transition: 1s ease-in-out all;
 }
 
-.show{
-    left:0;
+.show {
+    left: 0;
 }
 
 /* All div's inside pages are treated as full width grids*/
-.page div{
+.page div {
     width: 100%;
     height: 100%;
-    display:grid;
+    display: grid;
     place-items: center;
 
 }
 
-h1{
+h1 {
     font-weight: 300;
     font-size: 3rem;
 }
 
 
 
-#page1{
+#page1 {
     grid-template-columns: 1fr 1fr;
 }
 
 
-#page1 .left{
+#page1 .left {
     background-color: blue;
     color: aqua;
 }
-#page1 .right{
+
+#page1 .right {
     grid-template-rows: 1fr 1fr;
     color: blueviolet;
 }
 
-#page1 .right .top{
+#page1 .right .top {
     background-color: purple;
 }
 
-#page1 .right .bottom{
+#page1 .right .bottom {
     background-color: black;
     color: grey;
 }
 
 
-#page2{
+#page2 {
     grid-template-columns: 3fr 2fr;
 }
 
-#page2 .left{
+#page2 .left {
     background-color: lightgreen;
     color: darkgreen;
 }
 
-#page2 .right .rightside1{
+#page2 .right .rightside1 {
     background-color: red;
     color: darkred;
 }
-#page2 .right .rightside2{
+
+#page2 .right .rightside2 {
     background-color: orange;
     color: darkorange;
 }
-#page2 .right .rightside3{
+
+#page2 .right .rightside3 {
     background-color: yellow;
     color: gold;
 }
-#page2 .right .rightside4{
+
+#page2 .right .rightside4 {
     background-color: green;
     color: darkgreen;
 }
-#page2 .right .rightside5{
+
+#page2 .right .rightside5 {
     background-color: blue;
     color: aqua;
 }
 
-#page3{
-grid-template-columns: 1fr 1fr;
+#page3 {
+    grid-template-columns: 1fr 1fr;
 }
 
-#page3 .left{
+#page3 .left {
     grid-template-rows: 1fr 3fr;
     background-color: hotpink;
 }
 
 
-#page3 .left .bottom{
-background-color: black;
-color: blue;
+#page3 .left .bottom {
+    background-color: black;
+    color: blue;
 }
 
-#page3 .right{
+#page3 .right {
     background-color: lightblue;
     color: rgb(114, 137, 218);
 }
 
-#page3 .right .box{
+#page3 .right .box {
     height: 70%;
     width: 80%;
     background-color: brown;
@@ -192,42 +202,49 @@ color: blue;
     grid-template-rows: 1fr 6fr;
 }
 
-#page3 .right .box .bottom{
+#page3 .right .box .bottom {
     background-image: url(./assets/city.jpg);
     background-size: cover;
 }
 
-#page4{
+#page4 {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
 }
-#page4 .topleft, #page4 .bottomright{
+
+#page4 .topleft,
+#page4 .bottomright {
     background-color: black;
     color: darkred;
 }
-#page4 .topright, #page4 .bottomleft{
+
+#page4 .topright,
+#page4 .bottomleft {
     background-color: darkred;
     color: black;
 }
 
 
 
-#page5{
+#page5 {
     grid-template-rows: 1fr 1fr;
 }
-#page5 .top{
+
+#page5 .top {
     background-color: hotpink;
     color: purple;
 }
-#page5 .bottom{
+
+#page5 .bottom {
     grid-template-columns: 1fr 1fr;
 }
 
-#page5 .bottom .left{
+#page5 .bottom .left {
     background-color: blue;
     color: aqua;
 }
-#page5 .bottom .right{
+
+#page5 .bottom .right {
     background-color: black;
     color: grey;
     overflow: hidden;
@@ -235,27 +252,53 @@ color: blue;
     position: relative;
 }
 
-#page5 .bottom .right video{
+#page5 .bottom .right video {
     object-fit: cover;
     object-position: center;
-    width: 100% ;
+    width: 100%;
     height: 100%;
-    
+
 }
 
-#page5 .bottom .right #overlay{
+#page5 .bottom .right #overlay {
     position: absolute;
     display: grid;
     place-items: center;
 }
 
-#page6{
+
+#videoButton{
+    position:absolute;
+    bottom:1rem;
+    left: 1rem;
+    padding:0.5rem 1rem 0.5rem 1rem;
+    border-radius: 1rem;
+    background-color: rgba(100,100,100,0.9);
+    color: white;
+    border: 1px solid lightblue;
+    z-index: 1000;
+    transition: 0.3s ease-in-out all;
+   
+}
+
+#videoButton:hover{
+    background-color: white;
+    color: black;
+}
+
+
+#page6 {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
-#page6 .left, #page6 .middle, #page6 .right{
-        background-color: rgb(239, 31, 135);
+
+#page6 .left,
+#page6 .middle,
+#page6 .right {
+    background-color: rgb(239, 31, 135);
 }
-#page6 .middleleft, #page6 .middleright{
+
+#page6 .middleleft,
+#page6 .middleright {
     background-color: rgb(255, 159, 243);
 }
 
@@ -264,151 +307,176 @@ color: blue;
     grid-template-columns: 1fr 1fr;
 }
 
-#page7 .left, #page7 .right{
- grid-template-rows: 1fr 1fr
+#page7 .left,
+#page7 .right {
+    grid-template-rows: 1fr 1fr
 }
 
-#page7 .left .topleft, .left .bottomleft, .right .topright, .right .bottomright{
-     height: 80%;
+#page7 .left .topleft,
+.left .bottomleft,
+.right .topright,
+.right .bottomright {
+    height: 80%;
     width: 50%;
 }
 
-#page7 .left .topleft{
-   background-color: blue;
+#page7 .left .topleft {
+    background-color: blue;
 }
-#page7 .left .bottomleft{
+
+#page7 .left .bottomleft {
     background-color: aqua;
 }
-#page7 .right .topright{
-background-color: blueviolet;
+
+#page7 .right .topright {
+    background-color: blueviolet;
 }
-#page7 .right .bottomright{
+
+#page7 .right .bottomright {
     background-color: cadetblue;
 }
 
 
 
-#page8{
+#page8 {
     grid-template-columns: 1fr 1fr;
     background-color: rgb(194, 39, 12);
 }
-#page8 .left{
+
+#page8 .left {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 
-#page8 .left div{
+#page8 .left div {
     height: 100%;
     width: 100%;
-   background-color: aqua;
+    background-color: aqua;
 }
- /*Baggrundensfarverne på alle diverne i "left" på page8 er sat til farven "aqua", 
+
+/*Baggrundensfarverne på alle diverne i "left" på page8 er sat til farven "aqua", 
  undtagen disse diver på page8, som får farven "lightblue" */
-#page8 .left .topleft, #page8 .left .middleright1, #page8 .left .middleleft2, #page8 .left .bottomright{
+#page8 .left .topleft,
+#page8 .left .middleright1,
+#page8 .left .middleleft2,
+#page8 .left .bottomright {
     background-color: lightblue;
 }
 
-#page8 .right{
+#page8 .right {
     grid-template-rows: 1fr 1fr;
 }
 
-#page8 .right .topbox, #page8 .right .bottombox{
+#page8 .right .topbox,
+#page8 .right .bottombox {
     height: 80%;
     width: 50%;
     background-color: rgb(161, 30, 30);
 }
 
-#page9{
+#page9 {
     grid-template-columns: 1fr 1fr 1fr;
     background-color: hotpink;
 }
 
 /*alle div underklasserne under hvert div under id'et "page9" får en fælles egenskab*/
-#page9 .left div, #page9 .middle div, #page9 .right div{
+#page9 .left div,
+#page9 .middle div,
+#page9 .right div {
     height: 80%;
     width: 50%;
-   
+
 }
-#page9 .left .lefttop{
+
+#page9 .left .lefttop {
     background-color: silver;
 }
 
-#page9 .left .leftmiddle{
-     background-color: gold;
+#page9 .left .leftmiddle {
+    background-color: gold;
 }
 
-#page9 .left .leftbottom{
+#page9 .left .leftbottom {
     background-color: brown;
 }
 
-#page9 .middle .middletop{
-     background-color: red;
+#page9 .middle .middletop {
+    background-color: red;
 }
 
-#page9 .middle .middlemiddle{
+#page9 .middle .middlemiddle {
     background-color: green;
 }
-#page9 .middle .middlebottom{
+
+#page9 .middle .middlebottom {
     background-color: blue;
 }
-#page9 .right .righttop{
+
+#page9 .right .righttop {
     background-color: chartreuse;
 }
-#page9 .right .rightmiddle{
+
+#page9 .right .rightmiddle {
     background-color: salmon;
 }
 
-#page9 .right .rightbottom{
+#page9 .right .rightbottom {
     background-color: tomato;
 }
 
 
 
 
-#page10{
+#page10 {
     grid-template-rows: 2fr 3fr;
 }
-#page10 .top{
+
+#page10 .top {
     grid-template-rows: 1fr 1fr;
 }
 
-#page10 .bottom .bottomright{
+#page10 .bottom .bottomright {
     grid-template-rows: 1fr 1fr 1fr;
 }
 
-#page10 .top .toptop{
+#page10 .top .toptop {
     background-color: red;
     color: black;
 }
-#page10 .top .topbottom{
+
+#page10 .top .topbottom {
     background-color: black;
     color: red;
 }
 
-#page10 .bottom{
+#page10 .bottom {
     grid-template-columns: 1fr 1fr;
 }
 
-#page10 .bottom .bottomleft{
+#page10 .bottom .bottomleft {
     background-image: url(./assets/computerdude.jpg);
     background-size: cover;
     background-position: center;
     color: aquamarine;
 }
-#page10 .bottom .bottomright .bottomrighttop{
+
+#page10 .bottom .bottomright .bottomrighttop {
     background-color: red;
     color: black;
 }
-#page10 .bottom .bottomright .bottomrightmiddle{
+
+#page10 .bottom .bottomright .bottomrightmiddle {
     background-color: black;
     color: red;
-    
+
 }
-#page10 .bottom .bottomright .bottomrightbottom{
+
+#page10 .bottom .bottomright .bottomrightbottom {
     background-color: red;
     color: black;
 }
-#page11{
+
+#page11 {
     background-image: url(./assets/ba-ba-ballin.jpg);
     background-size: cover;
 }

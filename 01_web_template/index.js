@@ -1,10 +1,30 @@
 //Globale variabler
 var currentPage = "#page5" //Hvilken side er aktiv
-
+var videoButton
+var videoPlaying = true
 //P5 Setup() bliver kaldt EN gang før siden vises
 
 function setup() {
     console.log("P5 setup kaldt")
+   //Videoen
+   theVideo = select("#theVideo")
+    //video control button
+   videoButton = select("#videoButton")
+   videoButton.mousePressed(()=>{
+    console.log("button pressed")
+    if(videoPlaying){
+    //paus videoen
+    theVideo.pause()
+    videoPlaying = false
+    } else{
+        theVideo.play()
+        videoPlaying = true
+    }
+   
+
+   })
+   
+   
     //Sæt menu op
     //Trin 1: jeg laver en liste og sætter et array op ved at hente alle siderne
     var allPages = selectAll(".page")
