@@ -1,7 +1,7 @@
 //Globale variabler
 var currentPage = "#page1" //Hvilken side er aktiv
 var videoButton
-var videoPlaying = true
+var videoPlaying = false
 
 //P5 Setup() bliver kaldt EN gang før siden vises
 
