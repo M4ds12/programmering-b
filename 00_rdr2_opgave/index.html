@@ -21,7 +21,7 @@
     </div>
     <div class="topbar"></div>
     <main>
-        <div class="page show" id="page1" title="Fixed background">
+        <div class="page show" id="page1" title="Forside">
          
             <div class="page1Top">
                 <h2 id="rdr2Font">Red Dead Redemption <span id="redFont" style="color: red;">2</span></h2>
@@ -40,16 +40,37 @@
         
             
     
-        <div class="page" id="page2" title="fixed parallax">
-            <div class="background1 parallax"></div>
+        <div class="page" id="page2" title="Info om spillet">
+            <div class="background1 parallax">
+                <h4>Info om spillet</h4>
+            </div>
             <div class="background2 parallax">
+                <div class="left">
+                 <h4 id="overlay">Se en trailer!</h4>
+                    <video id="theVideo" src="./assets/rdr2-video.mp4"loop></video>
+                    <button id="videoButton">Play</button>
+                </div>
+                <div class="right"></div>
                 <h1>Hej med dig</h1>
             </div>
             <div class="background1 parallax">
-                <h1>I am a parrot</h1>
+                <h1>Extra!</h1>
             </div>
         </div>
 
+        <div class="page" id="page3" title="Screenshots">
+            <span>
+                <select name="theDropdown" id="theDropdown">
+                    <option value="./assets/rdr2-art.jpg" selected>Se hvad du kan opleve i spillet</option>
+                    <option value="./assets/rdr2-screenshot-1.jpg">Livlig grafik</option>
+                    <option value="./assets/rdr2-screenshot-2.webp">Variation i spilverdenen</option>
+                    <option value="./assets/screenshot-3.jpeg">Endnu mere variation</option>
+                    <option value="./assets/screenshot-4.jpeg">Drama</option>
+                </select>
+            </span>
+        </div>
+  
+        </div>
     </main>
     <script src="index.js"></script>
 </body>

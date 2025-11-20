@@ -284,6 +284,7 @@ h1 {
 #videoButton:hover{
     background-color: white;
     color: black;
+    cursor: pointer;
 }
 
 

@@ -1,5 +1,7 @@
 //Globale variabler
 var currentPage = "#page1" //Hvilken side er aktiv
+var videoButton
+var videoPlaying = true
 
 //P5 Setup() bliver kaldt EN gang før siden vises
 
@@ -16,13 +18,51 @@ function setup() {
     shiftPage(currentPage);
 
 
-    var myButton = createButton("Button created with javascript")
+    var myButton = createButton("Få noget mere info!!!!!!!")
    //Læg en ind i side 5
    select("#theButton").child(myButton)
    //Lav en event listener
    myButton.mousePressed(()=>{
     shiftPage("#page2")
    })
+
+      //Videoen
+   theVideo = select("#theVideo")
+    //video control button
+   videoButton = select("#videoButton")
+   videoOverlay = select("#overlay")
+   videoButton.mousePressed(()=>{
+    console.log("button pressed")
+    if(videoPlaying){
+    //paus videoen
+    theVideo.pause()
+    videoButton.html("Play") 
+    videoPlaying = false
+    videoOverlay.show()
+    
+    } else{
+        theVideo.play()
+        videoPlaying = true
+         videoOverlay.hide()
+        videoButton.html("Pause")
+    }
+
+   
+
+   })
+
+    //Dropdowns
+    var theDropdown = select("#theDropdown")
+    
+
+    theDropdown.changed(()=>{
+        var billedeStyling = theDropdown.value()
+        select("#page3").style("background-image", `url(${billedeStyling})`)
+        select("#page3").style("background-size", "cover")
+    })
+   
+
+
 
      allPages.map(
         page => {
