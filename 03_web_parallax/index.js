@@ -1,9 +1,10 @@
 //Globale variabler
-var currentPage = "#page1" //Hvilken side er aktiv
+var currentPage = "#page2" //Hvilken side er aktiv
 
 //P5 Setup() bliver kaldt EN gang før siden vises
 
-
+var mouseX = 0;
+var mouseY = 0;
 
 
 function setup() {
@@ -38,4 +39,17 @@ function shiftPage(newPage){
     select(newPage).addClass("show")
     currentPage = newPage;
 }
+
+document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX
+    mouseY = e.clientY
+    screenWidth = window.innerWidth
+    screenHeight = window.innerHeight
+
+    console.log(mouseX, mouseY)
+    document.querySelectorAll(".parallax-mouse").forEach((elem) => {
+        elem.style.transform = `translate(${mouseX - screenWidth / 2}px, ${mouseY - screenHeight / 2}px)`
+    })
+}
+)
 

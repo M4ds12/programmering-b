@@ -10,7 +10,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 .menu-wrapper {
     position: fixed;
     width: fit-content;
@@ -84,8 +83,8 @@
 
 
 .page {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     border: 1px solid lightblue;
     overflow: hidden;
     /* grid layout*/
@@ -176,10 +175,6 @@ label {
 
 }
 
-#page1 .page1Bottom .right .boxBottom {
-    
-}
-
 #page1 .page1Bottom .right .boxTop {
     background-color: black;
     color: white;
@@ -208,14 +203,13 @@ label {
 
 #page2 .background2 .left {
     position: relative;
-    top: 10rem;
 }
 
 #page2 .background2 .left video {
     object-fit: cover;
     object-position: center;
-    width: 100%;
-    height: 100%;
+    width: 95%;
+    height: 95%;
 
 }
 
@@ -227,13 +221,39 @@ label {
 }
 
 
+#page2 .background1 .historie{
+    grid-template-columns: 1fr 1fr;
+    
+}
 
+#page2 .background1 .historie .left .leftbox, #page2 .background1 .historie .right .rightbox{
+    grid-template-rows: 1fr 8fr;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    margin: 2rem;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 1px solid lightblue;
+    height: 100%;
+    width: 80%;
+    position: center;
+}
+#page2 .background1 .historie .left .leftbox .leftboxtop{
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
 
+#page2 .background1 .historie .right .rightbox .rightboxtop{
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
 
 #videoButton{
     position:absolute;
-    bottom:1rem;
-    left: 78rem;
+    bottom:2rem;
+    left: 76rem;
     padding:0.5rem 1rem 0.5rem 1rem;
     border-radius: 1rem;
     background-color: rgba(100,100,100,0.9);
@@ -253,4 +273,12 @@ label {
 #page3 {
     background-image: url(./assets/rdr2-art.jpg);
     background-size: cover;
+}
+
+.nextPageButton{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    font-family: 'TR Chinese Rocks', sans-serif;
+    text-decoration-thickness: 75%;
+    font-size: 35px;
 }

@@ -18,9 +18,11 @@ function setup() {
     shiftPage(currentPage);
 
 
-    var myButton = createButton("Få noget mere info!!!!!!!")
+    var myButton = createButton("Læs mere om spillet!!!!!!!")
    //Læg en ind i side 5
    select("#theButton").child(myButton)
+   //Lav klasse til knappen så den kan styles i CSS type shi
+   myButton.addClass("nextPageButton");
    //Lav en event listener
    myButton.mousePressed(()=>{
     shiftPage("#page2")
@@ -53,8 +55,6 @@ function setup() {
 
     //Dropdowns
     var theDropdown = select("#theDropdown")
-    
-
     theDropdown.changed(()=>{
         var billedeStyling = theDropdown.value()
         select("#page3").style("background-image", `url(${billedeStyling})`)
