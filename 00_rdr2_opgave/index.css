@@ -234,8 +234,8 @@ label {
     overflow: hidden;
     border-radius: 1rem;
     border: 1px solid lightblue;
-    height: 100%;
-    width: 80%;
+    max-width:30vw;
+    min-height:10rem;
     position: center;
 }
 #page2 .background1 .historie .left .leftbox .leftboxtop{
@@ -281,4 +281,9 @@ label {
     font-family: 'TR Chinese Rocks', sans-serif;
     text-decoration-thickness: 75%;
     font-size: 35px;
+}
+
+#page2 .background3{
+    background-image: url(./assets/arthur.jpg);
+    background-size: cover;
 }
