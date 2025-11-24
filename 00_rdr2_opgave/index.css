@@ -10,6 +10,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body{
+    background-color: rgba(227, 20, 28);
+}
 .menu-wrapper {
     position: fixed;
     width: fit-content;
@@ -71,8 +75,8 @@
     display: block;
     text-decoration: none;
     opacity: 0.5;
-    transition: opacity 0.15s ease-in-out,
-        transform 0.15s ease-in-out;
+    transition: opacity 0.15s ease-in-out;
+    transform: 0.15s ease-in-out;
 }
 
 .sidebar a:hover {
@@ -86,7 +90,6 @@
     width: 100vw;
     height: 100vh;
     border: 1px solid lightblue;
-    overflow: hidden;
     /* grid layout*/
     display: grid;
     place-items: center;
@@ -194,6 +197,7 @@ label {
 
 #page2 .background1 {
     background-image: url(./assets/rockstar-logo.jpg);
+    place-items: start;
 }
 
 #page2 .background2 {
@@ -223,7 +227,15 @@ label {
 
 #page2 .background1 .historie{
     grid-template-columns: 1fr 1fr;
-    
+    place-items: start;
+}
+#page2 .background1 .info{
+    justify-content: center;
+}
+
+#page2 .background1 .historie .left, #page2 .background1 .historie .right{
+    place-items: start;
+    justify-content: center;
 }
 
 #page2 .background1 .historie .left .leftbox, #page2 .background1 .historie .right .rightbox{
@@ -231,12 +243,14 @@ label {
     background-color: rgba(0, 0, 0, 0.6);
     color: white;
     margin: 2rem;
-    overflow: hidden;
     border-radius: 1rem;
-    border: 1px solid lightblue;
+    border: 2px solid black;
     max-width:30vw;
-    min-height:10rem;
+    height:80vh;
+    top: -200px;
     position: center;
+    place-items: start;
+    overflow: hidden;
 }
 #page2 .background1 .historie .left .leftbox .leftboxtop{
     font-size: 3rem;
@@ -250,6 +264,42 @@ label {
     margin-bottom: 1rem;
 }
 
+#page2 .background1 .historie .right .rightbox .rightboxbottom{
+    background-image: url(./assets/people.jpg);
+    background-size: cover;
+}
+
+#page2 .background1 .historie .right .rightbox .rightboxbottom .zoomDutch{
+  background-image: url(./assets/dutch.png);
+  background-size: cover;
+  transition: transform 0.2s ease-in-out;
+}
+#page2 .background1 .historie .right .rightbox .rightboxbottom .zoomDutch:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+
+
+#page2 .background3 .zoomMicah{
+    background-image: url(./assets/Micah-bubble.png);
+    width: 30vw;
+    height: 90vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform 0.2s ease-in-out;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-position: left bottom;
+}
+
+#page2 .background3 .zoomMicah:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+
 #videoButton{
     position:absolute;
     bottom:2rem;
@@ -258,7 +308,7 @@ label {
     border-radius: 1rem;
     background-color: rgba(100,100,100,0.9);
     color: white;
-    border: 1px solid lightblue;
+    border: 2px solid white;
     transition: 0.3s ease-in-out all;
     z-index: 1000;
    
@@ -273,6 +323,7 @@ label {
 #page3 {
     background-image: url(./assets/rdr2-art.jpg);
     background-size: cover;
+    height: 100vh;
 }
 
 .nextPageButton{
@@ -285,5 +336,19 @@ label {
 
 #page2 .background3{
     background-image: url(./assets/arthur.jpg);
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+
+#page4 {
+    background-image: url(./assets/characters.jpg);
+    background-size: cover;
+}
+
+
+
+#page5 {
+    background-image: url(./assets/evil-rat.jpg);
     background-size: cover;
 }

@@ -34,7 +34,6 @@ function setup() {
    videoButton = select("#videoButton")
    videoOverlay = select("#overlay")
    videoButton.mousePressed(()=>{
-    console.log("button pressed")
     if(videoPlaying){
     //paus videoen
     theVideo.pause()
@@ -49,9 +48,34 @@ function setup() {
         videoButton.html("Pause")
     }
 
+   })
+
    
 
+    //Input field - DOM BINDING  
+    var theInput = select('#theInput')
+    var theInputButton = select('#theInputButton')
+    var correctInput = "rotte"
+    theInputButton.mousePressed(()=>{
+        //Jeg får værdien af inputtet så jeg lige om lidt kan tjekke om den passer med det korekte input
+        var mitInput = theInput.value()
+        //Her vil jeg skifte pagen hvis det rigtige input skrives ind i feltet
+        if (mitInput == correctInput) {
+            shiftPage("#page5")
+        }
+    })
+
+
+
+
+
+
+   dutchButton = select("#dutch")
+   dutchButton.mousePressed(()=>{
+    shiftPage("#page4")
    })
+
+
 
     //Dropdowns
     var theDropdown = select("#theDropdown")

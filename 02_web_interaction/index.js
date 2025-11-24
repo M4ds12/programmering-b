@@ -46,17 +46,22 @@ function setup() {
 
     
 
-    //Input field
-    var theInput = select("theInput")
-    var theInputButton = select("#theInputButton")
-        var theInputTitle =select ("#theInputTitle")
+    
+
+
+    //Input field - DOM BINDING  
+    var theInput = select('#theInput')
+    var theInputButton = select('#theInputButton')
+    var theInputTitle = select('#theInputTitle')
     theInputButton.mousePressed(()=>{
-       //Giv mig det som står i input i feltet ind i variabel title
-        var title = select()("#theInput").value()
+        //Giv mig det som står i input feltet ind i variablen title 
+        var title = theInput.value()
         theInput.hide()
-        theInputTitle.hide()
+        theInputButton.hide()
         theInputTitle.html(title)
     })
+
+
 
      //Checkboxes
      var ck = select("#ck1")
