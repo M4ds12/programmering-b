@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web template with P5.js</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+        integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./index.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.min.js"></script>
+</head>
+
+<body>
+    <div class="menu-wrapper">
+        <div class="burger-icon">☰</div>
+        <div class="sidebar">
+
+        </div>
+    </div>
+    <div class="topbar"></div>
+    <main>
+        <div class="page show" id="page1" title="Forside"> 
+            <div class="alkohol">
+                <div class="alkoholTop"><h1>ALKOHOL</h1></div>
+                <div class="alkoholBund">
+                    <h1>alkohl info</h1>
+                    <h1>alkohol eksempel</h1></div>
+                
+            </div>
+            <div class="aldehyl">
+                <div class="aldehylTop"><h1>ALDEHYL</h1></div>
+                <div class="aldehylBund">
+                    <h1>aldehyl info</h1>
+                    <h1>aldehyl eksempel</h1>
+                
+                </div>
+            </div>
+            <div class="carboxylsyre">
+                <div class="carboxylsyreTop"><h1>CARBOXYLSYRE</h1></div>
+                <div class="carboxylsyreBund">
+                    <h1>carboxylsyre info</h1>
+                    <h1>carbolsylsyre eksempel:</h1></div>
+            </div>
+        </div>
+        <div class="page" id="page2" title="Aldehyd:Vanillin">
+            <div class="left">
+                <div class="vanillinTop"><h1 id="vanillinTilstand"></h1></div>
+                <div class="vanillinBund" id="vanillinTilstandBillede"></div>
+                <button id="oxidationsKnap">Oxider mig!!!</button> <button id="reduktionsKnap">Reducer mig!!!</button>
+            </div>
+            <div class="right">
+                <div class="box">
+                    <div class="top"><h1>Vanillin</h1></div>
+                    <div class="bottom">
+                        <h2>Vanillin er et organisk stof, der primært findes i vaniljebønner. Det er her at duften og smagen af vanilje stammer, som vi alle kender. Det kemiske navn for vanillin er 4-hydroxy-3-methoxybenzaldehyd, og det har den kemiske formel C8H8O3. Vanillin er et aldehyd, og et eksempel på et produkt hvor det bruges er vaniljesukker.
+                            <br>
+                            Navnet er lidt langt men alle elementerne fortæller noget om stoffet
+                            <br>
+                            <br>
+                            4-hydroxy: På den fjere plads i carbonkæden fra den funktionelle gruppe i starten af kæden er en hydroxygruppe.
+                            <br>
+                            3-methoxy: Til højre er der en methyl gruppe med 1 carbon og 3 hydrogen. Den er bundet til benzen ringen på tredje plads fra starten af kæden med 1 oxygen, herved "oxy"
+                            <br>
+                            benz: Molekylet indeholder en benzen ring med 6 carbon og hydrogen carbon-atomerne
+                            <br>
+                            aldehyd: den funktionelle gruppe i molekylet er en aldehyd, med en oxogruppe- og hydrogen atom bundet til et carbon atom.
+                            <br>
+                            <br>
+                            Stoffet er polært, på grund af oxogruppen og hydroxygruppen. De stoffer er hydrofile, og forholdet mellem de hydrofile stoffer og carbon-atomerne er heller ikke højere end 1:4, så der er snak om polaritet
+                            <br>
+                            som tidligere nævnt, så anvendes det til smag og duft.
+                        </h2>
+                    </div>
+                    <div class="vanilje"></div>
+            </div>
+        </div>
+    </main>
+    <script src="index.js"></script>
+</body>
+
+</html>
