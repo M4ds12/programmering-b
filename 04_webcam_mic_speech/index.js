@@ -2,11 +2,14 @@
 var currentPage = "#page1" //Hvilken side er aktiv
 var capture
 
+
+function preload(){
+    //Load sound er fra p5 biblioteket
+    otterSound = loadSound(`./assets/otter-sound.mp3`)
+}
+
+
 //P5 Setup() bliver kaldt EN gang før siden vises
-
-
-
-
 function setup() {
     console.log("P5 setup kaldt")
     //Sæt menu op
@@ -16,6 +19,12 @@ function setup() {
     capture = createCapture(VIDEO, {flipped:true})
     capture.size(720, 468)
     select("#page1").child(capture)
+
+
+    select("#odderBillede").mousePressed(()=>
+        otterSound.play())
+
+    
 
     //skift til current page
     shiftPage(currentPage);
