@@ -132,22 +132,33 @@ h1 {
     grid-template-rows: 1fr 6fr;
 }
 
-#page2{
+#page3{
     grid-template-columns: 1fr 1fr;
     overflow-y: scroll;
     align-items: start;
 }
 
-#page2 .left{
+#page3 .left{
     grid-template-rows: 1fr 4fr;
     background-color: rgba(0, 0, 0, 0.6);
     color: white;
     position: center;
-    height: 50%;
-    width: 80%;
+    height: 70%;
+    width: 90%;
 }
 
-#vanillinTilstandBillede{
+
+#vanillinTilstandBillede, #ethanolTilstandBillede{
+    width: 80%;
+    aspect-ratio: 1 / 1;
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: contain;      
+  transition: 0.5s ease-in-out;
+ 
+}
+
+ #oxidationSkemaVanillin{
     width: 100%;
     height: 100%;
   background-position: center; 
@@ -155,8 +166,7 @@ h1 {
   background-size: contain;      
   transition: 0.5s ease-in-out;
 }
-
-#oxidationsKnap, #reduktionsKnap{
+#oxidationsKnapVanillin, #reduktionsKnapVanillin{
     padding: 1rem;
     background-color: brown;
     color: white;
@@ -173,12 +183,12 @@ h1 {
     color: white;
     
 }
-#page2 .right .box .vanilje{
+#page3 .right .box .vanilje{
     background-image: url(./assets/vaniljeSukker.jpg);
     background-size: cover;
 }
 
-#page2 .left .box{
+#page3 .left .box{
     height: 40rem;      /* or whatever size you want */
     width: 30vw;        /* must match max-width */
     overflow: hidden;   
@@ -188,4 +198,18 @@ h1 {
 h2{
     font-size: 2rem;
     font-weight: 300;
+}
+#page2{
+    grid-template-columns: 1fr 1fr;
+    overflow-y: scroll;
+    align-items: start;
+}
+
+#page2 .left{
+    grid-template-rows: 1fr 4fr;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    position: center;
+    height: 50%;
+    width: 80%;
 }
