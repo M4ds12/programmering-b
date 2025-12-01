@@ -45,6 +45,13 @@ function setup() {
             )
         }
    )
+
+
+    Button = select("#dutch")
+   dutchButton.mousePressed(()=>{
+    shiftPage("#page4")
+   })
+
 }
 
 function shiftPage(newPage){
