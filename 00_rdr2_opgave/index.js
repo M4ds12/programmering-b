@@ -9,7 +9,7 @@ var videoPlaying = false
 
 
 function setup() {
-    console.log("P5 setup kaldt")
+    console.log('Koden er "rotte"')
     //Sæt menu op
     //Trin 1: jeg laver en liste og sætter et array op ved at hente alle siderne
     var allPages = selectAll(".page")
