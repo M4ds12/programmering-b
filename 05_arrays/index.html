@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web template with P5.js</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+        integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./index.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/addons/p5.sound.min.js"></script>
+</head>
+
+<body>
+    <div class="menu-wrapper">
+        <div class="burger-icon">☰</div>
+        <div class="sidebar">
+
+        </div>
+    </div>
+    <div class="topbar"></div>
+    <main>
+       
+        <div class="page" id="page1" title="arrays">
+            <h1>arrays er lister</h1>
+            <p>Kig i konsolen -hint hint</p>
+        </div>
+        <div class="page" id="page2" title="Lister basics">
+            <h1 id="listeHeader">Overskrift</h1>
+            <span>
+                <input type="text" id="listeInput">
+                <button id="listeButton">Push</button>
+            </span>
+           <div id="listeContainer"></div>
+        </div>
+
+        <div class="page" id="page3" title="remove items">
+            <div class="container" id="removeListe">
+
+            </div>
+        </div>
+        
+    </main>
+    <script src="index.js"></script>
+</body>
+
+</html>

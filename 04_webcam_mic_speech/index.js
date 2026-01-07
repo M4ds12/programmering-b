@@ -1,6 +1,11 @@
 //Globale variabler
 var currentPage = "#page1" //Hvilken side er aktiv
 var capture
+var otterSound, rainSound, fireGif
+var recBtn, recorder, audioFile
+var isRecording = false
+var speakInput, speakButton
+
 
 
 function preload(){
@@ -21,10 +26,61 @@ function setup() {
     select("#page1").child(capture)
 
 
-    select("#odderBillede").mousePressed(()=>
-        otterSound.play())
+    
+     //Start browserens mikrofon
+    var mic = new p5.AudioIn()
+    mic.start()
+    //Opret en ny fil til at gemme lyd i 
+    audioFile = new p5.SoundFile()
+
+    recorder = new p5.SoundRecorder()
+    recorder.setInput(mic)
 
     
+
+select("#odderBillede").mousePressed(()=>{
+        otterSound.play()})
+    
+        //Opret en lyd med createSound og indsæt den med DOM Binding
+    rainSound = createAudio('./assets/rain.mp3')
+    rainSound.showControls()
+    select('#page2').child(rainSound)
+    //rainSound.play()
+
+    //Speech synth
+    speakInput = select("#speakMe")
+    speakButton = select("#speakButton")
+    //Når man trykker på knappen, læses indholdet i inputfeltet op
+    speakButton.mousePressed(()=>{
+        const utterance = new SpeechSynthesisUtterance
+        utterance.lang = "ur-PK"
+        utterance.rate = 1.4
+        utterance.pitch = 1.4
+        speechSynthesis.speak(utterance)
+    })
+
+
+    //DOM binding til knappen
+    recBtn = select('#recBtn')
+    //start/stop optagelse
+    recBtn.mousePressed(()=>{
+        if(!isRecording){
+            recorder.record(audioFile)
+            isRecording = true
+            recBtn.html('STOP recording')
+        }else{
+            recorder.stop()
+            isRecording = false
+            setTimeout(()=>{
+                audioFile.play()
+            }, 200)
+
+        }
+    })
+    
+
+
+     
 
     //skift til current page
     shiftPage(currentPage);
@@ -47,11 +103,7 @@ function setup() {
    )
 
 
-    Button = select("#dutch")
-   dutchButton.mousePressed(()=>{
-    shiftPage("#page4")
-   })
-
+    
 }
 
 function shiftPage(newPage){
