@@ -1,33 +1,48 @@
-//Globale variabler
-var currentPage = "#page1" //Hvilken side er aktiv
-var capture
+var currentPage = '#page4'
+var capture 
 var otterSound, rainSound, fireGif
 var recBtn, recorder, audioFile
 var isRecording = false
-var speakInput, speakButton
-
-
+var speakInp, speakBtn
 
 function preload(){
-    //Load sound er fra p5 biblioteket
-    otterSound = loadSound(`./assets/otter-sound.mp3`)
+    otterSound = loadSound('./assets/ottersound.mp3') 
 }
 
-
-//P5 Setup() bliver kaldt EN gang før siden vises
-function setup() {
-    console.log("P5 setup kaldt")
-    //Sæt menu op
-    //Trin 1: jeg laver en liste og sætter et array op ved at hente alle siderne
-    var allPages = selectAll(".page")
+//P5 setup() bliver kaldt EN gang før siden vises 
+function setup(){
+    console.log('P5 setup kaldt inshallah')
     
+    //skift til current page 
+    shiftPage(currentPage)
+
     capture = createCapture(VIDEO, {flipped:true})
-    capture.size(720, 468)
-    select("#page1").child(capture)
+    capture.size(720,468)
+    select('#page1').child(capture)
 
 
-    
-     //Start browserens mikrofon
+    //SOUND 
+    //Make a sound play on mouse press 
+    select('#otter').mousePressed(()=>{
+            //Animeret gif 
+            fireGif = createImg('./assets/fire.gif')
+            select('#page2').child(fireGif)
+
+            var pos = select('#otter').position()
+            console.log(pos)
+            fireGif.position(pos.x, pos.y)
+            //Skjul odderen så den kan brænde og dø 
+            select('#otter').hide()
+            otterSound.play()
+    })
+    //Opret en lyd med createSound og indsæt den med DOM Binding
+    rainSound = createAudio('./assets/rain.mp3')
+    rainSound.showControls()
+    select('#page2').child(rainSound)
+    //rainSound.play()
+
+    //Lydoptagelse
+    //Start browserens mikrofon
     var mic = new p5.AudioIn()
     mic.start()
     //Opret en ny fil til at gemme lyd i 
@@ -35,30 +50,6 @@ function setup() {
 
     recorder = new p5.SoundRecorder()
     recorder.setInput(mic)
-
-    
-
-select("#odderBillede").mousePressed(()=>{
-        otterSound.play()})
-    
-        //Opret en lyd med createSound og indsæt den med DOM Binding
-    rainSound = createAudio('./assets/rain.mp3')
-    rainSound.showControls()
-    select('#page2').child(rainSound)
-    //rainSound.play()
-
-    //Speech synth
-    speakInput = select("#speakMe")
-    speakButton = select("#speakButton")
-    //Når man trykker på knappen, læses indholdet i inputfeltet op
-    speakButton.mousePressed(()=>{
-        const utterance = new SpeechSynthesisUtterance
-        utterance.lang = "ur-PK"
-        utterance.rate = 1.4
-        utterance.pitch = 1.4
-        speechSynthesis.speak(utterance)
-    })
-
 
     //DOM binding til knappen
     recBtn = select('#recBtn')
@@ -71,44 +62,51 @@ select("#odderBillede").mousePressed(()=>{
         }else{
             recorder.stop()
             isRecording = false
+            recBtn.html("Start recording")
             setTimeout(()=>{
                 audioFile.play()
-            }, 200)
+                save(audioFile, "myVoice.wav")
+            }, 500)
 
         }
     })
-    
 
-
-     
-
-    //skift til current page
-    shiftPage(currentPage);
-
-     allPages.map(
-        page => {
-            //Lav et nyt "a" element
-            var menuItem = createElement("a")
-            //Sæt a taggets html til sidens titel
-            menuItem.html(page.attribute("title"))
-            //sæt a tagget ind i sidebaren
-            select(".sidebar").child(menuItem)
-            //sæt event listener på a tagget
-            menuItem.mousePressed(
-                ()=>{
-                    shiftPage("#" + page.attribute("id"))
-                }
-            )
-        }
-   )
-
+    //Speech synth
+    speakInp = select('#speakMe')
+    speakBtn = select('#speakBtn')
+    //Når man trykker på knappen, læses indholdet i input feltet op
+    speakBtn.mousePressed(()=>{
+        const utterance = new SpeechSynthesisUtterance(speakInp.value())
+        utterance.lang = "ur-PK"
+        utterance.rate = 1.4
+        utterance.pitch = 1.4
+        speechSynthesis.speak(utterance)
+    }) 
 
     
+    //Sæt menu op
+    //Hent alle sider som et array
+    var allPages = selectAll('.page')
+    //Løb listen igennem en for en 
+    allPages.map(
+       page => {
+        //Lav et nyt <a> element 
+        var menuItem = createElement('a')
+        //Sæt a taggets html til sidens titel
+        menuItem.html(page.attribute('title'))
+        //sæt eventlistener på a tagget
+        menuItem.mousePressed(
+            () => shiftPage('#' + page.attribute('id'))
+        )
+        //sæt a tagget ind i sidebaren
+        select('.sidebar').child(menuItem)
+       }
+    )
+
 }
 
 function shiftPage(newPage){
-    select(currentPage).removeClass("show")
-    select(newPage).addClass("show")
-    currentPage = newPage;
+    select(currentPage).removeClass('show')
+    select(newPage).addClass('show')
+    currentPage = newPage
 }
-
