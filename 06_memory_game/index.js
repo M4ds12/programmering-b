@@ -15,48 +15,45 @@ var flippedCards = []
 function setup(){
     noCanvas() // Vi bruger HTML elementer, så vi behøver ikke et canvas   
     shiftPage(currentPage) // Skift til startsiden
-    select("#startGame").mousePressed(()=>{
+    select('#startGame').mousePressed(()=>{
         setupGame()
     })
 }
 
 function setupGame(){
-    //Lad os blande kortene. Jeg bruger p5 funktionen shuffle, 
-    //som tager fat i arrayet og blander det
+    //Lad os blande kortene
     images = shuffle(images)
     //console.log(images)
     images.map( i => {
-        //vi laver en DOM binding til spil containeren
-        var container = select("#gameContainer")
-        //opret spillekort
-        var card = createElement("div").addClass("card").attribute("img-source", i).parent(container).child(createImg(i)).mousePressed(()=>{
-            if (flippedCards.length < 2) {
-            card.addClass("show")
-            flippedCards.push(card)
-            //hvis der er to kort i flippedCards, skal vi tjekke match
-            if(flippedCards.length == 2){
-                console.log(flippedCards)
-                
-                if(flippedCards[0].attribute("img-source") === flippedCards[1].attribute("img-source")){
-                    //VI HAR ET MATCH
-                flippedCards[0].addClass("checked")
-                flippedCards[1].addClass("checked")
-                }
-                else{
-                setTimeout(()=>{
-                    flippedCards[0].removeClass("show")
-                    flippedCards[1].removeClass("show")
-                    flippedCards = []
-                },2000)
-                
+        //DOM binding til spil containeren
+        var container = select('#gameContainer')
+        //Opret spillekort div, læg ddem ind i game containeren og put et billede ind i div'erne
+        var card = createElement('div').addClass('card').attribute('img-source', i).parent(container).child(createImg(i)).mousePressed(()=>{
+            if(flippedCards.length < 2){
+                card.addClass('show')
+                flippedCards.push(card)
+                //Hvis der er to kort i flippedCards, skal vi tjekke match
+                if(flippedCards.length == 2){
+                    console.log(flippedCards)
+                    if(flippedCards[0].attribute('img-source') === flippedCards[1].attribute('img-source')){
+                        //VI HAR ET MATCH
+                        flippedCards[0].addClass('checked')
+                        flippedCards[1].addClass('checked')
+                        flippedCards = []
+                        
+                    }else{
+                        setTimeout(()=>{
+                            flippedCards[0].removeClass('show')
+                            flippedCards[1].removeClass('show')
+                            flippedCards = []
+                        }, 1000)
+                    }
                 }
             }
-             }
         })
-    })
-    shiftPage("#page2")
+    } )
+    shiftPage('#page2')
 }
-    
 
 // Funktion til at skifte mellem sider (skjuler den gamle, viser den nye)
 function shiftPage(newPage){

@@ -102,15 +102,30 @@ body,
     position:relative;
     display:grid;
     justify-items:center;
+    gap:12rem;
+    background:lightgray;
+    padding:2rem;
+    border-radius:2rem;
+    -webkit-box-shadow: 5px 5px 0px 0px #289FED, 10px 10px 0px 0px #5FB8FF, 15px 15px 0px 0px #A1D8FF, 20px 20px 0px 0px #CAE6FF, 25px 25px 0px 0px #E1EEFF, 5px 5px 15px 5px rgba(0,0,0,0); 
+box-shadow: 5px 5px 0px 0px #289FED, 10px 10px 0px 0px #5FB8FF, 15px 15px 0px 0px #A1D8FF, 20px 20px 0px 0px #CAE6FF, 25px 25px 0px 0px #E1EEFF, 5px 5px 15px 5px rgba(0,0,0,0);
 }
 
 .cards{
     height:40vh;
     width:80%;
-    background:lightgray;
-    position: relative;
+    position:relative;
 }
 
 .cards img{
-    position: absolute;
+    position:absolute;
+}
+
+#result{
+    font-size:4rem;
+    display:grid;
+    place-items:center;
+}
+
+button{
+    background:white;
 }
