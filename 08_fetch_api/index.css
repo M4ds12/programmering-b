@@ -306,10 +306,11 @@ box-shadow: 5px 5px 0px 0px #289FED, 10px 10px 0px 0px #5FB8FF, 15px 15px 0px 0p
 }
 
 .playerStats p{
-    color: black;
+    color: purple;
     font-family: gamblingFont;
     font-size: 3.2rem;
     font-weight: 900;
+
 }
 
 #result{

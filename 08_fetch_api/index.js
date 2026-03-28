@@ -111,10 +111,21 @@ async function drawCard(newState) {
         showCards()
         if (dealer.total < 17) {
             var newCard = await getOneCard()
-            dealer.total += returnCardValue(newCard.value)
+            dealer.total += returnCardValue(newCard)
             dealer.cards.push(newCard)
             drawCard()
         } else {
+
+
+            if (dealer.total > 21) {
+                dealer.cards.forEach(c => {
+                    if (c.value === "ACE" && dealer.total > 21) {
+                        c.value = "ACE-USED"
+                        dealer.total -= 10
+                    }
+                })
+            }
+
 
             if (dealer.total > 21) {
                 if (player.total == 21) {
