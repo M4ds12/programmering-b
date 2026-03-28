@@ -238,7 +238,7 @@ async function drawCard(newState) {
         gameOver = true
         draws += 1
         updatePlayerStats()
-        select('#result').html("Det står lige")
+        select('#result').html("DRAW")
         setTimeout(() => shiftPage("#page2"), 2000)
     }
 
