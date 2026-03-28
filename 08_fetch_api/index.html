@@ -21,10 +21,16 @@
     <main>
 
         <div class="page" id="page1" title="Side 1">
-            <div class="playerReaction">
-                <div class="top" id="cam"></div>
-                <div class="bottom"></div>
+            <div class="playerReaction" id="playerReaction">
+                <div class="top" id="top"></div>
+                <div class="chipContainer">
+                <img src="./assets/playerChip.png" class="chipImg">
+                <h1 class="chipText">Spiller sum</h1>
+                <p class="chipText2" id="playerScore">Hej</p>
+                </div>
+                
             </div>
+           
             <div id="player">
                 <div class="cards"></div>
                 <span class="buttons">
@@ -35,12 +41,35 @@
             <div id="dealer">
                 <div class="cards"></div>
             </div>
-            <div class="dealerReaction" id="dealerReaction"></div>
+            <div class="dealerReaction">
+                 <div class="top" id="dealerReaction"></div>
+                 <div class="chipContainer">
+                <img src="./assets/dealerChip.png" class="chipImg">
+                <h1 class="chipText" id="dealerChipText">Dealer sum</h1>
+                <p class="chipText2" id="dealerScore">Hej</p>
+                </div>
+            </div>
         </div>
 
         <div class="page" id="page2" title="Side 2">
-            <h1 id="result"></h1>
+            <div class="left">
+                <h1 id="statsScore">du fik:</h1>
+                <div class="playerStats">
+                 <span>
+                <p  id="lossStat">tab:</p>
+                <p " id="winStat">wins</p>
+                <p  id="blackjackStat">blackjacks</p>
+                <p id="drawStat">draws</p>
+                </span>
+                </div>
+               
+                
+            </div>
+            <div class="right">
+                <h1 id="result"></h1>
             <button id="restartBtn">one more time</button>
+            </div>
+            
         </div>
 
         <div class="page" id="page3" title="Side 3">

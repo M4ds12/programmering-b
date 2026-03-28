@@ -6,7 +6,7 @@ var isRecording = false
 var speakInp, speakBtn
 
 function preload(){
-    otterSound = loadSound('./assets/ottersound.mp3') 
+    otterSound = loadSound('./assets/otter-sound.mp3') 
 }
 
 //P5 setup() bliver kaldt EN gang før siden vises 
@@ -66,7 +66,7 @@ function setup(){
             setTimeout(()=>{
                 audioFile.play()
                 save(audioFile, "myVoice.wav")
-            }, 500)
+            }, 1000)
 
         }
     })

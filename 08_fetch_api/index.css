@@ -2,6 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap');
 
 
+@font-face {
+  font-family: gamblingFont; /* set name */
+  src: url(./assets/Casino3DMarquee-Italic.ttf) format('truetype');
+}
+
+
+
 body,
 * {
     font-family: "open sans";
@@ -92,22 +99,28 @@ body,
     left: 0;
 }
 
-#page1{
-    grid-template-columns: 1fr 4fr 4fr 1fr;
-}
 
 #page1, #page2{
     background-image: url(./assets/blackjack-background.png);
     background-size: cover;
 }
 
+#page1{
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+}
+
+#page2{
+    grid-template-columns: 1fr 4fr;
+}
+
+
 #player, #dealer{
-    width:80%;
-    height:80%;
+    height: 70vh;
+    width: 90%;
     position:relative;
     display:grid;
     justify-items:center;
-    gap:12rem;
+    gap:4rem;
     background: transparent;
     outline: 4px solid yellow;
     padding:2rem;
@@ -118,14 +131,20 @@ box-shadow: 5px 5px 0px 0px #289FED, 10px 10px 0px 0px #5FB8FF, 15px 15px 0px 0p
 }
 
 .cards{
-    height:40vh;
+    height:50vh;
     width:80%;
     position:relative;
 }
 
+
+
 .cards img{
     position:absolute;
+    height: 30vh;
+   
 }
+
+
 
 #result{
     font-size:4rem;
@@ -133,24 +152,172 @@ box-shadow: 5px 5px 0px 0px #289FED, 10px 10px 0px 0px #5FB8FF, 15px 15px 0px 0p
     place-items:center;
 }
 
-button{
-    background:white;
+
+
+ .buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    width: 40%;
 }
+
+#player .buttons button {
+    padding:0.8rem 2rem;
+    font-size: 1.2rem;
+    background: white;
+}
+
+
 
 .dealerReaction{
     background-color: aqua;
-    height: 100%;
+    height: fit-content;
     width: 100%;
+    position: relative;
+    align-self: start;
 }
 
-.playerReaction{
-    height: 100%;
+#dealerReaction{
     width: 100%;
-    background-color: aqua;
-    grid-template-rows: 1fr 5fr;
+    height: 35vh;
+    position: relative;
 }
-.playerReaction .top{
-    background-color: black;
-    height: 20%;
+
+#dealerReaction img {
     width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.playerReaction {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+    position: relative;
+}
+.playerReaction .top {
+    width: 100%;
+    height: 35vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.playerReaction .top canvas,
+.playerReaction .top video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1);
+}
+
+#top video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.live-bar {
+    background-color: red;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-weight: 900;
+    font-size: 1vw;
+    text-align: center;
+    padding: 0.3rem 0.5rem;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+
+.chipContainer {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.chipImg {
+    width: 20vw;
+    height: auto;
+    display: block;
+}
+
+
+
+.chipText {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-size: 2vw;
+    font-weight: 600;
+}
+
+ #dealerChipText {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-size: 3.9vh;
+    font-weight: 600;
+}
+
+.chipText2 {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-size: 1vw;
+    font-weight: 700;
+    margin: 0;
+}
+
+
+#statsScore{
+    top: 1vh;
+    position: absolute;
+    color: darkred;
+    font-family: gamblingFont;
+    text-shadow: -4px 4px 0px black;
+   
+}
+
+.playerStats{
+    top: 10vh;
+    position: absolute;
+}
+
+.playerStats p{
+    color: black;
+    font-family: gamblingFont;
+    font-size: 3.2rem;
+    font-weight: 900;
+}
+
+#result{
+    color: darkred;
+    font-family: gamblingFont;
+    text-shadow: -4px 4px 0px black;
+    font-size: 20rem;
+}
+
+#restartBtn{
+    background-image: url(./assets/pattern.png);
+    background-size: 100% 100%;
+    font-size: 8vw;
+    color: black;
+    font-family: gamblingFont;
+    padding: 8vh;
 }

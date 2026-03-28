@@ -1,11 +1,19 @@
 var currentPage = '#page1'
 var deck
-
+var score = 0
+var dealerScore = 0
+var dealerReactionImg
+var dealerCardOne
+var dealerCardTwo
+var losses = 0
+var wins = 0
+var draws = 0
+var blackjacks = 0
 var player = {
     cards: [],
     total: 0
 }
-
+var gameOver = false
 var dealer = {
     cards: [],
     total: 0
@@ -18,12 +26,23 @@ function setup() {
     console.log('P5 setup kaldt inshallah')
 
     //skift til current page 
-    //shiftPage(currentPage)
-    //capture = createCapture(VIDEO, {flipped:true})
-    //capture.size(720,468)
-    //select('#cam').child(capture)
+    shiftPage(currentPage)
+    capture = createCapture(VIDEO)
+    dealerReactionImg = createImg('./assets/dealerNeutral.png')
+    capture.size('100%', '100%')
+    select('#top').child(capture)
+    dealerReactionImg.attribute('src', './assets/dealerNeutral.png')
+    var playerBar = createElement('div', 'LIVE PLAYER REACTION')
+    var dealerBar = createElement('div', 'LIVE DEALER REACTION')
+    playerBar.addClass('live-bar')
+    dealerBar.addClass('live-bar')
+    select('#top').child(playerBar)
+    select('#dealerReaction').child(dealerReactionImg)
+    select('#dealerReaction').child(dealerBar)
+    dealerReactionImg.size('100%', '100%')
 
     getDeck()
+    visualiseScore()
 
     select('#playerDrawBtn').mousePressed(() => {
         if (state !== "player") return;
@@ -86,6 +105,8 @@ async function drawCard(newState) {
         select("#playerDrawBtn").hide()
         select("#playerStandBtn").hide()
         dealer.cards[0].hidden = false
+
+        visualiseScore()
         showCards()
         if (dealer.total < 17) {
             var newCard = await getOneCard()
@@ -123,8 +144,13 @@ async function drawCard(newState) {
     }
 
     if (state == "playerLose") {
+        dealerReactionImg.attribute('src', './assets/dealerWin.png')
         //Gå til game end page shiftPage('#page2'), hvor det skal være  tydeligt at spilleren har tabt
         select('#result').html("Du tabte")
+        if (gameOver) return
+        gameOver = true
+        losses += 1
+        updatePlayerStats()
         setTimeout(() => shiftPage("#page2"), 2000)
         //Ved tryk på den knap
         // Nulstil player og dealer objekterne 
@@ -143,6 +169,11 @@ async function drawCard(newState) {
         showCards()
         //Læg spillerens total sammen (husk at bruge returnCardValue)  
         player.total += Number(returnCardValue(newCard))
+
+        score = player.total
+        dealerScore = dealer.total
+        visualiseScore()
+
         //Hvis spilleren har under 21, return
         if (player.total < 21) {
             return
@@ -159,6 +190,8 @@ async function drawCard(newState) {
                 if (c.value == "ACE") {
                     c.value = "ACE-USED"
                     player.total -= 10
+                    score = player.total
+                    visualiseScore()
                     if (player.total < 21) {
                         return
                     }
@@ -180,16 +213,31 @@ async function drawCard(newState) {
     }
 
     if (state == "playerWin") {
+        dealerReactionImg.attribute('src', './assets/dealerLose.png')
+        if (gameOver) return
+        gameOver = true
+        wins += 1
+        updatePlayerStats()
         select('#result').html("Du Vandt")
         setTimeout(() => shiftPage("#page2"), 2000)
     }
 
     if (state == "playerBlackjack") {
+        dealerReactionImg.attribute('src', './assets/dealerLose.png')
+        if (gameOver) return
+        gameOver = true
+        blackjacks += 1
+        wins += 1
+        updatePlayerStats()
         select('#result').html("Du fik blackjack!!!!")
         setTimeout(() => shiftPage("#page2"), 2000)
     }
 
     if (state == "playerDraw") {
+        if (gameOver) return
+        gameOver = true
+        draws += 1
+        updatePlayerStats()
         select('#result').html("Det står lige")
         setTimeout(() => shiftPage("#page2"), 2000)
     }
@@ -218,10 +266,10 @@ async function drawCard(newState) {
 
 
         //Dealeres FØRSTE kort skal være skjult
-        var dealerCardOne = await getOneCard()
+        dealerCardOne = await getOneCard()
         dealerCardOne.hidden = true
         dealer.cards.push(dealerCardOne)
-        var dealerCardTwo = await getOneCard()
+        dealerCardTwo = await getOneCard()
         dealer.cards.push(dealerCardTwo)
 
         //Regn dealerens kort ud for at se om de har blackjack 
@@ -242,6 +290,8 @@ async function drawCard(newState) {
         }
 
         state = "player"
+        score = player.total
+        visualiseScore()
         showCards()
     }
 
@@ -256,9 +306,14 @@ function restart() {
     player.total = 0
     dealer.cards = []
     dealer.total = 0
+    score = 0
+    dealerScore = 0
+    visualiseScore()
+    dealerReactionImg.attribute('src', './assets/dealerNeutral.png')
     state = "begin"
-    drawCard()
+    getDeck()
     shiftPage('#page1')
+    gameOver = false
 }
 
 function showCards() {
@@ -267,6 +322,16 @@ function showCards() {
     player.cards.map((c, i) => {
         var img = createImg(c.image)
         img.style('transform', `translate(${i * 40}px, ${i * 40}px)`)
+        var cardTransform = `translate(${i * 40}px, ${i * 40}px)`
+        img.mouseOver(() => {
+            img.style('transform', `translate(${i * 40}px, ${i * 40 - 20}px)`)
+        })
+        img.mouseOut(() => {
+            console.log("mouseOut")
+            img.style('transform', cardTransform)
+        })
+
+
         select('#player .cards').child(img)
     })
     select('#dealer .cards').html('')
@@ -295,27 +360,7 @@ function returnCardValue(card) {
     }
 }
 
-/*
-function returnTotalValue(cards){
-    let total = 0
-    let aces = 0
-    for(let c of cards){
-        if(c.value == "ACE"){
-            aces += 1
-            total += 11
-        } else if(isNaN(c.value)){
-            total += 10
-        } else {
-            total += Number(c.value)
-        }
-    }
-    while(total > 21 && aces > 0){
-        total -= 10
-        aces -= 1
-    }
-    return total
-}
-*/
+
 
 async function getOneCard() {
     //Hent et kort 
@@ -336,3 +381,20 @@ function shiftPage(newPage) {
     currentPage = newPage
 }
 
+function visualiseScore() {
+    select("#playerScore").html(score)
+    if (dealerCardOne && dealer.cards[0] && dealer.cards[0].hidden == true) {
+        dealerScore = returnCardValue(dealerCardTwo) + " + ????"
+    } else {
+        dealerScore = dealer.total
+    }
+    select("#dealerScore").html(dealerScore)
+}
+
+
+function updatePlayerStats() {
+    select("#lossStat").html("tab: " + losses)
+    select("#winStat").html("wins: " + wins)
+    select("#drawStat").html("draw: " + draws)
+    select("#blackjackStat").html("blackjacks: " + blackjacks)
+}
