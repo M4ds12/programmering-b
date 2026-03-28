@@ -395,6 +395,6 @@ function visualiseScore() {
 function updatePlayerStats() {
     select("#lossStat").html("tab: " + losses)
     select("#winStat").html("wins: " + wins)
-    select("#drawStat").html("draw: " + draws)
+    select("#drawStat").html("draws: " + draws)
     select("#blackjackStat").html("blackjacks: " + blackjacks)
 }
