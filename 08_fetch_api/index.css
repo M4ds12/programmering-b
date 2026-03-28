@@ -256,10 +256,17 @@ box-shadow: 5px 5px 0px 0px #289FED, 10px 10px 0px 0px #5FB8FF, 15px 15px 0px 0p
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: white;
     font-size: 2vw;
     font-weight: 600;
 }
+
+ #spillerChipText{
+    color: black;
+    font-family: gamblingFont;
+    text-shadow: -4px 4px 0px white;
+ }
+
+
 
  #dealerChipText {
     position: absolute;
@@ -270,6 +277,8 @@ box-shadow: 5px 5px 0px 0px #289FED, 10px 10px 0px 0px #5FB8FF, 15px 15px 0px 0p
     color: white;
     font-size: 3.9vh;
     font-weight: 600;
+    font-family: gamblingFont;
+     text-shadow: -4px 4px 0px black;
 }
 
 .chipText2 {
@@ -310,7 +319,7 @@ box-shadow: 5px 5px 0px 0px #289FED, 10px 10px 0px 0px #5FB8FF, 15px 15px 0px 0p
     color: darkred;
     font-family: gamblingFont;
     text-shadow: -4px 4px 0px black;
-    font-size: 20rem;
+    font-size: 12rem;
 }
 
 #restartBtn{
