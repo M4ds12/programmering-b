@@ -13,6 +13,7 @@ var player = {
     cards: [],
     total: 0
 }
+var dealing = false
 var gameOver = false
 var dealer = {
     cards: [],
@@ -244,6 +245,8 @@ async function drawCard(newState) {
 
 
     if (state == "begin") {
+        if (dealing) return
+        dealing = true
         select("#playerDrawBtn").show()
         select("#playerStandBtn").show()
         var cardOne = await getOneCard()
@@ -290,6 +293,7 @@ async function drawCard(newState) {
         }
 
         state = "player"
+        dealing = false
         score = player.total
         visualiseScore()
         showCards()
@@ -300,6 +304,7 @@ async function drawCard(newState) {
 }
 
 function restart() {
+    dealing = false
     console.log('restart')
     select('#result').html('')
     player.cards = []
