@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web template with p5.js</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+        integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="index.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/addons/p5.sound.min.js"></script>
+    <!-- Biblioteker til machine learning algoritme og motor forbindelse -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js"></script>
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+
+    <div id="label-container"></div>
+
+
+</head>
+
+<body>
+    <div class="menu-wrapper">
+        <div class="burger-icon">≡</div>
+        <div class="sidebar">
+        </div>
+    </div>
+    <main>
+        <div class="page" id="page1" title="Webcam feed">
+            <h1>Feed fra webcam</h1>
+            <a href="https://p5js.org/reference/p5/createCapture/">Læs mere om p5 capture</a>
+            <button id="inputLeft">Venstre</button>
+            <button id="inputRight">Højre</button>
+            <button id="stopButton">Stop</button>
+            <div id="webcam-container">
+                <p id="label-display" style="
+                font-size: 2rem;
+                text-align: center;
+                color: white;
+                background: rgba(0,0,0,0.6);
+                margin: 0;
+                padding: 8px;
+    ">waiting...</p>
+            </div>
+        </div>
+        <div class="page" id="page2" title="Play sound">
+            <img id="otter" src="./assets/odder.jpg" alt="Det her er et billede af en Odder" />
+        </div>
+        <div class="page" id="page3" title="Record sound">
+            <button id="recBtn">Start recording</button>
+        </div>
+        <div class="page" id="page4" title="Speech synthesis">
+            <input type="text" id="speakMe">
+            <button id="speakBtn">Tal for fanden</button>
+        </div>
+    </main>
+    <script src="./index.js"></script>
+</body>
+
+</html>
