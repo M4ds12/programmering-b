@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape the Jungle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+        integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore-compat.js"></script>
+    <script src="./firebase.js"></script>
+</head>
+
+<body>
+    <div id="timer">0 sek</div>
+    <div id="kemi-attempts"></div>
+
+
+    <div class="menu-wrapper">
+        <div class="burger-icon">☰</div>
+        <div class="sidebar">
+
+        </div>
+    </div>
+    <div class="topbar"></div>
+
+
+    <div id="locked-message">Døren er låst!</div>
+
+    <div id="johnDialogue">
+        <div id="johnNameBox">John KMG</div>
+        <div id="johnTextBox">
+            <p id="johnQuestion"><span id="johnSpan">Hvad i dette rum kan Rasmus lide at spille på?</span> (hint: en
+                bestemt mus omkring juletiden er navngivet efter det)</p>
+            <button id="johnSubmit">Tjek svar</button>
+            <button id="johnClose">Kig videre efter det</button>
+            <input type="text" id="johnAnswer" placeholder="Skriv dit svar...">
+            <div id="johnError"></div>
+        </div>
+    </div>
+
+
+    <div id="simonTronDialogue">
+        <div id="simonTronNameBox">Simon Tron</div>
+        <div id="simonTronTextBox">
+            <p id="simonTronQuestion">Velkommen til din reeksamen</p>
+            <button id="simonTronSubmit">Hvad skal jeg nu?</button>
+            <div id="simonTronError"></div>
+        </div>
+    </div>
+
+
+
+    <div id="sidsteDialogue">
+        <div id="sidsteNameBox">Sidste Spørgsmål</div>
+        <div id="sidsteTextBox">
+            <p id="sidsteQuestion"></p>
+            <button id="sidsteSvar0"></button>
+            <button id="sidsteSvar1"></button>
+            <button id="sidsteSvar2"></button>
+            <button id="sidsteSvar3"></button>
+            <div id="sidsteError"></div>
+        </div>
+    </div>
+
+    <main>
+
+        <!-- STARTSIDE -->
+        <div class="page" id="start" title="Start">
+            <div class="overlay">
+                <h1>Escape the Jungle</h1>
+                <p>Find vej ud af junglen ved at løse gåder i hvert rum.<br>
+                    Din tid tæller — jo hurtigere, jo bedre!</p>
+                <button id="btn-start">Start spil</button>
+                <div id="highscores">
+                    <h2>High Scores</h2>
+                    <ol id="score-list"></ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- RUM 1: JUNGLEN -->
+        <div class="page" id="room1" title="Junglen">
+            <div id="room1-hint" class="hint">Find de 3 skjulte symboler i junglen...</div>
+            <div id="room1-found" class="found-counter">Fundet: 0 / 3</div>
+
+            <div id="symbol1" class="hotspot">🌿</div>
+            <div id="symbol2" class="hotspot">🍄</div>
+            <div id="symbol3" class="hotspot">🦎</div>
+        </div>
+
+        <!-- RUM 2: LYSNINGEN -->
+        <div class="page" id="room2" title="Lysningen">
+            <div id="room2-hint" class="hint">Klik på skyerne i den rigtige rækkefølge: fra mindst til størst</div>
+
+            <!-- Klikbare skyer -->
+            <div id="cloud1" class="hotspot cloud">☁️</div>
+            <div id="cloud2" class="hotspot cloud">🌥️</div>
+            <div id="cloud3" class="hotspot cloud">⛅</div>
+
+            <!-- Input (vises når skyerne er klikket rigtigt) -->
+            <div id="room2-code" class="code-input">
+                <p>Jeg har byer men ingen huse, skove men ingen træer, vand men ingen fisk. Hvad er jeg?</p>
+                <input type="text" id="room2-answer" placeholder="Skriv svaret her...">
+                <button id="room2-submit">Tjek svar</button>
+                <div id="room2-error" class="error"></div>
+            </div>
+        </div>
+
+
+        <!-- ETAGE 4: KEMI LOKALE-->
+        <div class="page" id="kemiLokale" title="Kemi lokale">
+            <button id="periodicTable"></button>
+            <button id="leaveKemi">Gå ud</button>
+
+        </div>
+        <!-- ETAGE 4: KEMI PERIODISK SYSTEM-->
+        <div class="page" id="periodiskSystem" title="Kemi periodisk system">
+            <div id="kemi-hint" class="kemi-hint">Find de ønskede elementer.</div>
+            <div id="wrongAnswer">Forkert!!!!</div>
+
+
+
+
+
+            <div id="symbol1" class="elementHotspot"><img src="assets/elementer/metal.png"></div>
+            <div id="symbol2" class="elementHotspot"><img src="assets/elementer/nitrogen.png"></div>
+            <div id="symbol3" class="elementHotspot"><img src="assets/elementer/oxygen.png"></div>
+            <div id="symbol4" class="elementHotspot"><img src="assets/elementer/carbon.png"></div>
+            <div id="symbol5" class="elementHotspot"><img src="assets/elementer/hydrogen.png"></div>
+            <div id="symbol6" class="elementHotspot"><img src="assets/elementer/iron.png"></div>
+            <div id="symbol7" class="elementHotspot"><img src="assets/elementer/phosphorus.png"></div>
+            <div id="symbol8" class="elementHotspot"><img src="assets/elementer/sulfur.png"></div>
+            <div id="symbol9" class="elementHotspot"><img src="assets/elementer/magnesium.png"></div>
+            <div id="symbol10" class="elementHotspot"><img src="assets/elementer/potassium.png"></div>
+            <div id="symbol11" class="elementHotspot"><img src="assets/elementer/sodium.png"></div>
+            <div id="symbol12" class="elementHotspot"><img src="assets/elementer/copper.png"></div>
+            <div id="symbol13" class="elementHotspot"><img src="assets/elementer/aluminium.png"></div>
+            <div id="symbol14" class="elementHotspot"><img src="assets/elementer/chromium.png"></div>
+            <div id="symbol15" class="elementHotspot"><img src="assets/elementer/silver.png"></div>
+            <div id="symbol16" class="elementHotspot"><img src="assets/elementer/tungsten.png"></div>
+
+        </div>
+        <!--ETAGE 4: HALLWAYS-->
+        <div class="page" id="fjerdeSalGang" title="Fjerde sal">
+            <button id="nextFloorBtn1">Gå ned til tredje sal</button>
+        </div>
+
+
+        <!-- ETAGE 3: HALLWAYS-->
+        <div class="page" id="tredjeSalGang" title="Tredje sal gang">
+            <button id="nextFloorBtn2">Gå en etage ned</button>
+        </div>
+        <!-- ETAGE 3: ARKADE MASKINE RUM-->
+        <div class="page" id="arkadeRum" title="Arkade rum">
+            <button id="arcadeDoorOpen">Åben dør</button>
+            <button id="arcadeMachine">Spil et spil</button>
+        </div>
+
+        <!-- ETAGE 3: ARKADE MASKINE HAACK SPIL-->
+        <div class="page" id="arkadeSpil" title="Haack spil">
+            <p id="gameStats">Points: <span id="pointsDisplay">0</span> | Tid tilbage: <span
+                    id="timeleftDisplay">30</span></p>
+            <p id="gameGoal">Få 100 point for at vinde!</p>
+            <div id="gameContainer"></div>
+            <button id="tryAgainHaack">Prøv igen</button>
+        </div>
+
+        <!-- ETAGE 2: HALLWAYS-->
+        <div class="page" id="andenSalGang" title="Anden sal gang">
+            <button id="nextFloorBtn3">Gå en etage ned</button>
+        </div>
+
+        <!-- ETAGE 2: LOKALE-->
+        <div class="page" id="andenSalLokale" title="Anden sal lokale">
+            <button id="leaveJohnKMG">gå til næste etage</button>
+            <div class="JohnKMG" id="johnKMG"></div>
+
+        </div>
+
+
+
+        <div class="page" id="quiz" title="quiz">
+            <h4 id="question">Loading...</h4>
+            <div class="row">
+                <button id="btn0"></button>
+                <button id="btn1"></button>
+                <button id="btn2"></button>
+                <button id="btn3"></button>
+            </div>
+        </div>
+
+
+
+        <!-- ETAGE 1: HALLWAYS-->
+        <div class="page" id="førsteSalGang" title="Første sal gang">
+            <button id="nextFloorBtn4">Gå en etage ned</button>
+
+        </div>
+        <!-- ETAGE 1: LOKALE-->
+        <div class="page" id="førsteSalLokale" title="Første sal lokale">
+            <div id="simonTron"></div>
+
+        </div>
+
+        <!-- UDGANGSETAGE -->
+            <div class="page" id="exit" title="Udgang">
+                <button id="sidsteSpørgsmålBtn">Tal med læreren</button>
+            </div>
+        
+
+        <div class="page" id="failScreen" title="failScreen">
+            <div class="overlay">
+                <h1>Du dumpede!</h1>
+                <button id="btn-fail-restart">Prøv igen</button>
+            </div>
+
+        </div>
+        <!-- SLUTSIDE -->
+        <div class="page" id="complete" title="Færdig">
+            <div class="overlay">
+                <h1>Du slap fri!</h1>
+                <p id="final-time"></p>
+                <div id="save-score">
+                    <input type="text" id="player-name" placeholder="Dit navn">
+                    <button id="btn-save">Gem high score</button>
+                </div>
+                <button id="btn-restart">Spil igen</button>
+            </div>
+
+            <div class="leaderboard" id="leaderboard">
+                <div class="leaderboardTop"></div>
+                <div class="leaderboardBottom"></div>
+            </div>
+        </div>
+
+    </main>
+    <script src="./index.js"></script>
+</body>
+
+</html>

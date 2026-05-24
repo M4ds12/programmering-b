@@ -1,0 +1,794 @@
+body {
+    overflow: hidden;
+    background: #111;
+    color: white;
+}
+
+/* Sider — skjult til venstre, vist med .show */
+.page {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.page.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Overlay — centreret indhold oven på baggrund */
+.overlay {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+/* Hint — centreret tekst i toppen af et rum */
+.hint {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    z-index: 10;
+}
+
+/* Hotspot — klikbart element placeret i et rum */
+.hotspot {
+    position: absolute;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 5;
+}
+
+
+.elementHotspot {
+    position: absolute;
+    cursor: pointer;
+    z-index: 5;
+    width: 50px;
+    height: 50px;
+    
+}
+
+.elementHotspot img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+.hotspot:hover { transform: scale(1.3); }
+
+button { background: white; }
+
+/* Code-input — skjult, vises med .show */
+.code-input {
+    position: absolute;
+    inset: 0;
+    display: none;
+    place-items: center;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 20;
+}
+.code-input.show { display: grid; }
+
+
+/* Timer */
+#timer {
+    position: fixed;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.4rem 1rem;
+    border-radius: 0.5rem;
+    z-index: 100;
+}
+
+/* High score liste */
+#score-list { list-style: none; }
+#score-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+/* ---- Rum-baggrunde ---- */
+#start    { background-image: url('./assets/forest.jpg'); }
+#room1    { background-image: url('./assets/forest.jpg'); }
+#room2    { background-image: url('./assets/skies.jpg'); }
+
+
+
+/* ---- Mine Rum-baggrunde ---- */
+#tredjeSalGang {background-image: url("./assets/tredjeSal.png");
+background-size: contain;
+background-repeat: no-repeat;
+}
+
+
+
+
+
+/* ---- Hotspot-placeringer ---- */
+#room1 #symbol1 { top: 35%; left: 20%; }
+#room1 #symbol2 { top: 60%; left: 65%; }
+#room1 #symbol3 { top: 45%; left: 45%; }
+
+#room2 #cloud1 { top: 25%; left: 25%; font-size: 2.5rem; }
+#room2 #cloud2 { top: 35%; left: 60%; font-size: 4rem; }
+#room2 #cloud3 { top: 20%; left: 45%; font-size: 3rem; }
+
+#periodiskSystem #symbol1  { top: 50%; left: 24.6%;  }
+#periodiskSystem #symbol2  { top: 29%; left: 80.5%; }
+#periodiskSystem #symbol3  { top: 29%; left: 85.5%; }
+#periodiskSystem #symbol4  { top: 29%; left: 75.3%; }
+#periodiskSystem #symbol5  { top: 22%; left: 7.5%; }
+#periodiskSystem #symbol6  { top: 43%; left: 45%; }
+#periodiskSystem #symbol7  { top: 36%; left: 80.5%; }
+#periodiskSystem #symbol8  { top: 36%; left: 85.5%;  }
+#periodiskSystem #symbol9  { top: 36%; left: 12.5%; }
+#periodiskSystem #symbol10 { top: 43%; left: 7.5%; }
+#periodiskSystem #symbol11 { top: 36%; left: 7.5%; }
+#periodiskSystem #symbol12 { top: 43%; left: 60%; }
+#periodiskSystem #symbol13 { top: 36%; left: 70.3%; }
+#periodiskSystem #symbol14 { top: 43%; left: 304.9%; }
+#periodiskSystem #symbol15 { top: 50%; left: 60%; }
+#periodiskSystem #symbol16 { top: 57%; left: 34.8%; }
+
+
+
+#kemi-hint {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 5.2rem;
+    text-align: center;
+    z-index: 10;
+}
+
+
+#leaveKemi {
+    top: 40%;
+    left: 77%;
+    position: relative;
+}
+
+
+#arcadeDoorOpen {
+    position: relative; 
+    top: 40%; 
+    left: 34%;
+
+   
+}
+
+
+.textbox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 2rem;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.textbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(0,0,0,0.6);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    text-align: center;
+}
+
+
+
+
+/*Etage 4*/
+#kemiLokale {
+    background-image: url('./assets/kemiLokale.png');
+}
+
+
+
+#periodiskSystem {
+    position: relative;
+    aspect-ratio: 16 / 9; 
+    background-image: url('./assets/periodiskSystem.png');
+    background-size: contain; /* Sørger for billedet altid er synligt */
+    background-repeat: no-repeat;
+
+   
+
+}
+
+#kemiLokale #periodicTable {
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    width: 14%;
+    height: 25%;
+    cursor: pointer;
+    background: transparent;
+    border: 3x;
+    border-color: aqua;
+}
+
+
+
+
+#fjerdeSalGang {
+    background-image: url('./assets/fjerdesal.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/*Etage 3*/
+#arkadeRum {background-image: url('./assets/arkadeRumBillede.png');
+background-size: contain;
+background-repeat: no-repeat;
+}
+
+
+
+
+#arcadeMachine {
+    position: relative;
+    top: 44%;
+    left: 37%;
+    font-size: 2rem;
+    background: transparent;
+    border: none;
+    color: red;
+}
+
+#arkadeSpil{
+    background-image: url("./assets/whack-a-haack.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+  
+}
+
+
+#gameStats {
+    position: fixed;
+    top: 4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.6);
+    padding: 0.4rem 1.2rem;
+    border-radius: 0.5rem;
+    z-index: 100;
+    white-space: nowrap;
+}
+
+
+.haack {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+}
+
+/*Etage 2*/
+
+
+#andenSalLokale {
+    background-image: url('./assets/andenSalRum.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#johnKMG{
+    background-image: url(./assets/john-kmg.png);
+    width: 20vw;
+    height: 45vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform 0.2s ease-in-out;
+    position: absolute;
+    left: 55%;
+    bottom: 35%;
+    background-position: left bottom;
+    cursor: pointer;
+}
+
+
+#andenSalGang {
+    background-image: url('./assets/andenSal.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+/*Etage 1*/
+#førsteSalGang{
+    background-image: url('./assets/førsteSalGang.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#førsteSalLokale {
+    background-image: url('./assets/førsteSalRum.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+
+/*Udgang*/
+#exit {
+    background-image: url('./assets/udgang.png');
+    background-size: contain;
+    background-repeat: no-repeat;  
+
+}
+
+
+#complete { background-image: url('./assets/færdig.png'); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Sidebar til navigering af sider, slet senere*/
+.menu-wrapper {
+    position: fixed;
+    width: fit-content;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 3;
+}
+
+.burger-icon {
+    position: fixed;
+    left: 1rem;
+    top: -0.5rem;
+    cursor: pointer;
+    font-size: 2rem;
+    color: blue;
+    z-index: 4;
+    transition: color 0.3s ease-in-out;
+}
+.topbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 2rem;
+    background-color: black;
+    z-index: 2;
+    opacity: 0.5;
+}
+.menu-wrapper:has(.sidebar:hover) .burger-icon, .burger-icon:hover{
+    color: white;
+}
+
+.sidebar {
+    position: relative;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    min-width: 15rem;
+    background-color: black;
+    color: white;
+    padding: 4rem 1rem;
+    box-sizing: border-box;
+    transition: 0.2s ease-in-out;
+}
+
+.burger-icon:hover + .sidebar, .sidebar:hover {
+    left: 0;
+    box-shadow: 0 0 10px 5px black;
+}
+.sidebar a{
+    cursor: pointer;
+    font-size: 1.5;
+    display: block;
+    text-decoration: none;
+    opacity: 0.5;
+    transition: opacity 0.15s ease-in-out,
+    transform 0.15s ease-in-out;
+}
+
+.sidebar a:hover{
+    opacity: 1;
+    transform: translateX(0.5rem);
+    filter: drop-shadow(0,0 10px white);
+}
+
+
+
+#locked-message, #wrongAnswer {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.85);
+    padding: 1.5rem 3rem;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    z-index: 999;
+    display: none;
+}
+
+#tryAgainHaack {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    color: black;
+    padding: 1rem 2.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    z-index: 999;
+    display: none;
+}
+
+
+#gameGoal {
+    position: fixed;
+    top: 7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.6);
+    padding: 0.3rem 1rem;
+    border-radius: 0.5rem;
+    z-index: 100;
+    white-space: nowrap;
+}
+
+
+#kemi-attempts {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+#kemi-attempts .circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: lightblue;
+}
+
+#failScreen {
+    background-image: url("./assets/fail.png") ;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#nextFloorBtn1, #nextFloorBtn2, #nextFloorBtn3, #nextFloorBtn4 {
+    position: absolute;
+    transition: top 0.3s ease, left 0.3s ease;
+}
+
+
+#johnDialogue {
+    position: fixed;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    z-index: 999;
+    display: none;
+    flex-direction: column;
+    font-family: serif;
+}
+
+#johnDialogue.show {
+    display: flex;
+}
+
+#johnNameBox {
+    background: #2a2a2a;
+    color: gold;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0.4rem 1.2rem;
+    border: 3px solid gold;
+    width: fit-content;
+    letter-spacing: 2px;
+}
+
+#johnTextBox {
+    background: white;
+    color: black;
+    padding: 1.5rem;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    font-size: 1.1rem;
+    background-image: url("./assets/nextImg.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    background-position: center;
+}
+
+
+#johnClose {
+    align-self: flex-end;
+    width: fit-content;
+    padding: 0.2rem 0.8rem;
+}
+
+
+#johnQuestion {
+    font-size: 3rem;
+    color: rgba(255, 8, 255, 0.973);
+    background: rgba(0, 0, 0, 0.6);
+    text-shadow: 
+        1px 1px 0 black,
+        -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px 1px 0 black;
+}
+#johnSpan{
+    color: red;
+}
+
+#johnSubmit {
+    align-self: flex-end;
+    width: fit-content;
+    padding: 0.2rem 0.8rem;
+}
+
+
+#johnAnswer{
+    border: 2px solid black;
+}
+
+
+#leaveJohnKMG {
+    position: absolute;
+    top: 30%;
+    left: 60%;
+    display: none;
+}
+
+
+#simonTron {
+    background-image: url(./assets/simontron.png);
+    width: 40vw;
+    height: 65vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 30%;
+    bottom: 20%;
+    background-position: left bottom;
+    cursor: pointer;
+}
+
+#simonTronDialogue {
+    position: fixed;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    z-index: 999;
+    display: none;
+    flex-direction: column;
+    font-family: serif;
+}
+
+#simonTronDialogue.show {
+    display: flex;
+}
+
+#simonTronNameBox {
+    background: #2a2a2a;
+    color: gold;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0.4rem 1.2rem;
+    border: 3px solid gold;
+    width: fit-content;
+    letter-spacing: 2px;
+}
+
+#simonTronTextBox {
+    background: white;
+    color: black;
+    padding: 1.5rem;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    font-size: 1.1rem;
+    position: relative;
+}
+
+#simonTronClose {
+    align-self: flex-end;
+    width: fit-content;
+    padding: 0.2rem 0.8rem;
+}
+
+#simonTronSubmit {
+    align-self: flex-end;
+    width: fit-content;
+    padding: 0.2rem 0.8rem;
+}
+
+#btn0, #btn1, #btn2, #btn3{
+    cursor: pointer;
+}
+
+
+#quiz {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 5vh 2rem 8vh 2rem; 
+    box-sizing: border-box;
+    background-image: url("./assets/simonhoot.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh; 
+}
+
+#quiz #question {
+    font-size: 2.2rem;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    line-height: 1.4;
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(248, 3, 3, 0.25);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+}
+
+/* Transforms your basic .row wrapper into a responsive 2x2 grid layout */
+#quiz .row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 850px;
+}
+
+
+#quiz button {
+    display: flex;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: 2px solid rgba(248, 3, 3, 0.25);
+    padding: 1.8rem 2rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+/* Interactive focus-state transitions */
+#quiz button:hover {
+    background: white;
+    color: #111;
+    border-color: white;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px rgba(255, 255, 255, 0.15);
+}
+
+/* Snappy visual compression upon clicking a choice */
+#quiz button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+
+#sidsteDialogue {
+    position: fixed;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    z-index: 999;
+    display: none;
+    flex-direction: column;
+    font-family: serif;
+}
+#sidsteDialogue.show { display: flex; }
+#sidsteNameBox {
+    background: #2a2a2a;
+    color: gold;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0.4rem 1.2rem;
+    border: 3px solid gold;
+    width: fit-content;
+    letter-spacing: 2px;
+}
+#sidsteTextBox {
+    background: white;
+    color: black;
+    padding: 1.5rem;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.leaderboard {
+    position: absolute;
+    left: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 250px;
+}
+
+
+.leaderboardTop {
+    background: rgba(0,0,0,0.7);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+.leaderboardBottom {
+    background: rgba(0,0,0,0.7);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
