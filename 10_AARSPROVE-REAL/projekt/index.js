@@ -495,45 +495,6 @@ function checkAnswer(valgtIndex) {
 
 
 }
-
-// ============================================
-// START SPIL
-// ============================================
-function startGame() {
-    gameState = 0
-    symbolsFound = 0
-    cloudStep = 0
-    startTimer()
-    shiftPage('#room1')
-}
-
-// ============================================
-// RUM 1 & 2 LOGIK
-// ============================================
-function findSymbol(id) {
-    select(id).hide()
-    symbolsFound++
-    select('#room1-found').html('Fundet: ' + symbolsFound + ' / 3')
-
-    if (symbolsFound === 3) {
-        gameState = 1
-        shiftPage('#room2')
-    }
-}
-
-function clickCloud(id) {
-    if (id === cloudAnswer[cloudStep]) {
-        cloudStep++
-    } else {
-        cloudStep = 0
-    }
-
-    if (cloudStep === cloudAnswer.length) {
-        select('#room2 #room2-code').addClass('show')
-    }
-}
-
-
 // ============================================
 // HIGH SCORE & RESET
 // ============================================
@@ -548,6 +509,7 @@ function loadHighScores() {
             select('#score-list').child(li)
         })
     })
+    console.log('high scores loaded')
 }
 
 
