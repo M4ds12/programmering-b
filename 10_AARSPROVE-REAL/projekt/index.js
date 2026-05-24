@@ -54,7 +54,7 @@ var kemiHints = [
     "Find stoffet der viser kobber"
 ]
 var kemiTask = 0
-
+elementsFound = 0
 
 // svar er angivet som et indeks-nummer (0, 1, 2 eller 3)
 const questions = [
