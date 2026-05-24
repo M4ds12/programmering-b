@@ -8,14 +8,21 @@ var seconds = 0
 var attempts = 3
 var maxAttempts = 3
 
-// Rum 1: antal fundne symboler
-var symbolsFound = 0
-var elementsFound = 0
 
-// Rum 2: rigtig rækkefølge og tæller
-var cloudAnswer = ['cloud1', 'cloud3', 'cloud2']
-var cloudStep = 0
+const firebaseConfig = {
+  apiKey: "AIzaSyB7PnEf6erI8t4m_Y6wlwKsoUqNl_fTuxo",
+  authDomain: "first-firebase-dc65f.firebaseapp.com",
+  projectId: "first-firebase-dc65f",
+  storageBucket: "first-firebase-dc65f.firebasestorage.app",
+  messagingSenderId: "284470427139",
+  appId: "1:284470427139:web:e489e0225e8387ab27d836",
+  measurementId: "G-GPRVNEMPBD"
+};
 
+
+firebase.initializeApp(firebaseConfig)
+var db = firebase.firestore()
+var scoresRef = db.collection('scores')
 
 //rum 3: haack spil dimmedutter
 var gameContainer
@@ -49,8 +56,6 @@ var kemiHints = [
 var kemiTask = 0
 
 
-
-// ---- OPPDATERET QUIZ DATA (4 SVARMULIGHEDER) ----
 // svar er angivet som et indeks-nummer (0, 1, 2 eller 3)
 const questions = [
     {
@@ -175,7 +180,7 @@ function setup() {
         }
     })
 
-    select('#periodicTable').mousePressed(() => {
+    select('#periodicTableBtn').mousePressed(() => {
         console.log('Periodisk system klikket!')
         shiftPage("#periodiskSystem")
         startTimer()
@@ -323,7 +328,6 @@ function setup() {
         }
         else if (simonDialogueStep == 2) {
             select('#simonTronDialogue').removeClass('show');
-            select("#simonTronSubmit").html("Vi ses")
             shiftPage("#førsteSalGang")
         }
     })
@@ -435,13 +439,13 @@ function startTimer() {
 // ============================================
 function showQ() {
     // Opdaterer spørgsmålsteksten
-    select("#question").html(questions[q].spørgsmål);
+    select("#question").html(questions[q].spørgsmål)
 
-    // Indsætter tekst på de 4 svarknapper ud fra det aktuelle array
-    select("#btn0").html(questions[q].muligheder[0]);
-    select("#btn1").html(questions[q].muligheder[1]);
-    select("#btn2").html(questions[q].muligheder[2]);
-    select("#btn3").html(questions[q].muligheder[3]);
+    
+    select("#btn0").html(questions[q].muligheder[0])
+    select("#btn1").html(questions[q].muligheder[1])
+    select("#btn2").html(questions[q].muligheder[2])
+    select("#btn3").html(questions[q].muligheder[3])
 }
 
 function checkAnswer(valgtIndex) {
@@ -455,31 +459,31 @@ function checkAnswer(valgtIndex) {
             // Send dem tilbage til etagen
             shiftPage('#førsteSalLokale')
             simonDialogueStep = 2
-            select("#simonTronQuestion").html("Du kan nu gå videre");
-            select('#simonTronDialogue').addClass('show');
+            select("#simonTronQuestion").html("Du kan nu gå videre")
+            select("#simonTronSubmit").html("Vi ses")
+            select('#simonTronDialogue').addClass('show')
 
         } else {
-            showQ();
+            showQ()
         }
     }
-    // Hvis svaret er forkert
     else {
         attempts--;
 
 
-        var circles = selectAll("#kemi-attempts .circle");
-        var lastCircle = circles[circles.length - 1];
-        if (lastCircle) lastCircle.elt.remove();
+        var circles = selectAll("#kemi-attempts .circle")
+        var lastCircle = circles[circles.length - 1]
+        if (lastCircle) lastCircle.elt.remove()
 
 
         if (attempts <= 0) {
-            shiftPage("#failScreen");
+            shiftPage("#failScreen")
         } else {
 
-            select('#wrongAnswer').style('display', 'block');
+            select('#wrongAnswer').style('display', 'block')
             setTimeout(() => {
-                select('#wrongAnswer').style('display', 'none');
-            }, 1500);
+                select('#wrongAnswer').style('display', 'none')
+            }, 1500)
         }
     }
 
