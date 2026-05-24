@@ -34,7 +34,7 @@
     <div id="johnDialogue">
         <div id="johnNameBox">John KMG</div>
         <div id="johnTextBox">
-            <p id="johnQuestion"><span id="johnSpan">Hvad i dette rum kan Rasmus lide at spille på?</span> (hint: en
+            <p id="johnQuestion"><span id="johnSpan">Hvad i dette rum kan Rektor Rasmus lide at spille på?</span> (hint: en
                 bestemt mus omkring juletiden er navngivet efter det)</p>
             <button id="johnSubmit">Tjek svar</button>
             <button id="johnClose">Kig videre efter det</button>
@@ -70,47 +70,7 @@
     <main>
 
         <!-- STARTSIDE -->
-        <div class="page" id="start" title="Start">
-            <div class="overlay">
-                <h1>Escape the Jungle</h1>
-                <p>Find vej ud af junglen ved at løse gåder i hvert rum.<br>
-                    Din tid tæller — jo hurtigere, jo bedre!</p>
-                <button id="btn-start">Start spil</button>
-                <div id="highscores">
-                    <h2>High Scores</h2>
-                    <ol id="score-list"></ol>
-                </div>
-            </div>
-        </div>
-
-        <!-- RUM 1: JUNGLEN -->
-        <div class="page" id="room1" title="Junglen">
-            <div id="room1-hint" class="hint">Find de 3 skjulte symboler i junglen...</div>
-            <div id="room1-found" class="found-counter">Fundet: 0 / 3</div>
-
-            <div id="symbol1" class="hotspot">🌿</div>
-            <div id="symbol2" class="hotspot">🍄</div>
-            <div id="symbol3" class="hotspot">🦎</div>
-        </div>
-
-        <!-- RUM 2: LYSNINGEN -->
-        <div class="page" id="room2" title="Lysningen">
-            <div id="room2-hint" class="hint">Klik på skyerne i den rigtige rækkefølge: fra mindst til størst</div>
-
-            <!-- Klikbare skyer -->
-            <div id="cloud1" class="hotspot cloud">☁️</div>
-            <div id="cloud2" class="hotspot cloud">🌥️</div>
-            <div id="cloud3" class="hotspot cloud">⛅</div>
-
-            <!-- Input (vises når skyerne er klikket rigtigt) -->
-            <div id="room2-code" class="code-input">
-                <p>Jeg har byer men ingen huse, skove men ingen træer, vand men ingen fisk. Hvad er jeg?</p>
-                <input type="text" id="room2-answer" placeholder="Skriv svaret her...">
-                <button id="room2-submit">Tjek svar</button>
-                <div id="room2-error" class="error"></div>
-            </div>
-        </div>
-
+       
 
         <!-- ETAGE 4: KEMI LOKALE-->
         <div class="page" id="kemiLokale" title="Kemi lokale">
@@ -120,29 +80,24 @@
         </div>
         <!-- ETAGE 4: KEMI PERIODISK SYSTEM-->
         <div class="page" id="periodiskSystem" title="Kemi periodisk system">
-            <div id="kemi-hint" class="kemi-hint">Find de ønskede elementer.</div>
+            <div id="kemi-hint" class="kemi-hint">Find x elementer.</div>
             <div id="wrongAnswer">Forkert!!!!</div>
-
-
-
-
-
-            <div id="symbol1" class="elementHotspot"><img src="assets/elementer/metal.png"></div>
-            <div id="symbol2" class="elementHotspot"><img src="assets/elementer/nitrogen.png"></div>
-            <div id="symbol3" class="elementHotspot"><img src="assets/elementer/oxygen.png"></div>
-            <div id="symbol4" class="elementHotspot"><img src="assets/elementer/carbon.png"></div>
-            <div id="symbol5" class="elementHotspot"><img src="assets/elementer/hydrogen.png"></div>
-            <div id="symbol6" class="elementHotspot"><img src="assets/elementer/iron.png"></div>
-            <div id="symbol7" class="elementHotspot"><img src="assets/elementer/phosphorus.png"></div>
-            <div id="symbol8" class="elementHotspot"><img src="assets/elementer/sulfur.png"></div>
-            <div id="symbol9" class="elementHotspot"><img src="assets/elementer/magnesium.png"></div>
-            <div id="symbol10" class="elementHotspot"><img src="assets/elementer/potassium.png"></div>
-            <div id="symbol11" class="elementHotspot"><img src="assets/elementer/sodium.png"></div>
-            <div id="symbol12" class="elementHotspot"><img src="assets/elementer/copper.png"></div>
-            <div id="symbol13" class="elementHotspot"><img src="assets/elementer/aluminium.png"></div>
-            <div id="symbol14" class="elementHotspot"><img src="assets/elementer/chromium.png"></div>
-            <div id="symbol15" class="elementHotspot"><img src="assets/elementer/silver.png"></div>
-            <div id="symbol16" class="elementHotspot"><img src="assets/elementer/tungsten.png"></div>
+            <div id="symbol1" class="elementHotspot"><img src="./assets/elementer/metal.png"></div>
+            <div id="symbol2" class="elementHotspot"><img src="./assets/elementer/nitrogen.png"></div>
+            <div id="symbol3" class="elementHotspot"><img src="./assets/elementer/oxygen.png"></div>
+            <div id="symbol4" class="elementHotspot"><img src="./assets/elementer/carbon.png"></div>
+            <div id="symbol5" class="elementHotspot"><img src="./assets/elementer/hydrogen.png"></div>
+            <div id="symbol6" class="elementHotspot"><img src="./assets/elementer/iron.png"></div>
+            <div id="symbol7" class="elementHotspot"><img src="./assets/elementer/phosphorus.png"></div>
+            <div id="symbol8" class="elementHotspot"><img src="./assets/elementer/sulfur.png"></div>
+            <div id="symbol9" class="elementHotspot"><img src="./assets/elementer/magnesium.png"></div>
+            <div id="symbol10" class="elementHotspot"><img src="./assets/elementer/potassium.png"></div>
+            <div id="symbol11" class="elementHotspot"><img src="./assets/elementer/sodium.png"></div>
+            <div id="symbol12" class="elementHotspot"><img src="./assets/elementer/copper.png"></div>
+            <div id="symbol13" class="elementHotspot"><img src="./assets/elementer/aluminium.png"></div>
+            <div id="symbol14" class="elementHotspot"><img src="./assets/elementer/chromium.png"></div>
+            <div id="symbol15" class="elementHotspot"><img src="./assets/elementer/silver.png"></div>
+            <div id="symbol16" class="elementHotspot"><img src="./assets/elementer/tungsten.png"></div>
 
         </div>
         <!--ETAGE 4: HALLWAYS-->
@@ -179,6 +134,16 @@
         <div class="page" id="andenSalLokale" title="Anden sal lokale">
             <button id="leaveJohnKMG">gå til næste etage</button>
             <div class="JohnKMG" id="johnKMG"></div>
+            <div class="ASH andenSalHotspot1"></div>
+            <div class="ASH andenSalHotspot2"></div>
+            <div class="ASH andenSalHotspot3"></div>
+            <div class="ASH andenSalHotspot4"></div>
+            <div class="ASH andenSalHotspot5"></div>
+            <div class="ASH andenSalHotspot6"></div>
+            <div class="ASH andenSalHotspot7"></div>
+            <div class="ASH andenSalHotspot8"></div>
+            <div class="ASH andenSalHotspot9"></div>
+            <div class="ASH andenSalHotspot10"></div>
 
         </div>
 
@@ -196,22 +161,26 @@
 
 
 
-        <!-- ETAGE 1: HALLWAYS-->
-        <div class="page" id="førsteSalGang" title="Første sal gang">
-            <button id="nextFloorBtn4">Gå en etage ned</button>
-
-        </div>
+      
         <!-- ETAGE 1: LOKALE-->
         <div class="page" id="førsteSalLokale" title="Første sal lokale">
             <div id="simonTron"></div>
 
         </div>
 
+          <!-- ETAGE 1: HALLWAYS-->
+        <div class="page" id="førsteSalGang" title="Første sal gang">
+            <button id="nextFloorBtn4">Gå en etage ned</button>
+
+        </div>
+
+
+
         <!-- UDGANGSETAGE -->
-            <div class="page" id="exit" title="Udgang">
-                <button id="sidsteSpørgsmålBtn">Tal med læreren</button>
-            </div>
-        
+        <div class="page" id="exit" title="Udgang">
+            <button id="sidsteSpørgsmålBtn">skibidi</button>
+        </div>
+
 
         <div class="page" id="failScreen" title="failScreen">
             <div class="overlay">
@@ -232,9 +201,9 @@
                 <button id="btn-restart">Spil igen</button>
             </div>
 
-            <div class="leaderboard" id="leaderboard">
-                <div class="leaderboardTop"></div>
-                <div class="leaderboardBottom"></div>
+            <div id="highscores">
+                <h2>High Scores</h2>
+                <ol id="score-list"></ol>
             </div>
         </div>
 

@@ -23,7 +23,7 @@ body {
     pointer-events: all;
 }
 
-/* Overlay — centreret indhold oven på baggrund */
+
 .overlay {
     display: grid;
     place-items: center;
@@ -32,7 +32,7 @@ body {
     text-align: center;
 }
 
-/* Hint — centreret tekst i toppen af et rum */
+
 .hint {
     position: absolute;
     bottom: 1.5rem;
@@ -43,14 +43,6 @@ body {
     z-index: 10;
 }
 
-/* Hotspot — klikbart element placeret i et rum */
-.hotspot {
-    position: absolute;
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: 5;
-}
-
 
 .elementHotspot {
     position: absolute;
@@ -58,7 +50,7 @@ body {
     z-index: 5;
     width: 50px;
     height: 50px;
-    
+
 }
 
 .elementHotspot img {
@@ -68,9 +60,13 @@ body {
 }
 
 
-.hotspot:hover { transform: scale(1.3); }
+.hotspot:hover {
+    transform: scale(1.3);
+}
 
-button { background: white; }
+button {
+    background: white;
+}
 
 /* Code-input — skjult, vises med .show */
 .code-input {
@@ -81,7 +77,10 @@ button { background: white; }
     background: rgba(0, 0, 0, 0.75);
     z-index: 20;
 }
-.code-input.show { display: grid; }
+
+.code-input.show {
+    display: grid;
+}
 
 
 /* Timer */
@@ -98,25 +97,39 @@ button { background: white; }
 }
 
 /* High score liste */
-#score-list { list-style: none; }
+#highscores {
+    position: absolute;
+    left: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    width: 250px;
+    z-index: 10;
+    color: white; 
+}
+
+#score-list {
+    list-style: none; 
+    padding: 0;      
+    margin: 0;
+}
+
 #score-list li {
     display: flex;
     justify-content: space-between;
     padding: 0.3rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    color: red;
+    font-size: 1.2rem;
 }
 
-/* ---- Rum-baggrunde ---- */
-#start    { background-image: url('./assets/forest.jpg'); }
-#room1    { background-image: url('./assets/forest.jpg'); }
-#room2    { background-image: url('./assets/skies.jpg'); }
-
-
-
 /* ---- Mine Rum-baggrunde ---- */
-#tredjeSalGang {background-image: url("./assets/tredjeSal.png");
-background-size: contain;
-background-repeat: no-repeat;
+#tredjeSalGang {
+    background-image: url("./assets/tredjeSal.png");
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 
@@ -124,30 +137,85 @@ background-repeat: no-repeat;
 
 
 /* ---- Hotspot-placeringer ---- */
-#room1 #symbol1 { top: 35%; left: 20%; }
-#room1 #symbol2 { top: 60%; left: 65%; }
-#room1 #symbol3 { top: 45%; left: 45%; }
+#periodiskSystem #symbol1 {
+    top: 51%;
+    left: 25.7%;
+}
 
-#room2 #cloud1 { top: 25%; left: 25%; font-size: 2.5rem; }
-#room2 #cloud2 { top: 35%; left: 60%; font-size: 4rem; }
-#room2 #cloud3 { top: 20%; left: 45%; font-size: 3rem; }
+#periodiskSystem #symbol2 {
+    top: 22.5%;
+    left: 80%;
+}
 
-#periodiskSystem #symbol1  { top: 50%; left: 24.6%;  }
-#periodiskSystem #symbol2  { top: 29%; left: 80.5%; }
-#periodiskSystem #symbol3  { top: 29%; left: 85.5%; }
-#periodiskSystem #symbol4  { top: 29%; left: 75.3%; }
-#periodiskSystem #symbol5  { top: 22%; left: 7.5%; }
-#periodiskSystem #symbol6  { top: 43%; left: 45%; }
-#periodiskSystem #symbol7  { top: 36%; left: 80.5%; }
-#periodiskSystem #symbol8  { top: 36%; left: 85.5%;  }
-#periodiskSystem #symbol9  { top: 36%; left: 12.5%; }
-#periodiskSystem #symbol10 { top: 43%; left: 7.5%; }
-#periodiskSystem #symbol11 { top: 36%; left: 7.5%; }
-#periodiskSystem #symbol12 { top: 43%; left: 60%; }
-#periodiskSystem #symbol13 { top: 36%; left: 70.3%; }
-#periodiskSystem #symbol14 { top: 43%; left: 304.9%; }
-#periodiskSystem #symbol15 { top: 50%; left: 60%; }
-#periodiskSystem #symbol16 { top: 57%; left: 34.8%; }
+#periodiskSystem #symbol3 {
+    top: 22.5%;
+    left: 84.9%;
+}
+
+#periodiskSystem #symbol4 {
+    top: 22.5%;
+    left: 75.3%;
+}
+
+#periodiskSystem #symbol5 {
+    top: 13%;
+    left: 8.8%;
+}
+
+#periodiskSystem #symbol6 {
+    top: 41%;
+    left: 45.5%;
+}
+
+#periodiskSystem #symbol7 {
+    top: 32%;
+    left: 80%;
+}
+
+#periodiskSystem #symbol8 {
+    top: 32%;
+    left: 85%;
+}
+
+#periodiskSystem #symbol9 {
+    top: 32%;
+    left: 13.8%;
+}
+
+#periodiskSystem #symbol10 {
+    top: 41%;
+    left: 9%;
+}
+
+#periodiskSystem #symbol11 {
+    top: 32%;
+    left: 9%;
+}
+
+#periodiskSystem #symbol12 {
+    top: 41%;
+    left: 60.3%;
+}
+
+#periodiskSystem #symbol13 {
+    top: 32%;
+    left: 70%;
+}
+
+#periodiskSystem #symbol14 {
+    top: 41%;
+    left: 35.5%;
+}
+
+#periodiskSystem #symbol15 {
+    top: 51%;
+    left: 60.5%;
+}
+
+#periodiskSystem #symbol16 {
+    top: 60%;
+    left: 35.5%;
+}
 
 
 
@@ -173,11 +241,11 @@ background-repeat: no-repeat;
 
 
 #arcadeDoorOpen {
-    position: relative; 
-    top: 40%; 
+    position: relative;
+    top: 40%;
     left: 34%;
 
-   
+
 }
 
 
@@ -198,7 +266,7 @@ background-repeat: no-repeat;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
     padding: 2rem;
     border-radius: 0.5rem;
     text-align: center;
@@ -216,12 +284,13 @@ background-repeat: no-repeat;
 
 #periodiskSystem {
     position: relative;
-    aspect-ratio: 16 / 9; 
+    aspect-ratio: 16 / 9;
     background-image: url('./assets/periodiskSystem.png');
-    background-size: contain; /* Sørger for billedet altid er synligt */
+    background-size: contain;
+    /* Sørger for billedet altid er synligt */
     background-repeat: no-repeat;
 
-   
+
 
 }
 
@@ -247,9 +316,10 @@ background-repeat: no-repeat;
 }
 
 /*Etage 3*/
-#arkadeRum {background-image: url('./assets/arkadeRumBillede.png');
-background-size: contain;
-background-repeat: no-repeat;
+#arkadeRum {
+    background-image: url('./assets/arkadeRumBillede.png');
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 
@@ -265,11 +335,11 @@ background-repeat: no-repeat;
     color: red;
 }
 
-#arkadeSpil{
+#arkadeSpil {
     background-image: url("./assets/whack-a-haack.png");
     background-size: contain;
     background-repeat: no-repeat;
-  
+
 }
 
 
@@ -278,7 +348,7 @@ background-repeat: no-repeat;
     top: 4rem;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
     padding: 0.4rem 1.2rem;
     border-radius: 0.5rem;
     z-index: 100;
@@ -299,14 +369,14 @@ background-repeat: no-repeat;
 
 #andenSalLokale {
     background-image: url('./assets/andenSalRum.png');
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
-#johnKMG{
+#johnKMG {
     background-image: url(./assets/john-kmg.png);
-    width: 20vw;
-    height: 45vh;
+    width: 18vw;
+    aspect-ratio: 2 / 3;
     background-size: contain;
     background-repeat: no-repeat;
     transition: transform 0.2s ease-in-out;
@@ -315,6 +385,13 @@ background-repeat: no-repeat;
     bottom: 35%;
     background-position: left bottom;
     cursor: pointer;
+    z-index: 500;
+}
+#johnError{
+    position: relative;
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+    font-size: 3rem;
 }
 
 
@@ -326,7 +403,7 @@ background-repeat: no-repeat;
 
 
 /*Etage 1*/
-#førsteSalGang{
+#førsteSalGang {
     background-image: url('./assets/førsteSalGang.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -344,12 +421,14 @@ background-repeat: no-repeat;
 #exit {
     background-image: url('./assets/udgang.png');
     background-size: contain;
-    background-repeat: no-repeat;  
+    background-repeat: no-repeat;
 
 }
 
 
-#complete { background-image: url('./assets/færdig.png'); }
+#complete {
+    background-image: url('./assets/færdig.png');
+}
 
 
 
@@ -386,7 +465,8 @@ background-repeat: no-repeat;
     z-index: 4;
     transition: color 0.3s ease-in-out;
 }
-.topbar{
+
+.topbar {
     position: fixed;
     top: 0;
     left: 0;
@@ -396,7 +476,9 @@ background-repeat: no-repeat;
     z-index: 2;
     opacity: 0.5;
 }
-.menu-wrapper:has(.sidebar:hover) .burger-icon, .burger-icon:hover{
+
+.menu-wrapper:has(.sidebar:hover) .burger-icon,
+.burger-icon:hover {
     color: white;
 }
 
@@ -413,29 +495,32 @@ background-repeat: no-repeat;
     transition: 0.2s ease-in-out;
 }
 
-.burger-icon:hover + .sidebar, .sidebar:hover {
+.burger-icon:hover+.sidebar,
+.sidebar:hover {
     left: 0;
     box-shadow: 0 0 10px 5px black;
 }
-.sidebar a{
+
+.sidebar a {
     cursor: pointer;
     font-size: 1.5;
     display: block;
     text-decoration: none;
     opacity: 0.5;
     transition: opacity 0.15s ease-in-out,
-    transform 0.15s ease-in-out;
+        transform 0.15s ease-in-out;
 }
 
-.sidebar a:hover{
+.sidebar a:hover {
     opacity: 1;
     transform: translateX(0.5rem);
-    filter: drop-shadow(0,0 10px white);
+    filter: drop-shadow(0, 0 10px white);
 }
 
 
 
-#locked-message, #wrongAnswer {
+#locked-message,
+#wrongAnswer {
     position: fixed;
     top: 10%;
     left: 50%;
@@ -470,7 +555,7 @@ background-repeat: no-repeat;
     top: 7rem;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
     padding: 0.3rem 1rem;
     border-radius: 0.5rem;
     z-index: 100;
@@ -496,12 +581,15 @@ background-repeat: no-repeat;
 }
 
 #failScreen {
-    background-image: url("./assets/fail.png") ;
+    background-image: url("./assets/fail.png");
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-#nextFloorBtn1, #nextFloorBtn2, #nextFloorBtn3, #nextFloorBtn4 {
+#nextFloorBtn1,
+#nextFloorBtn2,
+#nextFloorBtn3,
+#nextFloorBtn4 {
     position: absolute;
     transition: top 0.3s ease, left 0.3s ease;
 }
@@ -525,12 +613,12 @@ background-repeat: no-repeat;
 
 #johnNameBox {
     background: #2a2a2a;
-    color: gold;
+    color: red;
     font-size: 1.2rem;
     font-weight: bold;
     text-transform: uppercase;
     padding: 0.4rem 1.2rem;
-    border: 3px solid gold;
+    border: 3px solid red;
     width: fit-content;
     letter-spacing: 2px;
 }
@@ -563,13 +651,14 @@ background-repeat: no-repeat;
     font-size: 3rem;
     color: rgba(255, 8, 255, 0.973);
     background: rgba(0, 0, 0, 0.6);
-    text-shadow: 
+    text-shadow:
         1px 1px 0 black,
         -1px -1px 0 black,
         1px -1px 0 black,
         -1px 1px 0 black;
 }
-#johnSpan{
+
+#johnSpan {
     color: red;
 }
 
@@ -580,7 +669,7 @@ background-repeat: no-repeat;
 }
 
 
-#johnAnswer{
+#johnAnswer {
     border: 2px solid black;
 }
 
@@ -624,12 +713,12 @@ background-repeat: no-repeat;
 
 #simonTronNameBox {
     background: #2a2a2a;
-    color: gold;
+    color: white;
     font-size: 1.2rem;
     font-weight: bold;
     text-transform: uppercase;
     padding: 0.4rem 1.2rem;
-    border: 3px solid gold;
+    border: 3px solid aquamarine;
     width: fit-content;
     letter-spacing: 2px;
 }
@@ -658,7 +747,10 @@ background-repeat: no-repeat;
     padding: 0.2rem 0.8rem;
 }
 
-#btn0, #btn1, #btn2, #btn3{
+#btn0,
+#btn1,
+#btn2,
+#btn3 {
     cursor: pointer;
 }
 
@@ -666,14 +758,14 @@ background-repeat: no-repeat;
 #quiz {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
-    padding: 5vh 2rem 8vh 2rem; 
+    padding: 5vh 2rem 8vh 2rem;
     box-sizing: border-box;
     background-image: url("./assets/simonhoot.png");
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100vh; 
+    height: 100vh;
 }
 
 #quiz #question {
@@ -744,7 +836,11 @@ background-repeat: no-repeat;
     flex-direction: column;
     font-family: serif;
 }
-#sidsteDialogue.show { display: flex; }
+
+#sidsteDialogue.show {
+    display: flex;
+}
+
 #sidsteNameBox {
     background: #2a2a2a;
     color: gold;
@@ -756,6 +852,7 @@ background-repeat: no-repeat;
     width: fit-content;
     letter-spacing: 2px;
 }
+
 #sidsteTextBox {
     background: white;
     color: black;
@@ -780,15 +877,111 @@ background-repeat: no-repeat;
 
 
 .leaderboardTop {
-    background: rgba(0,0,0,0.7);
+    background: rgba(0, 0, 0, 0.7);
     padding: 1rem;
     border-radius: 0.5rem;
     font-size: 1rem;
 }
 
 .leaderboardBottom {
-    background: rgba(0,0,0,0.7);
+    background: rgba(0, 0, 0, 0.7);
     padding: 1rem;
     border-radius: 0.5rem;
     font-size: 1rem;
 }
+
+
+
+.ASH{
+    position: absolute;
+    z-index: 5;
+}
+
+.ASH img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+
+.andenSalHotspot1{
+    background-image: url(./assets/banjo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 15vw;
+    height: 20vh;
+    top: 20%;
+    left: 10%;
+}
+
+.andenSalHotspot2{
+    background-image: url(./assets/drum.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 25vw;
+    height: 20vh;
+    top: 30%;
+    left: 30%;
+}
+
+.andenSalHotspot3{
+    background-image: url(./assets/dio.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 15vw;
+    height: 20vh;
+    top: 70%;
+    left: 80%;
+}
+
+.andenSalHotspot4{
+    background-image: url(./assets/gameboy.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 15vw;
+    height: 20vh;
+    top: 10%;
+    left: 80%;
+}
+
+.andenSalHotspot5{
+    background-image: url(./assets/legobatman.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 15vw;
+    height: 20vh;
+    top: 5%;
+    left: 30%;
+}
+
+.andenSalHotspot6{
+    background-image: url(./assets/flnv.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 15vw;
+    height: 20vh;
+    top: 70%;
+    left: 10%;
+}
+
+.andenSalHotspot7{
+    background-image: url(./assets/ukulele.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 15vw;
+    height: 20vh;
+    top: 50%;
+    left: 90%;
+}
+
+.andenSalHotspot8{
+    background-image: url(./assets/eldenring.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 15vw;
+    height: 20vh;
+    top: 60%;
+    left: 40%;
+}
+

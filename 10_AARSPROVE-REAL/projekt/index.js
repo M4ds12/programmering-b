@@ -147,6 +147,7 @@ function setup() {
     var leaveRoom3Button = select("#arcadeDoorOpen")
 
     noCanvas()
+    loadHighScores()
     shiftPage('#kemiLokale')
 
     //lav introbox
@@ -198,15 +199,7 @@ function setup() {
 
     })
 
-    // ---- STARTSIDE ----
-    select('#btn-start').mousePressed(() => {
-        startGame()
-    })
 
-    // ---- RUM 1: Hotspots ----
-    select('#room1 #symbol1').mousePressed(() => findSymbol('#room1 #symbol1'))
-    select('#room1 #symbol2').mousePressed(() => findSymbol('#room1 #symbol2'))
-    select('#room1 #symbol3').mousePressed(() => findSymbol('#room1 #symbol3'))
 
 
     //etage 4 elementer
@@ -280,7 +273,7 @@ function setup() {
 
     select('#johnSubmit').mousePressed(() => {
         var answer = select('#johnAnswer').value().toLowerCase()
-        if (answer.includes('dit svar her')) {
+        if (answer.includes('banjo')) {
             select('#johnDialogue').removeClass('show')
             johnRoomPermission = true
 
@@ -344,22 +337,14 @@ function setup() {
 
 
 
-    // ---- RUM 2: Skyer ----
-    select('#room2 #cloud1').mousePressed(() => clickCloud('cloud1'))
-    select('#room2 #cloud2').mousePressed(() => clickCloud('cloud2'))
-    select('#room2 #cloud3').mousePressed(() => clickCloud('cloud3'))
-
-    select('#room2 #room2-submit').mousePressed(() => {
-        checkRoom2Answer()
-    })
-
+    
     // ---- SLUTSIDE ----
     select('#btn-save').mousePressed(() => {
         saveHighScore()
     })
 
     select('#btn-restart').mousePressed(() => {
-        resetGame()
+        restartGame()
     })
 
     allPages.map(
@@ -544,17 +529,6 @@ function clickCloud(id) {
     }
 }
 
-function checkRoom2Answer() {
-    var answer = select('#room2 #room2-answer').value().toLowerCase()
-    if (answer.includes('kort')) {
-        gameState = 2
-        stopTimer()
-        select('#final-time').html('Din tid: ' + seconds + ' sekunder')
-        shiftPage('#complete')
-    } else {
-        select('#room2 #room2-error').html('Ikke helt - prøv igen!')
-    }
-}
 
 // ============================================
 // HIGH SCORE & RESET
@@ -601,20 +575,6 @@ function stopTimer() {
     clearInterval(timerInterval)
 }
 
-function resetGame() {
-    select('#timer').html('0 sek')
-    select('#room1-found').html('Fundet: 0 / 3')
-    select('#room1 #symbol1').show()
-    select('#room1 #symbol2').show()
-    select('#room1 #symbol3').show()
-    select('#room2 #room2-code').removeClass('show')
-    select('#room2 #room2-answer').value('')
-    select('#room2 #room2-error').html('')
-    select('#btn-save').removeAttribute('disabled')
-    select('#btn-save').html('Gem high score')
-    select('#player-name').value('')
-    shiftPage('#start')
-}
 
 function restartGame() {
     attempts = maxAttempts
