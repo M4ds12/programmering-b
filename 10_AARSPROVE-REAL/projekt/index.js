@@ -394,15 +394,6 @@ function setup() {
     setInterval(() => moveBtn('#nextFloorBtn4'), 400)
 
 
-    select('#sidsteSpørgsmålBtn').mousePressed(() => {
-        select('#sidsteQuestion').html(sidsteSpørgsmål.spørgsmål)
-        select('#sidsteSvar0').html(sidsteSpørgsmål.muligheder[0])
-        select('#sidsteSvar1').html(sidsteSpørgsmål.muligheder[1])
-        select('#sidsteSvar2').html(sidsteSpørgsmål.muligheder[2])
-        select('#sidsteSvar3').html(sidsteSpørgsmål.muligheder[3])
-        select('#sidsteDialogue').addClass('show')
-    })
-
     select('#sidsteSvar0').mousePressed(() => checkSidste(0))
     select('#sidsteSvar1').mousePressed(() => checkSidste(1))
     select('#sidsteSvar2').mousePressed(() => checkSidste(2))
