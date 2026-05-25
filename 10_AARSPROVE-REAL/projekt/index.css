@@ -231,12 +231,14 @@ button {
 /*Etage 4*/
 #kemiLokale {
     background-image: url('./assets/kemiLokale.png');
+    position: relative;
 }
 
 
 #periodiskSystem {
-    position: relative;
+    position: absolute;
     aspect-ratio: 16 / 9;
+    width: 100vw;
     background-image: url('./assets/periodiskSystem.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -253,7 +255,7 @@ button {
     background: rgba(0, 0, 0, 0.7);
     padding: 0.5rem 1.5rem;
     border-radius: 0.5rem;
-    font-size: 5.2rem;
+    font-size: 2.2rem;
     text-align: center;
     z-index: 10;
 }
@@ -285,8 +287,6 @@ button {
     height: 25%;
     cursor: pointer;
     background: transparent;
-    border: 3x;
-    border-color: aqua;
 }
 
 #periodicTableBtn {
@@ -297,8 +297,9 @@ button {
     height: 25%;
     cursor: pointer;
     background: transparent;
-    border: 3x;
-    border-color: aqua;
+    border: 1px solid aqua;
+   
+    z-index: 999;
 }
 
 #leaveKemi {
