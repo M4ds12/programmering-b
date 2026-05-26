@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineStream - Movie Paradise</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .search-container {
+            position: relative;
+            flex: 1;
+            max-width: 500px;
+            margin: 0 2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 3rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Main content */
+        .main-content {
+            margin-top: 100px;
+            padding: 2rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Movies grid */
+        .movies-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .movies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 1rem 0;
+        }
+
+        .movie-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+
+        .movie-poster {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .movie-card:hover .movie-poster {
+            transform: scale(1.05);
+        }
+
+        .movie-info {
+            padding: 1.5rem;
+        }
+
+        .movie-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .movie-year {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .movie-genre {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Movie detail page */
+        .movie-detail {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .movie-detail.active {
+            display: block;
+        }
+
+        .movie-header {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .detail-poster {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .movie-details {
+            padding: 1rem 0;
+        }
+
+        .detail-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .detail-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .detail-meta span {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .detail-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .detail-genres {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .detail-genre {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .video-container {
+            margin-top: 3rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeInUp 1s ease;
+        }
+
+        .video-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .video-iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .search-container {
+                margin: 0;
+                max-width: 100%;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .movies-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .movie-header {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .detail-poster {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .detail-title {
+                font-size: 2rem;
+            }
+
+            .detail-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .video-iframe {
+                height: 300px;
+            }
+        }
+
+        /* Loading animation */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: rgba(255, 255, 255, 0.7);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo" onclick="showHome()">🎬 CineStream</div>
+            <div class="search-container">
+                <div class="search-icon">🔍</div>
+                <input type="text" class="search-input" placeholder="Search for movies..." id="searchInput">
+            </div>
+            <button class="back-btn" onclick="showHome()" id="backBtn">← Back to Home</button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <div id="homePage">
+            <section class="hero-section">
+                <h1 class="hero-title">Welcome to CineStream</h1>
+                <p class="hero-subtitle">Discover and watch your favorite movies in stunning quality. Explore our vast collection of films from every genre.</p>
+            </section>
+
+            <section class="movies-section">
+                <h2 class="section-title">Featured Movies</h2>
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Loading movies...</p>
+                </div>
+                <div class="no-results" id="noResults">
+                    <h3>No movies found</h3>
+                    <p>Try searching with different keywords</p>
+                </div>
+                <div class="movies-grid" id="moviesGrid"></div>
+            </section>
+        </div>
+
+        <!-- Movie Detail Page -->
+        <div id="movieDetail" class="movie-detail"></div>
+    </main>
+
+    <script>
+        // Sample movie data
+        const sampleMovies = [
+            {
+                id: 1,
+                title: "Inception",
+                year: 2010,
+                genre: "Sci-Fi",
+                poster: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&h=600&fit=crop",
+                description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+                genres: ["Sci-Fi", "Action", "Thriller"]
+            },
+            {
+                id: 2,
+                title: "The Dark Knight",
+                year: 2008,
+                genre: "Action",
+                poster: "https://images.unsplash.com/photo-1489599257714-f46b5adf3523?w=400&h=600&fit=crop",
+                description: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+                genres: ["Action", "Crime", "Drama"]
+            },
+            {
+                id: 3,
+                title: "Interstellar",
+                year: 2014,
+                genre: "Sci-Fi",
+                poster: "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=400&h=600&fit=crop",
+                description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+                genres: ["Sci-Fi", "Drama", "Adventure"]
+            },
+            {
+                id: 4,
+                title: "Pulp Fiction",
+                year: 1994,
+                genre: "Crime",
+                poster: "https://images.unsplash.com/photo-1489599257714-f46b5adf3523?w=400&h=600&fit=crop",
+                description: "The lives of two mob hitmen, a boxer, a gangster and his wife intertwine in four tales of violence and redemption.",
+                genres: ["Crime", "Drama"]
+            },
+            {
+                id: 5,
+                title: "The Matrix",
+                year: 1999,
+                genre: "Sci-Fi",
+                poster: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&h=600&fit=crop",
+                description: "A computer programmer is led to fight an underground war against powerful computers who have constructed his entire reality with a system called the Matrix.",
+                genres: ["Sci-Fi", "Action"]
+            },
+            {
+                id: 6,
+                title: "Goodfellas",
+                year: 1990,
+                genre: "Crime",
+                poster: "https://images.unsplash.com/photo-1489599257714-f46b5adf3523?w=400&h=600&fit=crop",
+                description: "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners.",
+                genres: ["Crime", "Biography", "Drama"]
+            }
+        ];
+
+        let currentMovies = sampleMovies;
+        let isDetailView = false;
+
+        // Initialize the page
+        function init() {
+            displayMovies(currentMovies);
+            setupSearch();
+        }
+
+        // Display movies in grid
+        function displayMovies(movies) {
+            const moviesGrid = document.getElementById('moviesGrid');
+            const loading = document.getElementById('loading');
+            const noResults = document.getElementById('noResults');
+            
+            loading.style.display = 'none';
+            
+            if (movies.length === 0) {
+                noResults.style.display = 'block';
+                moviesGrid.innerHTML = '';
+                return;
+            }
+            
+            noResults.style.display = 'none';
+            
+            moviesGrid.innerHTML = movies.map((movie, index) => `
+                <div class="movie-card" onclick="showMovieDetail(${movie.id})" style="animation-delay: ${index * 0.1}s">
+                    <img src="${movie.poster}" alt="${movie.title}" class="movie-poster" loading="lazy">
+                    <div class="movie-info">
+                        <h3 class="movie-title">${movie.title}</h3>
+                        <p class="movie-year">${movie.year}</p>
+                        <span class="movie-genre">${movie.genre}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Show movie detail page
+        function showMovieDetail(movieId) {
+            const movie = sampleMovies.find(m => m.id === movieId);
+            if (!movie) return;
+
+            const movieDetail = document.getElementById('movieDetail');
+            const homePage = document.getElementById('homePage');
+            const backBtn = document.getElementById('backBtn');
+
+            homePage.style.display = 'none';
+            backBtn.style.display = 'block';
+            isDetailView = true;
+
+            movieDetail.innerHTML = `
+                <div class="movie-header">
+                    <img src="${movie.poster}" alt="${movie.title}" class="detail-poster">
+                    <div class="movie-details">
+                        <h1 class="detail-title">${movie.title}</h1>
+                        <div class="detail-meta">
+                            <span><strong>Year:</strong> ${movie.year}</span>
+                            <span><strong>Duration:</strong> 2h 28min</span>
+                            <span><strong>Rating:</strong> ⭐ 8.8/10</span>
+                        </div>
+                        <p class="detail-description">${movie.description}</p>
+                        <div class="detail-genres">
+                            ${movie.genres.map(genre => `<span class="detail-genre">${genre}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+                <div class="video-container">
+                    <h2 class="video-title">🎬 Watch Movie</h2>
+                    <div class="video-iframe">
+                        <p>Movie player will be embedded here<br>
+                        <small style="color: rgba(255,255,255,0.5);">Replace this div with your iframe element</small></p>
+                    </div>
+                </div>
+            `;
+
+            movieDetail.classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Show home page
+        function showHome() {
+            const movieDetail = document.getElementById('movieDetail');
+            const homePage = document.getElementById('homePage');
+            const backBtn = document.getElementById('backBtn');
+
+            movieDetail.classList.remove('active');
+            homePage.style.display = 'block';
+            backBtn.style.display = 'none';
+            isDetailView = false;
+            
+            window.scrollTo(0, 0);
+        }
+
+        // Setup search functionality
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            let searchTimeout;
+
+            searchInput.addEventListener('input', function() {
+                clearTimeout(searchTimeout);
+                const query = this.value.trim().toLowerCase();
+                
+                if (!isDetailView) {
+                    searchTimeout = setTimeout(() => {
+                        if (query === '') {
+                            currentMovies = sampleMovies;
+                        } else {
+                            currentMovies = sampleMovies.filter(movie => 
+                                movie.title.toLowerCase().includes(query) ||
+                                movie.genre.toLowerCase().includes(query) ||
+                                movie.year.toString().includes(query)
+                            );
+                        }
+                        displayMovies(currentMovies);
+                    }, 300);
+                }
+            });
+        }
+
+        // Handle scroll effects
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(15, 15, 35, 0.98)';
+                header.style.borderBottomColor = 'rgba(255, 255, 255, 0.2)';
+            } else {
+                header.style.background = 'rgba(15, 15, 35, 0.95)';
+                header.style.borderBottomColor = 'rgba(255, 255, 255, 0.1)';
+            }
+        });
+
+        // Initialize the page when loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

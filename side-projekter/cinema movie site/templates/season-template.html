@@ -1,0 +1,23 @@
+<details>
+    <summary>{{SUMMARY}}</summary>
+    <div class="episodes">
+        <!--{{EPISODES | safe}}-->
+        Loading episodes, this can take up to 30 seconds...
+    </div>
+    <script>
+        {
+            const details = document.currentScript.closest('details');
+            details.addEventListener('toggle', () => {
+                if (details.hasAttribute('loaded'))
+                    return;
+
+                if (details.open) {
+                    fetch('/api/load_season_episodes?sn={{SN}}&surl={{URL}}').then(response => response.text()).then(data => {
+                        details.getElementsByClassName('episodes')[0].innerHTML = data;
+                        details.setAttribute('loaded', '')
+                    })
+                }
+            })
+        }
+    </script>
+</details>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CineHome · Search</title>
+<style>
+  :root{
+    --bg:#0a0a0f; --panel:#101018; --muted:#aeb1c3; --text:#fff; --accent:#6d5dfc; --accent-2:#0ec7a8; --danger:#ff5a7a;
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;background:radial-gradient(1200px 800px at 15% 0%, #151525 0%, var(--bg) 50%);color:var(--text)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1100px;margin:auto;padding:24px}
+  .header{display:flex;align-items:center;gap:16px;padding:16px 0;position:sticky;top:0;background:linear-gradient(180deg,rgba(10,10,15,.95),rgba(10,10,15,.6) 60%,transparent);backdrop-filter:saturate(140%) blur(6px);z-index:5}
+  .brand{font-weight:800;letter-spacing:.5px}
+  .brand b{background:linear-gradient(90deg,var(--accent),#9d90ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .search{display:flex;gap:10px;flex:1}
+  .search input{flex:1;padding:14px 16px;border-radius:12px;border:1px solid #22252f;background:#0f0f18;color:#fff;outline:none}
+  .search button{padding:14px 18px;border-radius:12px;border:0;background:var(--accent);color:#fff;font-weight:600;cursor:pointer}
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 22px}
+  .pill{padding:8px 12px;border:1px solid #232436;border-radius:999px;color:#cfd2e4;background:#0e0f16}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px}
+  .card{background:var(--panel);border-radius:var(--radius);overflow:hidden;border:1px solid #1a1b26;display:grid;grid-template-rows:auto 1fr}
+  .poster{aspect-ratio:2/3;background:#0b0b12;display:block;width:100%;object-fit:cover}
+  .meta{padding:12px 12px 14px}
+  .row{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--muted);font-size:.85rem;margin-bottom:6px}
+  .title{font-weight:700;line-height:1.2;margin:0 0 6px;font-size:1rem}
+  .badge{font-size:.72rem;border:1px solid #24263a;border-radius:999px;padding:4px 8px;color:#c9cbea}
+  .rating{font-size:.85rem}
+  .card:hover{transform:translateY(-2px);transition:transform .15s ease}
+  .watch{display:inline-block;margin-top:8px;padding:10px 12px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#9d90ff);font-weight:700}
+  footer{opacity:.7;color:var(--muted);text-align:center;padding:40px 0}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="header">
+      <div class="brand">🎬 <b>CineHome</b></div>
+      <form class="search" action="/search" method="get">
+        <input name="q" placeholder="Search movies & TV shows…" value="" />
+        <button type="submit">Search</button>
+      </form>
+    </header>
+
+    <section class="filters" aria-label="Quick filters">
+      <!--<span class="pill">Show:</span>-->
+      <a class="pill" href="#" data-key="type" data-value="all" onclick="event.preventDefault(); var params = new URLSearchParams(window.location.search); params.set(this.dataset.key, this.dataset.value); window.location.search = params.toString();">All</a>
+      <a class="pill" href="#" data-key="type" data-value="movie" onclick="event.preventDefault(); var params = new URLSearchParams(window.location.search); params.set(this.dataset.key, this.dataset.value); window.location.search = params.toString();">Movies</a>
+      <a class="pill" href="#" data-key="type" data-value="tv" onclick="event.preventDefault(); var params = new URLSearchParams(window.location.search); params.set(this.dataset.key, this.dataset.value); window.location.search = params.toString();">TV Shows</a>
+      <!--<span class="pill">Sort by:</span>
+      <a class="pill" href="#" data-key="sort" data-value="latest" onclick="this.href = new URL(window.location.href).searchParams.set(this.dataset.key, this.dataset.value).toString();">Latest</a>
+      <a class="pill" href="#" data-key="sort" data-value="rating" onclick="this.href = new URL(window.location.href).searchParams.set(this.dataset.key, this.dataset.value).toString();">Top Rated</a>
+      <a class="pill" href="?q=&sort=popular">Popular</a>
+      <a class="pill" href="?q=&sort=latest">Latest</a>
+      <a class="pill" href="?q=&sort=rating">Top Rated</a>-->
+    </section>
+
+    <!-- Results grid — server should loop cards using card-template.html -->
+    <main class="grid" id="results">
+      {{CARDS | safe}}
+    </main>
+
+    <footer>© CineHome</footer>
+  </div>
+</body>
+</html>

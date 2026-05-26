@@ -1,0 +1,19 @@
+<body>
+    <form action="/admin" method="post">
+        <input type="hidden" name="p" value="{{ADMINPASS}}">
+
+        <label for="actiontype">Action:</label>
+        <select name="actiontype" id="actiontype">
+            <option value="createnewpassword" selected>Create New Password</option>
+            <option value="deletepassword">Delete Password</option>
+        </select>
+        <label for="arg1">Arg1:</label>
+        <input type="text" name="arg1" id="arg1">
+        <button type="submit">Submit action</button>
+    </form>
+
+    <h2>Passwords:</h2>
+    <ol>
+        {{PASSWORDS | safe}}
+    </ol>
+</body>
