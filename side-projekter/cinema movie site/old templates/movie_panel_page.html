@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CINEHOME - Movie Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a0d2e 50%, #16213e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(180deg, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0.7) 70%, transparent 100%);
+            padding: 1rem 4%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s ease;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        .header.scrolled {
+            background: rgba(10, 10, 15, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #e5e7eb;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #8b5cf6;
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.15));
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            color: #a5b4fc;
+            padding: 0.6rem 1.2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(6, 182, 212, 0.25));
+            border-color: rgba(139, 92, 246, 0.5);
+            color: #ffffff;
+        }
+
+        /* Movie Hero Section */
+        .movie-hero {
+            position: relative;
+            min-height: 85vh;
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 30%, #1e3a8a 100%);
+            display: flex;
+            align-items: center;
+            margin-top: 70px;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, rgba(10,10,15,0.8) 0%, rgba(10,10,15,0.4) 60%, transparent 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 1920px;
+            margin: 0 auto;
+            padding: 0 4%;
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .movie-poster-large {
+            width: 100%;
+            height: 550px;
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e3a8a 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: #8b5cf6;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4), 
+                        0 0 0 1px rgba(139, 92, 246, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .movie-poster-large::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1));
+            opacity: 0.7;
+        }
+
+        .movie-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 650px;
+        }
+
+        .movie-title-large {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #8b5cf6 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+
+        .movie-tagline {
+            font-size: 1.2rem;
+            color: #a5b4fc;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .movie-meta {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .meta-item {
+            color: #06b6d4;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .meta-separator {
+            color: #6b7280;
+            font-size: 1.2rem;
+        }
+
+        .rating-badge {
+            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+            color: #ffffff;
+            padding: 0.4rem 1rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+        }
+
+        .genre-tags {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .genre-tag {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.15));
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            color: #a5b4fc;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        .movie-description {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #e5e7eb;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .play-btn {
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+            border: none;
+            padding: 1.2rem 3rem;
+            border-radius: 12px;
+            color: #1f2937;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .play-btn:hover {
+            background: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .secondary-btn {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.15));
+            border: 2px solid rgba(139, 92, 246, 0.4);
+            padding: 1.2rem 2.5rem;
+            border-radius: 12px;
+            color: #a5b4fc;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .secondary-btn:hover {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(6, 182, 212, 0.25));
+            border-color: rgba(139, 92, 246, 0.6);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* Additional Info Section */
+        .additional-info {
+            max-width: 1920px;
+            margin: 0 auto;
+            padding: 4rem 4%;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a0d2e 100%);
+        }
+
+        .info-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+        }
+
+        .main-info {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .cast-section, .details-section {
+            background: linear-gradient(135deg, rgba(30, 27, 75, 0.3), rgba(15, 15, 25, 0.5));
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #8b5cf6, #06b6d4);
+            border-radius: 2px;
+        }
+
+        .cast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .cast-member {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.05));
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .actor-name {
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .character-name {
+            color: #a5b4fc;
+            font-size: 0.9rem;
+        }
+
+        .details-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        .detail-label {
+            color: #9ca3af;
+            font-size: 0.95rem;
+        }
+
+        .detail-value {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-align: right;
+        }
+
+        /* Sidebar */
+        .sidebar-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, rgba(30, 27, 75, 0.3), rgba(15, 15, 25, 0.5));
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .info-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+        }
+
+        .info-item .label {
+            color: #9ca3af;
+        }
+
+        .info-item .value {
+            color: #a5b4fc;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+
+            .movie-poster-large {
+                max-width: 350px;
+                margin: 0 auto;
+            }
+
+            .info-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .movie-hero {
+                margin-top: 120px;
+                min-height: auto;
+                padding: 3rem 0;
+            }
+
+            .movie-title-large {
+                font-size: 2.8rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .additional-info {
+                padding: 2rem 4%;
+            }
+
+            .cast-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+        }
+        
+        .video-modal {
+            position: fixed;
+            inset: 0;
+            display: block;
+            background: rgba(0,0,0,.9);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .2s ease;
+            z-index: 1000;
+        }
+        .video-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .video-wrap {
+            position: fixed;
+            inset: 0; /* fill entire screen */
+            width: 100%;
+            height: 100%;
+            background: #000;
+            border-radius: 0;
+            overflow: hidden;
+        }
+
+        #videoIframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        .loading {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            background: rgba(0,0,0,.5);
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            border: 0;
+            padding: .6rem .8rem;
+            border-radius: 8px;
+            background: rgba(0,0,0,.6);
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.2rem;
+            z-index: 10;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+        .close.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="/" class="logo">CINEHOME</a>
+            <ul class="nav-links">
+                <li><a href="#" onclick="goBack()" class="back-btn">← Back</a></li>
+                <li><a href="#">Discover</a></li>
+                <li><a href="#">Watchlist</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="movie-hero">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="movie-poster-large">
+                <img src="{{thumb}}">
+            </div>
+            <div class="movie-details">
+                <h1 class="movie-title-large">{{name}}</h1>
+                
+                <div class="movie-meta">
+                    <span class="meta-item">IMDb {{imdb}}</span>
+                    <span class="meta-separator">•</span>
+                    <span class="rating-badge">Full HD</span>
+                    <span class="meta-separator">•</span>
+                    <span class="meta-item">{{releaseDate}}</span>
+                    <span class="meta-separator">•</span>
+                    <span class="meta-item">{{runtime}}</span>
+                </div>
+
+                <!--<div class="genre-tags">
+                    <span class="genre-tag">Sci-Fi</span>
+                    <span class="genre-tag">Drama</span>
+                    <span class="genre-tag">Mystery</span>
+                    <span class="genre-tag">Thriller</span>
+                </div>-->
+
+                <p class="movie-description">
+                    {{description}}
+                </p>
+
+                <div class="action-buttons">
+                    <button class="play-btn" onclick="playMovie()">
+                        ▶ Watch Now
+                    </button>
+                    <button class="secondary-btn" onclick="addToWatchlist()">
+                        + Add to Watchlist
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="additional-info">
+        <div class="info-container">
+            <div class="main-info">
+                <div class="cast-section">
+                    <h2 class="section-title">Featured Cast</h2>
+                    <div class="cast-grid">
+                        <div class="cast-member">
+                            <div class="actor-name">Elena Rodriguez</div>
+                            <div class="character-name">Dr. Maya Chen</div>
+                        </div>
+                        <div class="cast-member">
+                            <div class="actor-name">Marcus Thompson</div>
+                            <div class="character-name">Agent Carter</div>
+                        </div>
+                        <div class="cast-member">
+                            <div class="actor-name">Sarah Kim</div>
+                            <div class="character-name">Professor Walsh</div>
+                        </div>
+                        <div class="cast-member">
+                            <div class="actor-name">David Harrison</div>
+                            <div class="character-name">Director Hayes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details-section">
+                    <h2 class="section-title">Production Details</h2>
+                    <div class="details-grid">
+                        <div class="detail-row">
+                            <span class="detail-label">Director</span>
+                            <span class="detail-value">{{director}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-info">
+                <div class="info-card">
+                    <h3>Technical Specs</h3>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <span class="label">Runtime</span>
+                            <span class="value">{{runtime}}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Format</span>
+                            <span class="value">Full HD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal" aria-hidden="true">
+    <div class="video-wrap" role="dialog" aria-modal="true">
+        <button class="close" aria-label="Close" onclick="closeVideoPlayer()">✕</button>
+        <div id="videoLoading" class="loading">Loading…</div>
+        <iframe id="videoIframe" title="Video" frameborder="0"
+                allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+    </div>
+
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        function goBack() {
+            window.history.back();
+        }
+
+        function playMovie() {
+            // Example video URLs - replace with actual video sources
+            const videoSources = [
+                'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&modestbranding=1&rel=0', // YouTube example
+                'https://player.vimeo.com/video/148751763?autoplay=1', // Vimeo example
+                // Add more video sources as needed
+            ];
+            
+            // Use first available source (you can implement logic to select based on movie)
+            //const videoUrl = videoSources[0];
+            const videoUrl = '{{iframe_url}}';
+            
+            openVideoPlayer(videoUrl);
+        }
+
+        function openVideoPlayer(videoUrl) {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('videoIframe');
+            const loading = document.getElementById('videoLoading');
+            
+            // Show modal
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            
+            // Show loading
+            loading.style.display = 'block';
+            
+            // Set iframe source and hide loading when loaded
+            iframe.onload = function() {
+                loading.style.display = 'none';
+            };
+
+            iframe.src = videoUrl;
+
+            const el = document.documentElement; // whole page
+            if (el.requestFullscreen) {
+                el.requestFullscreen();
+            } else if (el.webkitRequestFullscreen) { // Safari
+                el.webkitRequestFullscreen();
+            } else if (el.msRequestFullscreen) { // IE11
+                el.msRequestFullscreen();
+            }
+        }
+
+        function closeVideoPlayer() {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('videoIframe');
+            const loading = document.getElementById('videoLoading');
+            
+            // Hide modal
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+            
+            // Stop video by removing source
+            iframe.src = '';
+            loading.style.display = 'none';
+
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+        }
+
+        // Close modal when clicking outside video container
+        document.getElementById('videoModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeVideoPlayer();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeVideoPlayer();
+            }
+        });
+
+        function addToWatchlist() {
+            alert('Added to your watchlist!');
+            // Implement watchlist functionality
+        }
+
+        // Enhanced button interactions
+        document.addEventListener('DOMContentLoaded', () => {
+            const playBtn = document.querySelector('.play-btn');
+            const secondaryBtn = document.querySelector('.secondary-btn');
+            
+            [playBtn, secondaryBtn].forEach(btn => {
+                btn.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                
+                btn.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+
+        //function hideCloseBtn() {
+        //    document.getElementsByClassName('close')[0].classList.add('hidden')
+        //}
+        //function showCloseBtn() {
+        //    document.getElementsByClassName('close')[0].classList.remove('hidden')
+        //}
+        //
+        //let closeBtnTimeout;
+        //closeBtnTimeout = setTimeout(hideCloseBtn, 2000)
+        //document.addEventListener('mousemove', (e) => {
+        //    showCloseBtn()
+        //    clearTimeout(closeBtnTimeout)
+        //    closeBtnTimeout = setTimeout(hideCloseBtn, 2000)
+        //})
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CineHome · Movie</title>
+<style>
+  :root{
+    --bg:#0a0a0f; --panel:#0f0f18; --muted:#b7bad0; --text:#fff; --accent:#6d5dfc; --accent-2:#0ec7a8; --radius:16px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:radial-gradient(1200px 800px at 15% 0%, #151525 0%, var(--bg) 50%);color:var(--text)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1100px;margin:auto;padding:24px}
+  .header{display:flex;align-items:center;gap:12px;padding:16px 0}
+  .back{padding:8px 12px;border:1px solid #202233;border-radius:10px;background:#0c0c14}
+  .hero{display:grid;grid-template-columns:220px 1fr;gap:20px;align-items:stretch}
+  .poster{border-radius:14px;overflow:hidden;border:1px solid #1a1b26}
+  .poster img{display:block;width:100%;height:100%;object-fit:cover}
+  .meta{background:linear-gradient(180deg,#0f0f18,transparent);border:1px solid #1a1b26;border-radius:var(--radius);padding:18px}
+  .title{margin:0 0 6px;font-size:1.8rem}
+  .sub{color:var(--muted);font-size:.95rem;margin-bottom:10px}
+  .tags{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px}
+  .badge{border:1px solid #24263a;border-radius:999px;padding:6px 10px;font-size:.78rem;color:#d5d7ea}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .btn{padding:12px 14px;border-radius:12px;border:0;cursor:pointer;font-weight:700}
+  .btn-primary{background:linear-gradient(90deg,var(--accent),#9d90ff);color:#fff}
+  .btn-secondary{background:#121423;border:1px solid #2a2d48;color:#e9eaf5}
+  .overview{margin-top:18px;line-height:1.6;color:#dfe1f3}
+  .panel{margin-top:24px;background:var(--panel);border:1px solid #1a1b26;border-radius:var(--radius);padding:16px}
+  .player{display:none}
+  .player.active{display:block}
+  .player iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:12px}
+  .credits{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+  .credit{background:#0e0e16;border:1px solid #1a1b26;border-radius:12px;padding:10px}
+  footer{opacity:.7;color:#9aa0ba;text-align:center;padding:40px 0}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="header">
+      <a class="back" href="search">← Back</a>
+      <strong>CineHome</strong>
+    </header>
+
+    <section class="hero">
+      <figure class="poster">
+        <img src="{{POSTER_URL}}" alt="Movie poster" />
+      </figure>
+
+      <div class="meta">
+        <h1 class="title">{{TITLE}}</h1>
+        <div class="sub">{{SUBTITLE}}</div>
+        <div class="tags">
+          <span class="badge">{{BADGE1}}</span>
+          <span class="badge">{{BADGE2}}</span>
+        </div>
+        <div class="actions">
+          <button id="watchBtn" class="btn btn-primary">▶ Watch Now</button>
+          <button class="btn btn-secondary" aria-pressed="false">＋ Watchlist</button>
+        </div>
+        <p class="overview">
+            {{OVERVIEW}}
+        </p>
+      </div>
+    </section>
+
+    <section class="panel player" id="player">
+      <!-- Replace the src with your streaming iframe URL -->
+      <iframe
+        title="Movie player"
+        src="{{EMBED_URL}}"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen></iframe>
+    </section>
+
+    <section class="panel">
+      <h2 style="margin:0 0 10px">Cast & Crew</h2>
+      <div class="credits">
+        <div class="credit"><strong>Christian Bale</strong><br><span style="color:#aeb1c3">Bruce Wayne / Batman</span></div>
+        <div class="credit"><strong>Heath Ledger</strong><br><span style="color:#aeb1c3">Joker</span></div>
+        <div class="credit"><strong>Christopher Nolan</strong><br><span style="color:#aeb1c3">Director</span></div>
+        <!-- Add more as needed -->
+      </div>
+    </section>
+
+    <footer>© CineHome</footer>
+  </div>
+
+<script>
+  // Minimal JS: toggle embedded player
+  document.getElementById('watchBtn')?.addEventListener('click', () => {
+    const p = document.getElementById('player');
+    p.classList.add('active');
+    p.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+</script>
+</body>
+</html>

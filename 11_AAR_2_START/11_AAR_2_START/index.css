@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap');
+
+
+body,
+* {
+    font-family: "open sans";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    /* grid layout */
+    display: grid;
+    place-items: center;
+    /* vises først med klasen "show" */
+    position: fixed;
+    top: 100vh;
+    transition: all .6s ease-in-out;
+}
+
+.show {
+    top: 0;
+}
+
+#msg{
+    text-shadow: 4px 4px 12px yellow;
+}
+
+#page1{
+    background-color: rgb(27, 27, 133);
+}
+#page2{
+    background-color: rgb(27, 113, 137);
+}
+
+
+
+.toast {
+    position: fixed;
+    top: -100%;
+    left: 50%;
+    width: 20rem;
+    border: solid black;
+    transition: top 0.5s ease-in-out;
+    transition-duration: 3s;
+    transform: translateX(-50%);
+    background-color: hotpink;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2)
+}
