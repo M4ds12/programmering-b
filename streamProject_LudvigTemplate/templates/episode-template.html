@@ -1,0 +1,8 @@
+<article class="ep">
+    <img class="thumb" src="{{THUMB_URL}}" alt="" />
+    <div>
+        <h4>{{TITLE}}</h4>
+        <small>{{SUBTITLE}}</small>
+    </div>
+    <a class="watch" href="#" data-embed="{{EMBED_URL}}" onclick="fetch('{{EMBED_API_URL}}').then(response => {response.text().then(data => {document.getElementById('player').querySelector('iframe').src = data || ''})})">Watch</a>
+</article>
