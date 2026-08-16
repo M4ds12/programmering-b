@@ -14,6 +14,7 @@ function setup(){
     
     client.subscribe('mads')
     client.subscribe('mads/page')
+    client.subscribe('mads/color')
 
 
 
@@ -31,6 +32,16 @@ function setup(){
     if(topic == 'mads'){
     select("#msg").elt.textContent = 'Besked på topic' + topic + ' med teksten ' + msg
     }
+
+
+    if (topic === 'mads/color') {
+    let color = msg.toString()
+    select("#page1").style("background-color", color)
+    select("#toast").html("Farve skiftet")
+        setTimeout(() => select("#toast").style("top", "50%"), 400)
+        setTimeout(() => select("#toast").style("top", "-100%"), 8000)
+}
+
 
     })
 

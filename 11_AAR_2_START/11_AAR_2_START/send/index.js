@@ -24,6 +24,11 @@ function setup(){
         client.publish('mads', 'open')
     })
 
+    select("#btnColor").mousePressed(() => {
+    let color = select("#clrInput").value()
+    client.publish('mads/color', color)
+})
+
     
 
 }
