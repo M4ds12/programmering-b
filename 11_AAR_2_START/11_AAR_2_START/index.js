@@ -7,6 +7,7 @@ function setup(){
     createCard('Her er teksten', "https://media.tenor.com/sM9N32SqxHsAAAAe/dih-small-dih-big-dreams.png", "#cards")
 
     //mqtt er et objekt vi får fra mqtt biblioteket i html siden
+    
     client = mqtt.connect("wss://mqtt.nextservices.dk")
 
     client.on('connect', msg => {
@@ -80,5 +81,8 @@ select(destId).child(containerDiv)
 
 
 }
+
+
+
 
 

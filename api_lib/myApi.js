@@ -1,6 +1,7 @@
 var timerInterval = null
 var currentPage = "#page1"
 var myArray = []
+var toastTimeout
 readyToShift = true
 // Dine genbrugelige API-funktioner kommer her.
 
@@ -20,11 +21,20 @@ function showToast(txt, timeout = 2000, type = "notify", toastDiv = "#toast") {
         return
     }
     console.log('Forbundet til NEXT MQTT server')
-    toast.html('Forbundet til NEXT MQTT server')
+
+    clearTimeout(toastTimeout)
+
+    toast.html(txt)
+
+
+
+    toast.elt.offsetHeight 
+    
+
     toast.addClass('toastShow')
-    setTimeout(() => {
+    toastTimeout = setTimeout(() => {
         toast.removeClass('toastShow')
-    }, 2000)
+    }, timeout)
 }
 
 //ShiftPage(newId, fromId = currentPage, className = 'show'){
@@ -96,5 +106,28 @@ function changeColor(color, changedDiv){
 select(changedDiv).style("background-color", color)
 }
 
+
+async function getJSON( endpoint ){
+    //Vi starter med at kontakte serveren med et request
+    var res 
+    try{
+        res = await fetch( endpoint )
+    }catch(err){
+        console.log(err)
+    }
+    //Hvis response er ok, henter vi json data 
+    var json = await res.json()
+    console.log('Hentede poster fra fetchJSON', json)
+    return json 
+}
+
+
+function createCard(title = "", text = "", image = ""){
+    var card = createDiv().addClass('card')
+    card.child(createImg(image))
+    card.child(createElement('h2', title))
+    card.child(createElement('p', text))
+    return card
+}
 
 

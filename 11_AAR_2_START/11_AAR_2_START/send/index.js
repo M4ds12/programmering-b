@@ -34,3 +34,6 @@ function setup(){
 }
 
 
+ select("#btn").mousePressed( ()=>{
+        client.publish('myTopic', 'myMessage')
+    })
