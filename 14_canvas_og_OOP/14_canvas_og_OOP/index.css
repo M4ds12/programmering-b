@@ -11,20 +11,28 @@ body,
 
 }
 
+canvas {
+    display: block;
+}
+
 .page {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    /* grid layout */
-    display: grid;
-    place-items: center;
     position: fixed;
     left: 0;
 }
 
 
-#page1 {
+#info{
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: whitesmoke;
+    height: 10rem;
+    width: 10rem;
+    border-radius: 1rem;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    z-index: 2;
 }
-
