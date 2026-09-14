@@ -13,7 +13,7 @@ var frameCounter = 0
 
 
 async function setup() {
-    bSound = await loadSound("/api_lib/sounds/beep.mp3")
+    bSound = await loadSound("../../api_lib/sounds/beep.mp3")
     var c = createCanvas(windowWidth, windowHeight)
     select('#page2').child(c)
     select('#startButton').mousePressed(() => {
