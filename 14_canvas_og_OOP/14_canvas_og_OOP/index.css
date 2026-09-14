@@ -20,19 +20,63 @@ canvas {
     height: 100vh;
     overflow: hidden;
     position: fixed;
-    left: 0;
+    left: -100vw;
+    display:grid;
+    place-items: center;
+    transition: 1s ease-in-out;
+}
+.show{
+    left:0;
+}
+
+#info{
+    position:fixed;
+    bottom:2rem;
+    right:2rem;
+    background-color:whitesmoke;
+    height:10rem;
+    width:10rem;
+    border-radius: 1rem;
+    display:grid;
+    grid-template-rows: 1fr 3fr;
+    place-items: center;
+    z-index:2;
+    font-size: 3rem;
 }
 
 
-#info{
+#infoHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#infoHeader h1 {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #555;
+    margin: 0;
+}
+
+#infoPoints {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #222;
+}
+
+#timer {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: whitesmoke;
-    height: 10rem;
-    width: 10rem;
+    padding: 0.5rem 1.5rem;
     border-radius: 1rem;
-    display: grid;
-    place-items: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #222;
     z-index: 2;
 }
