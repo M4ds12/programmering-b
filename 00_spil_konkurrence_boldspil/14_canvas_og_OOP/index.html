@@ -13,30 +13,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mqtt/5.15.2/mqtt.min.js"
         integrity="sha512-3kmSDJDp+Sk6XIt2AAkhFUrdlBwtWf6eFuksz407qMKcV/d1xfvsF/o4glnPWX/P3/X4yQJ2EBHEBTaWoXGf1g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/p5.sound@0.4.1/dist/p5.sound.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5.sound@0.4.1/dist/p5.sound.min.js"></script>
 </head>
 
 <body>
     <div id="toast"></div>
-    <div id="info">
-        <div id="infoHeader"><h1>dine point</h1></div>
-        <div id="infoPoints"></div>
+       
     </div>
     <div id="timer"></div>
     <main>
         <div class="page show" id="page1">
-            <h1>Jumping ball</h1>
+            <h1>Verity spil</h1>
             <button id="startButton">Start game</button>
         </div>
         <div id="page2" class="page">
 
-        </div>
-        <div id="page3" class="page">
-            <h1>Game over</h1>
-            <div id="stats"></div>
-            <button id="restartButton">Try again</button>
-        </div>
+            <div id="page3" class="page">
+                <h1>Game over</h1>
+                <div id="stats"></div>
+                <div id="save-score">
+                    <input type="text" id="player-name" placeholder="Dit navn">
+                    <button id="btn-save">Gem high score</button>
+                </div>
+                <div id="highscores">
+                    <h2>Leaderboard</h2>
+                    <ol id="score-list"></ol>
+                </div>
+                <button id="restartButton">Try again</button>
+            </div>
 
     </main>
     <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-app-compat.js"></script>

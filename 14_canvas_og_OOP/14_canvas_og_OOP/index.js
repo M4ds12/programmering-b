@@ -41,6 +41,17 @@ async function setup() {
         startTimer()
     })
 
+
+    var fb = new Firebase("collection_name")
+    fb.listen(updateHighscore, 5, "points", "asc")
+    fb.save("jeg er en test gut der kommer ind i databasen", 67)
+
+}
+
+
+//callback fra listen som har returneret et array
+function updateHighscore(scores){
+console.log("Got result", scores)
 }
 
 function draw() {
