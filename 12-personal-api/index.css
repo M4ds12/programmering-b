@@ -11,20 +11,3 @@ body,
 
 }
 
-.page {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    /* grid layout */
-    display: grid;
-    place-items: center;
-    position: fixed;
-    left: 0;
-}
-
-
-#page1 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
