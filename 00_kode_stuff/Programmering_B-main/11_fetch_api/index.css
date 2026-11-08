@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap');
+
+
+body,
+* {
+    font-family: "open sans";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.menu-wrapper {
+    position: fixed;
+    width: fit-content;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+
+.burger-icon {
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    cursor: pointer;
+    font-size: 4rem;
+    color: black;
+    z-index: 3;
+    transition: color 0.3s ease-in-out;
+    
+}
+
+.menu-wrapper:has(.sidebar:hover) .burger-icon, .burger-icon:hover {
+    color: white;
+}
+
+.sidebar {
+    position: relative;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 15rem;
+    background-color: black;
+    color: white;
+    padding: 6rem 1rem 0 1rem;
+    box-sizing: border-box;
+    transition: left 0.3s ease-in-out;
+
+}
+
+.burger-icon:hover + .sidebar, .sidebar:hover {
+    left: 0;
+    box-shadow: 0,0,10px 1px black;
+}
+
+.sidebar a {
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: block;
+    text-decoration: none;
+    color: white;
+    margin: 1rem 0;
+    opacity: 0.5;
+    transition: opacity 0.15s ease-in-out,
+        transform 0.15s ease-in-out;
+
+}
+
+.sidebar a:hover {
+    opacity: 1;
+    transform: translateX(0.5rem);
+    filter: drop-shadow(0,0,10px white);
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    /* grid layout */
+    display: grid;
+    place-items: center;
+    /* vises først med klasen "show" */
+    position: fixed;
+    left: -100vw;
+    transition: all .6s ease-in-out;
+}
+
+.show {
+    left: 0;
+}
+
+#page1{
+    grid-template-columns: 1fr 1fr;
+    background-image: url(./assets/poker-green-table-background-realistic-playing-field-for-card-game-casino-concept-vector.jpg);
+}
+#page2{
+    background-image: url(./assets/poker-green-table-background-realistic-playing-field-for-card-game-casino-concept-vector.jpg);
+}
+#page3{
+    background-image: url(./assets/poker-green-table-background-realistic-playing-field-for-card-game-casino-concept-vector.jpg);
+}
+
+#player, #dealer{
+    width:80%;
+    height: auto;
+    padding: 2rem 0rem 2rem 0rem;
+    position:relative;
+    display:grid;
+    justify-items:center;
+    gap: 12rem;
+    /*background: rgb(44, 100, 50);*/
+    background-image: url(./assets/greenverticalsml.jpg);
+    background-size: cover;
+    border-radius: 2rem;
+    border-width: 0.7rem;
+    border-style: solid;
+    border-color: rgb(19, 52, 19);
+}
+.total{
+    font-size: 4rem;
+    font-weight: 700;
+    color: rgb(199, 244, 198);
+}
+.cards{
+    background-image: url(./assets/Screenshot\ 2026-03-25\ 222357.png);
+    background-size: cover;
+    width: 80%;
+    height: 40vh;
+    background-color: rgb(59, 135, 67);
+    border-radius: 2rem;
+    border-width: 0.7rem;
+    border-style: solid;
+    border-color: rgb(157, 216, 156);
+}
+.cards img{
+    position: absolute;
+}
+#result{
+    font-size: 4rem;
+    display: grid;
+    place-items: center;
+}
+
+button{
+    background: rgb(24, 84, 16);
+    font-size: 3rem;
+    font-weight: 700;
+    color: rgb(199, 244, 198);
+    border-width: 0.3rem;
+    border-style: solid;
+    border-color: rgb(157, 216, 156);
+}
+h1{
+    font-size: 20rem;
+    font-weight: 700;
+    color: rgb(199, 244, 198);
+}

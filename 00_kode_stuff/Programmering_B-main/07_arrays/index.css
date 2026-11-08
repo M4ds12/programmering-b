@@ -1,0 +1,154 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap'); /* Comic Relief*/
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap'); /* navn: Bungee */
+@import url('https://fonts.googleapis.com/css2?family=Ribeye&display=swap'); /* navn: Ribeye*/
+@import url('https://fonts.googleapis.com/css2?family=Honk&display=swap');body /* navn: Honk*/
+
+{
+    margin: 0;
+    padding: 0;
+    font-family: "Ribeye"
+}
+
+.menu-wrapper{
+    position: fixed;
+    width: fit-content;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+.burger-icon{
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    cursor: pointer;
+    font-size: 2rem;
+    color: black;
+    z-index: 3;
+    transition: color 0.1s ease-in-out;
+}
+.menu-wrapper:has(.sidebar:hover) .burger-icon, .burger-icon:hover{
+    color: rgb(255,194,205);
+    transition: color 0.1s ease-in-out;
+}
+.sidebar{
+    position: relative;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 15rem;
+    background-color: rgb(242, 180, 87);
+    color: rgb(193, 85, 105);
+    padding: 4rem 1rem;
+    box-sizing: border-box;
+    transition: 0.2s ease-in-out all;
+}
+.burger-icon:hover + .sidebar, .sidebar:hover{
+    left: 0;
+    transition: 0.3s ease-in-out all;
+    box-shadow: 0 0 100px 0 rgb(44, 47, 51);
+}
+.sidebar a{
+    font-size: 2.5rem;
+    display: block;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    margin: 1.2rem 0;
+    opacity: 0.6;
+    transition: opacity 0.1s ease-in-out;
+    transition: all 0.1s ease-out;
+}
+.sidebar a:hover{
+    opacity: 1;
+    transform: translateX(0.5rem);
+    font-size: 3rem;
+    filter: drop-shadow(0 0 10px 0 rgb(145, 145, 145));
+}
+
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    /* grid layout */
+    display: grid;
+    place-items: center;
+    /* vises først med klasen "show" */
+    position: fixed;
+    left: -100vw;
+    transition: all .6s ease-in-out;
+}
+
+.show {
+    left: 0;
+}
+
+/*all div's inside pages are here*/
+.page div {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+
+}
+
+h1 {
+    font-weight: 300;
+    font-size: 3rem;
+
+}
+
+#explosion{
+    border-radius: 100%;
+}
+
+#page2{
+    background-color: rgb(155, 155, 155);
+    grid-template-rows: 1fr 1fr 8fr;
+}
+
+
+
+.container, #birdContainer{
+    overflow-y: scroll;
+    background-color: rgb(202, 202, 202);
+    width: 60vw;
+    height: 40vh;
+    border: 0.5vh dotted black;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    scroll-behavior: smooth;
+}
+
+
+
+.elev{
+    width: 300px;
+    min-height: 300px;
+    border: 0.2vh dotted black;
+    display: grid;
+    place-items: center;
+    transition: 0.8s ease-in-out all;
+    background-size: cover;
+}
+
+.elev:hover{
+    transform: scale(0.8);
+    box-shadow: 10px 10px black;
+    border-radius: 30%;
+}
+
+.bird{
+    width: 300px;
+    min-height: 100px;
+    background-color: rgb(112, 112, 112);
+    color: rgb(216, 216, 216);
+    border-radius: 1rem;
+
+}
+
+#birdInp{
+    font-size: 3rem;
+}

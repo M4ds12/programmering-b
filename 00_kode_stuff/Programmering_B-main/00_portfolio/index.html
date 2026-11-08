@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web template with p5.js</title>
+    <link rel="stylesheet" href="./index.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.min.js"></script>
+</head>
+<body>
+<style>
+ul.a {list-style-type: disc;}
+
+    .box{
+        width: 10rem;
+        height: 10rem;
+    }
+
+body{
+    
+    background-color: rgb(53, 55, 57);
+}
+</style>
+
+    <div class="menu-wrapper">
+        <div class="burger-icon">☰</div>
+        <div class="sidebar">
+        </div>
+    </div>
+
+    <main>
+        <div title="forside" class="page show" id="page1">
+
+            <div class="left">
+                <div class="top">
+                    <h4>Mit Portfolio <br> - af Viggo Bengtson</h4>
+                </div>
+                <div class="bottom">
+                    <div class="bottom_left">
+                        <ul.a>
+                            <h4>Oversigt:</h4>
+                            <li style="font-size:2rem">Forside</li>
+                            <li style="font-size:2rem">Hvem er jeg?</li>
+                            <li style="font-size:2rem">Billeder om mig</li>
+                            <li style="font-size:2rem">Kontakt mig</li>
+                        </ul.a>
+                    </div>
+                    <div class="bottom_right">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="box">
+                </div>
+        </div>
+
+        <div title="Hvem er jeg?" class="page" id="page2">
+            <div class="colum1">
+                <div class="top">
+                    <h1>Om mig</h1>
+                </div>
+                <div class="bottom">
+                    <h2>Jeg hedder Viggo, jeg er 17 år og går i gymnasiet. Jeg vil beskrive mig selv som en venlig og nysgerrig person, der godt kan lide at lave sjov, men også nyder at snakke om ting, der interesserer mig.</h2>
+                </div>
+            </div>
+            <div class="colum2">
+                <div class="top">
+                    <h1>Interesser</h1>
+                </div>
+                <div class="bottom">
+                    <h2>Jeg er kreativ og elsker at tegne, tage billeder og lære nye måder at udtrykke mig på. Jeg er også ret glad for computerspil, som jeg både spiller og nogle gange koder selv. Til hverdag cykler jeg gennem byen til skole og træner Kung Fu flere gange om ugen.</h2>
+                </div>
+            </div>
+            <div class="colum3">
+                <div class="top">
+                    <h1>Facts</h1>
+                </div>
+                <div class="bottom">
+                    <ul.a>
+                        <li style="font-size:1.2rem">er kæmpe fan/nørd inden for kampvogne og andre seje militære våben</li>
+                        <li style="font-size:1.2rem">har gået til 7 forskellige sportsgrene</li>
+                        <li style="font-size:1.2rem">har vundet pokaler inden for programmering, kung fu og fodbold</li>
+                        <li style="font-size:1.2rem">lidt for glad for slik og sodavand</li>
+                        <li style="font-size:1.2rem">altid fuld af spas og fjolleri!</li>
+                    </ul.a>
+                </div>
+            </div>            
+        </div>
+
+        <div title="Billeder Om Mig" class="page" id="page3">
+            <div class="left">
+
+            </div>
+            <div class="right">
+                <div class="top">
+                    <img width="550rem" src="./assets/mig airsoft cut.jpg" style="display: block; margin-right: auto; margin-left: 0rem;" alt="">
+                </div>
+                <div class="bottom">
+                    <img width="550rem" src="./assets/billedkunst collage.png" style="display: block; margin-right: auto; margin-left: 0rem;" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div title="Kontakt Mig" class="page" id="page4">
+            <div class="left">
+                <div class="top1">
+                    <h1 style="font-size: 4rem;">KONTAKT MIG</h1>
+                    <ul.a>
+                        <li style="font-size:2rem">GitHub:  https://github.com/viggovonbengtson</li>
+                        <h1></h1>
+                        <li style="font-size:2rem">mail:  viggovonbengtson@gmail.com</li>
+                        <h1></h1>
+                        <li style="font-size:2rem">tlf:  +45 53 85 26 25</li>
+                        <h1></h1>
+                        <li style="font-size:2rem">Discord:  viggovomsen</li>
+                    </ul.a>
+            </div>
+        </div>
+    </main>
+    <script src="./index.js"></script>
+</body>
+</html>

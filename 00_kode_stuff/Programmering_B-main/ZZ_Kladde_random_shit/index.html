@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Escape the Jungle</title>
+
+    <!-- Skeleton CSS -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+    >
+
+    <!-- Egen CSS -->
+    <link rel="stylesheet" href="index.css">
+
+    <!-- p5.js -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.min.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore-compat.js"></script>
+
+    <!-- Firebase config -->
+    <script src="./firebase.js"></script>
+
+</head>
+
+<body>
+
+
+    <!-- ========================================= -->
+    <!-- TIMER -->
+    <!-- ========================================= -->
+
+    <div id="timer">0 sek</div>
+
+
+    <main>
+
+
+        <!-- ========================================= -->
+        <!-- STARTSIDE -->
+        <!-- ========================================= -->
+
+        <div class="page" id="start" title="Start">
+
+            <div class="overlay">
+
+                <h1>Hent en bajer</h1>
+
+                <p>
+                    Find vej ud af kælderen og gennem huset
+                    ved at løse gåder i hvert rum.
+                    <br>
+                    Din tid tæller — jo hurtigere, jo bedre!
+                </p>
+
+                <button id="btn-start">
+                    Start spil
+                </button>
+
+
+                <!-- highscores -->
+                <div id="highscores">
+
+                    <h2>High Scores</h2>
+
+                    <ol id="score-list"></ol>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        
+                    <!-- inventory -->
+                    <div id="inventory">
+                        <div id="invSlot1" class="box">
+                            <img src="./assets/crowbar.png" id="crowbarImage" class="item">
+                        </div>
+        
+                        <div id="invSlot2" class="box">
+                            <img src="./assets/knife.png" id="knivImage" class="item">
+                        </div>
+                    </div>
+
+        <!-- ========================================= -->
+        <!-- ROOM 1 -->
+        <!-- ========================================= -->
+
+        <div class="page" id="room1" title="Kælderen">
+
+            <!-- hint -->
+            <div id="room1-hint" class="hint">Åben papkassen og få crowbar til at bryde døren op...</div>
+
+
+            <!-- item counters -->
+            <div id="crowbar-found" class="found-counter">Fundet: 0 / 1 🦯</div>
+            <div id="axe-found" class="found-counter">Fundet: 0 / 1 🪓</div>
+
+            <!-- dør -->
+            <div id="symbolDoor" class="hotspot">🚪</div>
+            <!-- papkasse -->
+            <div id="woodenBox"></div>
+        </div>
+
+        <!-- ========================================= -->
+        <!-- ROOM 1 DOOR -->
+        <!-- ========================================= -->
+
+        <div class="page" id="room1Door" title="Kælderdøren">
+            <div id="room1Door-hint" class="hint">Klik på låsene i den korrekte rækkefølge
+                og derefter på håndtaget...</div>
+            <!-- kælderdør -->
+            <div id="kaelderdoer"></div>
+            <!-- låse -->
+            <div id="laas1" class="hotspot">🔒</div>
+            <div id="laas2" class="hotspot">🔒</div>
+            <div id="laas3" class="hotspot">🔒</div>
+            <!-- besked -->
+            <div id="doorMessage"></div>
+        </div>
+
+
+
+        <!-- ========================================= -->
+        <!-- ROOM 2 -->
+        <!-- ========================================= -->
+
+        <div class="page" id="room2" title="Køkkenet">
+            <div id="room2-hint" class="hint">
+                Køleskabet er væk!!!
+                <br>Du må finde det så du kan få slukket tørsten...
+                <br>Led efter items i køkkenet...
+                <br>Prøv ovnen...
+
+            </div>
+
+
+            <!-- inventory -->
+            <div id="inventory2">
+                <div id="invSlot1-room2" class="box">
+                    <img
+                        src="./assets/crowbar.png"
+                        id="crowbarImage-room2"
+                        class="item"
+                    >
+                </div>
+                <div id="invSlot2-room2" class="box">
+                    <img
+                        src="./assets/knife.png"
+                        id="knivImage-room2"
+                        class="item"
+                    >
+                </div>
+            </div>
+
+
+            <!-- ovn -->
+            <button id="ovnBtn">
+                Åbn ovn
+            </button>
+
+
+            <!-- kodeboks -->
+            <div id="room2-code" class="code-input">
+                <p>
+                    Hvilken item vil du finde?
+                </p>
+                <input
+                    type="text"
+                    id="room2-answer"
+                    placeholder="Skriv svaret her..."
+                >
+                <button id="room2-submit">
+                    Tjek svar
+                </button>
+
+                <div id="room2-error" class="error"></div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ========================================= -->
+        <!-- COMPLETE -->
+        <!-- ========================================= -->
+
+        <div class="page" id="complete" title="Færdig">
+
+
+            <div class="overlay">
+
+                <h1>
+
+                    Du slap fri!
+
+                </h1>
+                <p id="final-time"></p>
+                <!-- save score -->
+                <div id="save-score">
+                    <input
+                        type="text"
+                        id="player-name"
+                        placeholder="Dit navn"
+                    >
+                    <button id="btn-save">
+                        Gem high score
+                   </button>
+                </div>
+
+
+                <button id="btn-restart">
+
+                    Spil igen
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- JavaScript -->
+    <script src="./index.js"></script>
+
+</body>
+
+</html>

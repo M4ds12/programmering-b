@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap');
+
+
+body,
+* {
+    font-family: "open sans";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    /* grid layout */
+    display: grid;
+    place-items: center;
+    /* vises først med klasen "show" */
+    position: fixed;
+    top: 100vh;
+    transition: all .6s ease-in-out;
+}
+
+
+
+#page1{
+    background-image: url(./assets/page1.png);
+    background-size: 20vw;
+    background-position: bottom 2rem left 2rem;
+    background-repeat: no-repeat;
+}
+
+#page2{
+    background-image: url(./assets/page2.png);
+    background-size: 20vw;
+    background-position: bottom 2rem left 2rem;
+    background-repeat: no-repeat;
+}
+
+#page5{
+    background-color: rgb(219, 221, 229);
+}
+
+.show {
+    top: 0;
+}
+
+#toast{
+    font-size: 2rem;
+    width: 20rem;
+    height: auto;
+    background-color: rgb(238, 239, 241);
+    position: fixed;
+    top: -12rem;
+    right: 2rem;
+    padding: 1rem;
+    transition: top .2s ease-in-out;
+    border-radius: 1rem;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+    z-index: 999;
+}
+
+#toast.toastShow{
+    top: 2rem;
+}
+
+.container{
+    display: grid;
+    position: fixed;
+    align-items: center;
+    grid-template-rows: 100px 100px;
+    max-height: 200px;
+    width: 100px;
+}
+
+.top{
+    max-height: 100%;
+    
+    object-fit:cover;
+}
+.top img{
+    background-color: rgb(238, 239, 241);
+    width: 100px;
+    
+}
+
+.bottom{
+    background-color: antiquewhite;
+    height: 100%;
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./index.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.min.js"></script>
+
+<style>
+    div {text-align: center;}
+</style>
+</head>
+<body>
+
+    <div class="menu-wrapper">
+        <div class="burger-icon">☰</div>
+        <div class="sidebar"></div>
+    </div>
+    
+    <main>
+        <div class="page" id="page1" title="Forside">
+            <div class="top"></div>
+            <div class="bottom">
+                <div class="left">
+                    <div class="box">
+                        <div class="boxTop">Indholdsliste</div>
+                        <h2 class="boxBottom">
+                            <br>Forside
+                            <br>- Om Terraria
+                            <br> -Skift mellem siderne i sidebar menuen oppe i venstre hjørne
+                            <br><br>Terraria
+                            <br>- Slides om forskellige versioner gennem tiden, og meget andet
+                            <br><br>Lore Pages
+                            <br>- Officielle lore pages (historien bag Terraria) udgivet af udviklerene af spillet
+                        <h2>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="box">
+                        <div class="boxTop">Om Terraria</div>
+                        <div class="boxBottom">
+                            Terraria er et 2D action-adventure sandbox spil uden levels og med et ikke-lineært progressions system, udviklet af Re-Logic.
+                            <br><br>Terraria handler om udforskning, kreativitet og mest af alt: kamp og overlevelse. Der er ingen levels, og det har et ikke-lineært progression system.
+                            <br><br>Man kan både spille singleplayer alene, eller multiplayer med vennerne helt op til 16 spillere. Der er 204 rustninger, 566 våben, 371 enemies, 33 bosses, så det er bare om at komme i gang!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page" id="page2" title="Slides">
+            <span>
+                <select name="theDropdown" id="theDropdown">
+                    <option value="./assets/old\ gen.jpg">"Old Gen" version</option>
+                    <option value="./assets/new\ terraria.jpg">"New Gen" version</option>
+                    <option value="./assets/mainMenu.gif">Hvad min sidebar skal forestille</option>
+                    <option value="./assets/creators.jpg">Udviklerene fra spilfirmaet "Re-Logic"</option>
+                </select>
+            </span>
+        </div>
+        
+        <div class="page" id="page3" title="Lore Pages">
+            <div class="background1 parallax">
+                <div class="boxTitel">Officielle "lore pages" udgivet af de originale udviklere</div>
+                <div class="scroll">
+                    <div.l class="box">
+                        <div class="top">Lore Page 1<br>"The Beginning"</div>
+                        <div class="bottom"><br>In the beginning, the Gods established a balance to guarantee fairness for all living creatures. This balance was to be of paramount importance, with no cost too great in seeking its fulfillment. Eons have passed since the Gods first began testing the complexities of life in their fairness experiment. In this process, countless living worlds were created and now exist within the Terraria universe. Each world of Terraria is a sentient being that knows all that goes on and can feel the thoughts of all living creatures: with their sole purpose being to ensure that the desired balance is maintained – often violently so. The worlds utilize many defense mechanisms to ensure the balance is upheld at all costs – some of them are known as the Hallow, Corruption, and Crimson.
+                        </div>
+                    </div.l>
+                </div>
+            </div>
+            <div class="background2 parallax">
+                <div class="scroll">
+                    <div.l class="box">
+                        <div class="top">Lore Page 2 & 3<br>"The Evil Biomes"<br>The Crimson, The Corruption & The Hallow</div>
+                        <div class="bottom"><br>The Crimson is a single emergent living being connected directly to each world, sharing a hive mind, and solely focused on restoring balance at all costs. Thousands of worlds before the one on which you stand now have been absorbed by this being. Many misguided people have made the horrific mistake of raising the Crimson to the level of a deity – conducting human sacrifices to it to placate the monstrosity or seek its favor. The Crimson gladly consumes these bodies, becoming one with them and producing terrifying beings, who lose the ability to feel and blindly follow the hive mind.
+                            <br><br>The Corruption is a cancer caused by the sins of those living in the worlds of Terraria. The vile actions and thoughts present in all beings feed the growth of the Corruption as it spreads relentlessly across each world. The Corruption knows nothing else but to consume everything it touches, leaving behind terrible creatures of hate that exist for the sole reason to cause pain in punishment for the unearned pleasure experienced by living things. After the Corruption restores balance to life, it destroys it with the goal of turning the world into a desolate abyss void of life.
+                            <br><br>The Hallow, on the other hand, is of an entirely different nature. Within each world is a Guardian who serves as the worlds master and core. Once this creature is destroyed the world will release the Ancient Spirits of Light and Dark to expedite the process of finding a new Guardian. It is here when the Hallow is created and functions as an overcompensation of purity, taken to the absolute extreme. The Hallow cures threats that would attempt to violate the critical balance of life, killing anything in its path as though it were treating an infection – whether friend, foe, or neutral party. Ultimately, the Hallow serves to push back against the never-ceasing encroachment of control.
+                        </div>
+                    </div.l>
+                </div>
+            </div>
+            <div class="background3 parallax">
+                <div class="scroll">
+                    <div.l class="box">
+                        <div class="top">Lore Page 4<br>"Your World"</div>
+                        <div class="bottom"><br>It is against the backdrop of this precious balance of life, desolation and pain that the great battles of legend and the adventures of our time take place. In the blind spot of the universe, there exists a planet of unprecedented potential: your world!
+                            <br><br>story begins with Cthulhu – a creature of immeasurable power and unknown origin – who arrived long ago with its seemingly sole purpose being to rain destruction on and to have dominion over all the sentient life that flourishes on your world. None could stand against the advances of Cthulhu. The very fabric of Terraria itself seemed on the precipice of doom. At last, when all hope seemed lost, the ancient race of Dryads arose to wage battle against Cthulhu. The Dryads, with their unparalleled connection to the planet, were Terraria's truly last hope as they joined together to save all life from annihilation.
+                            <br><br>The Dryads were unable to kill Cthulhu. However, with the Dryads combined power they were able to cripple Cthulhu's ability to wreak further damage on Terraria by ripping out Cthulhu's eyes, part of its skeleton, and chunks of its brain. Ultimately this substantial damage forced Cthulhu to retreat to the dark side of the moon, where it dwells to this day, gathering strength for another attempt at total conquest. As for the Dryads, sadly, all but a single member perished... and the sole survivor has not been seen for many, many years.
+                        </div>
+                    </div.l>
+                </div>
+            </div>
+            <div class="background4 parallax">
+                <div class="scroll">
+                    <div.l class="box">
+                        <div class="top">Lore Page 5<br>"The Lunatic Cult"</div>
+                        <div class="bottom">Much time has passed since the Great War of Cthulhu. However, rumors tell of a Lunatic Cult led by a fanatical zealot that is methodically seeking to revive Cthulhu to its former power and bring about the end of the world. As a part of these efforts, a renowned genius – known simply as the Mechanic – has been kidnapped and forced to rebuild the parts needed to make Cthulhu whole once again. Hushed whispers tell of the results of these experiments: horrible mechanical simulacrums of Cthulhu's organs. The Mechanic has nearly completed her work, only needing to finish the Mechanical brain to restore Cthulhu to its full destructive power.
+                            <br><br>Passing travelers hear construction and screams emanating from the Dungeon – an evil, demonic fortress of the dead in which the Mechanic is supposedly held prisoner as she conducts her work.
+                            <br><br>Many across Terraria have fallen under the possession of the cult, including the benevolent Old Man who oversees the Dungeon, a once thriving city full of life until a curse forced all its inhabitants to go mad – living beyond the point where their bodies rotted away and they became mindless undead servants of evil. Without some intervention, some force to stem this tide, some hero to save the day, Terraria's doom is nigh at hand! This brings us to our adventure. It begins with you – in humble beginnings and shown your path by the faithful and mysterious Guide. As this world's champion, you will experience communications from the world to help protect your mission. The world has brought you to this specific location at this specific time – will you stand up and fight for Terraria against the growing shadows of impending doom?
+                        </div>
+                    </div.l>
+                </div>
+            </div>
+            <div class="bottomText parallax"><br>(Du kan scroll i tekstboks'ene)</div>
+        </div>
+        
+        <div class="page" id="page4" title="Trailer">
+            <h3 id="overlay">Trailer til nuværende version, update 1.4</h3>
+                <video id="theVideo" src="./assets/trailer.mp4" autoplay loop style="background-size: 100rem;"></video>
+                <button id="videoButton">Pause/play</button>
+        </div>
+        
+    </div>
+</main>
+
+<script src="./index.js"></script>
+</body>
+</html>

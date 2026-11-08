@@ -1,0 +1,29 @@
+body{
+    color: rgb(222, 222, 222);
+    display: flex;
+    justify-content: center;
+    background-color: rgb(44, 44, 44);
+    margin: 0;
+}
+#game-container{
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+}
+#bg{
+    max-width: 100vw;
+    max-height: 100vh;
+    width: auto;
+    height: auto;
+}
+
+.asta{
+    position: absolute;
+    width: 70px;
+    top: 50px;
+    left: 50px;
+}
+.stats{
+    position: absolute;
+    left: 0;
+}

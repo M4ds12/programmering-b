@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web template with p5.js</title>
+    <link rel="stylesheet" href="./index.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.min.js"></script>
+</head>
+<style>
+    div {text-align: center;}
+</style>
+<body>
+
+    <main>
+
+
+
+        <div title="2 column grid" class="page" id="page1">
+            <div class="colum1">
+                <div class="top"></div>
+                <button class="button" id="alkoholForklaring"></button>
+                <div></div>
+            </div>
+            <div class="colum2">
+                <div class="top"></div>
+                <button class="button" id="aldehydForklaring"></button>
+            </div>
+
+        </div>
+        
+        
+        
+        <div title="alkohol1" class="page" id="page2">
+            <button class="buttonBack" id="theButtonTilbage1"></button>
+            <button class="button" id="aldehydForklaring2"></button>
+            <table class="tabelFrugt">
+                <tr>
+                    <th class="titel">Stof</th>
+                    <th>Håndsprit</th>
+                    <th>Acetone</th>
+                    <th>Eddikesyre</th>
+                </tr>
+                <tr>
+                    <td class="side1">Stofnavn</td>
+                    <td class="felt1">isopropylalkohol</td>
+                    <td class="felt1">Dimetylketon</td>
+                    <td class="felt1">Acetylhydroxid</td>
+                </tr>
+                <tr>
+                    <td class="side2">Formelnavn</td>
+                    <td class="felt2">2-propanol</td>
+                    <td class="felt2">propan-2-on </td>
+                    <td class="felt2">Ethansyre</td>
+                </tr>
+                <tr>
+                    <td class="side1">Formel</td>
+                    <td class="felt1">C3H7OH</td>
+                    <td class="felt1">C3H6O</td>
+                    <td class="felt1">CH3COOH</td>
+                </tr>
+                <tr>
+                    <td class="side2">Type</td>
+                    <td class="felt2">Alkohol</td>
+                    <td class="felt2">Keton</td>
+                    <td class="felt2">carboxylsyre</td>
+                </tr>
+                <tr>
+                    <td class="side1">Polaritet</td>
+                    <td class="felt1">polær</td>
+                    <td class="felt1">polær</td>
+                    <td class="felt1">polær</td>
+                </tr>
+                <tr>
+                    <td class="side2">Anvendelse</td>
+                    <td class="felt2">Håndsprit bruges til at slå bakterier ihjel, oftest bakterier på hænderne</td>
+                    <td class="felt2">Acetone bliver brugt som neglelak fjerner</td>
+                    <td class="felt2">Eddikesyre bliver brugt at fjerne kalk</td>
+                </tr>
+            </table>
+        </div>
+        
+        
+        <div title="dagens forsøg" class="page" id="page3">
+            <button class="buttonBack" id="theButtonTilbage2"></button>
+            <button class="button" id="aldehydForklaring3"></button>
+            <div class="forklaring1 parallax">
+                <div class="boxTitel">Kobber og Ethanol<br><br>(der er flere tekstbokse, du kan scroll ned på siden og i selve tekstboksene)</div>
+                    <div class="scroll">
+                        <div.l class="box">
+                            <div class="top">Hvorfor CuO reduceres til Cu i ethanol-oxidationen</div>
+                            <div class="bottom"><br>Fordi ethanol-molekylet fungerer som et reduktionsmiddel da den kan afgive elektroner. CuO fungerer som et oxidationsmiddel da den optager elektroner hvilket gør at den tager et iltatom fra ethanol. Ethanol bliver til et aldehyd, mens kobber (CuO) reduceres til metallisk kobber.
+                                <br><br>I forsøget observerede vi hvordan det varme kobber skifter farve når man holder det over ethanol. Bagefter opdagede vi også at ethanolen lugtede meget sødere bagefter forsøget.
+                                <br><br>Reaktionen for ethanol og oxygen
+                                <br>2C2H5OH + O2 → 2CH3CHO + 2H2O
+                                <br><br>Reaktionshastigheden var utrolig hurtig. Man kan se kobberet skifte farve inden for få sekunder.
+                                <br><br>Reaktionen for kobberoxid og ethanol:
+                                <br>CuO + C2H5OH → CH3CHO + Cu + H2O
+                                <br>
+                            </div>
+                        </div.l>
+                    </div>
+            </div>
+            <div class="forklaring1 parallax">
+                <div class="boxTitel">(stadig Kobber og Ethanol hehe)</div>
+                    <div class="scroll">
+                        <div.l class="box">
+                            <div class="top">Hvorfor Tollens reagens danner sølvspejl med aldehyder</div>
+                            <div class="bottom"><br>Tollens reagens indeholder sølv(I)-ioner, der er bundet til [Ag(NH3)2]. Når en opløsning med et aldehyd tilsættes, sker der en redoxreaktion: aldehydet oxideres til en carboxylsyre og sølv(I)-ionen reducerer til metallisk sølv der sætter sig på glasset inderside som et sølvvspejl. Aldehyder oxideres nemt, men ketoner gør ikke derfor reagere ketoner ikke med Tollens reagens.
+                                <br><br>reaktionen
+                                <br>når AgNO3 tilsættes NaOH, der dannes et brun-sort bundfald af sølv(I)-oxid
+                                <br>Ag(+) + OH(-) → AgOH
+                                <br><br>AgOH er ustabilt og omdannes til:
+                                <br>2AgOH → Ag2O + H2O
+                                <br>Det er Ag2O, der er bundfald
+                                <br><br>Reaktionsskema: når ammoniak opløser bundfald
+                                <br>Ag2O + 4NH3 + H2O → 2[Ag(NH3)2](+) + 2OH(-)
+                                <br>Ammoniak danner sølvioner, hvilket bliver om til Tolles reagens
+                                <br><br>Alkohol oxideres til benzoesyre:
+                                <br>C6H5CHO + 2[Ag(NH3)2](+) + 3OH(-) → C6H5COO(∓) 2Ag + 4NH3(+) H2O
+                                <br>Sølv(I) reduceres til metallisk sølv dvs. sølvspejl
+                            </div>
+                        </div.l>
+                    </div>
+            </div>
+        </div>
+
+
+        
+    </main>
+    <script src="./index.js"></script>
+</body>
+</html>

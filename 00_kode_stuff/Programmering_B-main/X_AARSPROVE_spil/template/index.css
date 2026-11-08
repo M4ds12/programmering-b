@@ -1,0 +1,347 @@
+body {
+    overflow: hidden;
+    background: #111;
+    color: white;
+}
+
+/* Sider — skjult til venstre, vist med .show */
+.page {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    transition: left 0.3s ease-in-out;
+    background-size: cover;
+    background-position: center;
+}
+.page.show { left: 0; }
+
+/* Overlay — centreret indhold oven på baggrund */
+.overlay {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+/* Hint — centreret tekst i toppen af et rum */
+.hint {
+    font-size: 3rem;
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    z-index: 10;
+}
+.startHint {
+    font-size: 2.5rem;
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    z-index: 10;
+}
+
+/* Hotspot — klikbart element placeret i et rum */
+.hotspot {
+    position: absolute;
+    font-size: 4rem;
+    cursor: pointer;
+    z-index: 5;
+}
+.hotspot:hover { transform: scale(1.1); }
+
+
+/* Code-input — skjult, vises med .show */
+.code-input {
+    position: absolute;
+    inset: 0;
+    display: none;
+    place-items: center;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 20;
+}
+.code-input.show { display: grid; }
+
+.found-counter{
+    font-size: 1.9rem;
+}
+
+/* Timer */
+#timer {
+    position: fixed;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.4rem 1rem;
+    border-radius: 0.5rem;
+    z-index: 100;
+}
+
+/* High score liste */
+#score-list { list-style: none; }
+#score-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+/* ---- Rum-baggrunde ---- */
+#start    { background-image: url('./assets/kælder.jpeg');}
+#room1    { background-image: url('./assets/kælder.jpeg'); }
+#room1Door    { background-image: url('./assets/kælder_væg.jpg'); }
+#room2    { background-image: url('./assets/kitchen.jpeg');}
+#room3    { background-image: url('./assets/stue.jpeg');}
+#room4    { background-image: url('./assets/skur.jpg');}
+#room5    { background-image: url('./assets/fridge_background.jpeg'); background-position: top center; background-size: 80%;}
+#complete { background-image: url('./assets/skies.jpg'); }
+
+
+/* ---- INVENTORY OG ITEMS PLACERING ---- */
+#inventory{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 999;
+}
+#tutorialInv{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    display: flex;
+    z-index: 999;
+}
+#tutorialHint{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    display: flex;
+    z-index: 999;
+}
+#tutorialBtn1{
+    position: absolute;
+    top: 48px;
+    left: 0px;
+    display: flex;
+    z-index: 999;
+}
+#tutorialBtn2{
+    position: absolute;
+    top: 48px;
+    right: 0px;
+    display: flex;
+    z-index: 999;
+}
+.box{
+    width: 70px;
+    height: 70px;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.item{
+    width: 50px;
+}
+
+/* ---- BUTTONS ---- */
+button { background: white; }
+.hidden { opacity: 0; pointer-events: none; }
+.visible { opacity: 1; pointer-events: auto; }
+
+.leftBtn{
+    position: absolute;
+    top: 7rem;
+    left: 2rem;
+}
+.rightBtn{
+    position: absolute;
+    top: 7rem;
+    right: 2rem;
+}
+
+
+/*____________________________
+
+-----------SPILLET------------
+____________________________*/
+
+
+/* ---- KASSER ---- */
+#room1 #woodenBox {
+    background-image: url("./assets/woodenBox.png"); 
+    background-size: cover;
+    width: 10vw;
+    height: 20vh;
+    position:absolute;
+    top: 55%; 
+    left: 20%;
+}
+/* ---- DØR OG KASSERS PLACERINGER ---- */
+#room1 #symbolDoor { top: -7%; left: 45%; font-size: 20rem;}
+#room1 #symbolDoorOpen img { 
+    position: absolute;
+    top: -3%; 
+    left: 47%; 
+    width: 10%;
+}
+#room1 #symbolDoorOpenBg img { 
+    position: absolute;
+    top: -3%; 
+    left: 47.5%; 
+    width: 7.8%;
+    transform: scaleX(-1);
+}
+/* ---- ÅBEN DØR ---- */
+#room1Door #kælderdør{
+    background-image: url(./assets/door_closed.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 40%;
+    height: 100%;
+    position:absolute;
+    left: 40%;
+}
+/* ---- LÅS POSITIONER ----*/
+#room1Door #lås1 { top: 24%; left: 60.5%; font-size: 2.5rem; } 
+#room1Door #lås2 { top: 76%; left: 60.5%; font-size: 4rem; }
+#room1Door #lås3 { top: 55%; left: 41%; font-size: 3rem; }
+
+
+/* ---- ROOM 2 ---- */
+/*KLIKBAR OVN*/
+#room2 #ovnBtn{
+    opacity: 0;
+    display: grid;
+    border: 0.5rem solid rgb(177, 177, 177);
+    border-radius: 10px;
+    position:absolute;
+    place-items: center;
+    left: 41%;
+    bottom: 0%;
+    min-width: 24rem;
+    min-height: 25rem;    
+}
+
+
+/* ---- ROOM 3 ---- */
+#room3 #køleskab{
+    background-image: url(./assets/køleskab.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 25%;
+    height: 100%;
+    position:absolute;
+    top: 20%;
+    left: 35%;
+}
+#room3 #køleskabÅben{
+    background-image: url(./assets/køleskab_open.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 27%;
+    height: 100%;
+    position:absolute;
+    top: 15%;
+    left: 34%;
+    cursor: pointer;
+}
+/* ---- ROOM 3 - MONSTER ---- */
+#room3 #monsterDrinkSort{
+    background-image: url(./assets/monster_drink_sort.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 17%;
+    height: 40%;
+    position:absolute;
+    top: 28%;
+    left: 20%;
+}
+#room3 #monsterDrinkHvid{
+    background-image: url(./assets/monster_drink_hvid.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 25%;
+    height: 40%;
+    position:absolute;
+    top: 28%;
+    left: 20%;
+}
+#room3 #monsterDrinkCrushed{
+    background-image: url(./assets/monster_drink_crushed.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 20%;
+    height: 40%;
+    position:absolute;
+    top: 28%;
+    left: 19%;
+}
+
+/* ---- ROOM 4 ---- */
+#room4 #slibesten{
+    background-image: url(./assets/slibesten.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 40vw;
+    height: 100%;
+    position:absolute;
+    top: 35%;
+    left: 30%;
+}
+/* ---- KLIKBAR SLIBESTEN ---- */
+#room4 #slibestenBtn{
+    opacity: 0;
+    display: grid;
+    border: 0.5rem solid rgb(177, 177, 177);
+    border-radius: 10px;
+    position:absolute;
+    place-items: center;
+    left: 38%;
+    bottom: 0%;
+    min-width: 23vw;
+    min-height: 52vh;
+}
+/* ---- Knivs-Placering ----*/
+#room4 #slibKniv { 
+    position: absolute; 
+    top: -20%; 
+    left: 24%; 
+    width: 50vw; 
+    rotate: 137deg; 
+    transform: scaleX(-1);
+}
+/* ---- Hotspot-placeringer ---- */
+#room4 #symbol1 { top: 28%; left: 34%; }
+#room4 #symbol2 { top: 15%; left: 50%; }
+#room4 #symbol3 { top: 18%; left: 64%; }
+#room4 #symbol4 { top: 28%; left: 76%; }
+
+#room5 #game-container{
+    width: 80%;
+    height: 80%;
+    position: center;
+}
+.øl{
+    position: absolute;
+    width: 40px;
+    top: 50px;
+    left: 50px;
+}
+.stats{
+    position: absolute;
+    left: 0;
+}

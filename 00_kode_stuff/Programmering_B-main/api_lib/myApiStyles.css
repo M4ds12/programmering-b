@@ -1,0 +1,126 @@
+/* CSS der hører til dit API — fx .show og #toast */
+
+@font-face {
+    font-family: Andy_Bold;
+    src: url(./fonts/Andy_Bold.ttf);
+}
+
+.page{
+    width: 100vw;
+    height: 100vh;
+    /*border: 0.3rem solid black;*/
+    overflow: hidden;
+    display: grid; /* grid layout */
+    position:fixed; /* position fixed - klassen "show" viser pages */
+    left: -100vw;
+    opacity: 0;
+    transition: 0.4s ease-in-out;
+}
+
+.show{
+    left: 0;
+    opacity: 1;
+}
+
+
+#toast{
+    display: grid;
+    place-items:left;
+    font-size: 1.3rem;
+    width: 20rem;
+    height: auto;
+    background-color: rgb(184, 195, 216);
+    position: fixed;
+    top: -12rem;
+    right: 2rem;
+    padding: 1rem;
+    transition: top .2s ease-in-out;
+    border-radius: 1rem;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+    z-index: 999;
+}
+#toast.toastShow{
+    top: 2rem;
+}
+#toast.toastShow.notify{
+    grid-template-columns: 5fr 1fr;
+    background-image: url(./assets/warning.png);
+    background-size: 2rem; 
+    background-repeat: no-repeat;
+    background-position: 90% 50%;
+
+    top: 2rem;
+    background-color: rgb(168, 240, 160);
+}
+#toast.toastShow.warning{
+    grid-template-columns: 5fr 1fr;
+    background-image: url(./assets/warning.png);
+    background-size: 2rem; 
+    background-repeat: no-repeat;
+    background-position: 90% 50%;
+
+    top: 2rem;
+    background-color: rgb(175, 140, 0);
+}
+
+
+
+/* Timer */
+#timer {
+    position: fixed;
+    /* Du skal selv angive positionen i dit normale css-fil
+    top: 1rem;
+    right: 1.5rem;*/
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: rgba(109, 109, 109, 0.6);
+    padding: 0.4rem 1rem;
+    border-radius: 0.5rem;
+    z-index: 100;
+}
+
+
+.hidden { opacity: 0; pointer-events: none; }
+.visible { opacity: 1; pointer-events: auto; }
+
+.cardContainer{
+    display: grid;
+    position: fixed;
+    align-items: center;
+    grid-template-rows: 100px 100px;
+    max-height: 200px;
+    width: 100px;
+}
+.top{
+    max-height: 100%;
+    
+    object-fit:cover;
+}
+.top img{
+    background-color: rgb(238, 239, 241);
+    width: 100px;
+    
+}
+.bottom{
+    background-color: antiquewhite;
+    height: 100%;
+}
+
+.card{
+    height: 100%;
+    width: 100%;
+}
+.card img{
+    height: 100%;
+}
+
+.card h2{
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.card p{
+    font-size: 1rem;
+    margin: 0;
+}

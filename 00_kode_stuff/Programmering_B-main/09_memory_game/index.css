@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap');
+
+@keyframes matchAnimation {
+    0% {clip-path: circle(0% at 50% 50%); scale: 1;}
+    50% {clip-path: circle(50% at 50% 50%); scale: 1.1;}
+    100% {clip-path: circle(100% at 50% 50%); scale: 1;}
+}
+
+body,
+* {
+    font-family: "open sans";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    /* grid layout */
+    display: grid;
+    place-items: center;
+    /* vises først med klasen "show" */
+    position: fixed;
+    left: -100vw;
+    transition: all .6s ease-in-out;
+}
+
+.show {
+    left: 0;
+}
+
+
+h1 {
+    font-weight: 300;
+    font-size: 3rem;
+}
+
+#gameContainer{
+    width: 80vw;
+    height: 80vw;
+    gap: 2rem;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+#page2{
+    background-color: rgb(7, 140, 73);
+}
+
+.card{
+    width: 100%;
+    height: 100%;
+    border: 3px solid white;
+    gap: 5rem;
+    padding: .5rem;
+    background-color: rgb(4, 79, 41);
+    box-shadow: 0 0 4px 5px rgb(0, 0, 0);
+    border-radius: 1rem;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
+.card:hover{
+    transform: translateY(-3px);
+}
+.card.show img{
+    opacity: 1;
+}
+.card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+}
+.card.checked{
+    opacity: 0.8;
+    border: 4px solid yellow;
+}
+.card.matched .back{
+    transform: rotateY(180deg);
+    opacity: 0,75;
+    animation: matchAnimation 8s forwards;
+}

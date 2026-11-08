@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web template with p5.js</title>
+    <link rel="stylesheet" href="./index.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.min.js"></script>
+</head>
+<style>
+
+</style>
+<body>
+
+    <div class="menu-wrapper">
+        <div class="burger-icon">☰</div>
+        <div class="sidebar"></div>
+    </div>
+
+    <main>
+        <div class="page" id="page1">
+            <h1>Page 1</h1>
+        </div>
+        <div title="Image Grid" class="page" id="page2">
+            <div class="top">
+                <h2>Grid Layout</h2>
+            </div>
+            <div class="bottom">
+
+            </div>
+        </div>
+
+        <div title="pluh" class="page" id="page3">
+
+            <div class="left">
+                <div class="top">
+                    <h3>2 for 1!!</h3>
+                </div>
+                <div class="bottom">
+                    <h3>lowkey køb 2 for 1?</h3>
+                </div>
+            </div>
+            <div class="right">
+                <div class="box">
+                    <div class="top">
+                        <h3>Crazy 8 yo</h3>
+                    </div>
+                </div>
+        </div>
+
+        <div title="4 Col Grid" class="page" id="page4">
+            <div class="colum1"></div>
+            <div class="colum2"></div>
+            <div class="colum3"></div>
+            <div class="colum4"></div>
+        </div>
+
+        <div title="Grid With Video" class="page" id="page5">
+            <div class="left">
+                <div class="top">
+                    <h1>meow meow (top left)</h1>
+                </div>
+                <div class="bottom">
+                    <h2>yes, there is in fact a bottom, but big left</h2>
+                </div>
+            </div>
+            <div class="right">
+                <div class="top">
+                    <h1>(no cat was hurt while spraying water in the making of this .mov)</h1>
+                </div>
+                <div class="bottom">
+                    <h1 id="overlay"></h1>
+                    <video id="theVideo" src="./assets/trim.14CE179E-40B8-44EC-804A-4BD44815465F.mov" autoplay muted loop></video>
+                    <button id="videoButton">Pause</button>
+                </div>
+            </div>
+        </div>
+
+        <div title="lowkey burger menu" class="page" id="page6">
+            <div class="left">
+                <div class="top1">
+                    <h1>Cheese burger</h1>
+                </div>
+                <div class="top2">
+                    <h1>Hambugr</h1>
+                </div>
+                <div class="middle1">
+                    <h1>Chicken burger</h1>
+                </div>
+                <div class="middle2">
+                    <h1>Veggie ahh burger</h1>
+                </div>
+                <div class="bottom1">
+                    <h1>Bacon burger</h1>
+                </div>
+                <div class="bottom2">
+                    <h1>Italian/Swedish/French fries</h1>
+                </div>
+            </div>
+            <div class="right">
+                <div class="top"></div>
+                <div class="bottom"></div>
+            </div>
+        </div>
+        <div class="page" id="page7">
+            <div class="left">
+                <div>kæmpe deal</div>
+            </div>
+            <div class="right">
+                <div class="top">
+                    <h1></h1>
+                </div>
+                <div class="middle">
+
+                </div>
+                <div class="bottom">
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="./index.js"></script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap'); /* Comic Relief*/
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap'); /* navn: Bungee */
+@import url('https://fonts.googleapis.com/css2?family=Ribeye&display=swap'); /* navn: Ribeye*/
+@import url('https://fonts.googleapis.com/css2?family=Honk&display=swap');body /* navn: Honk*/
+
+{
+    margin: 0;
+    padding: 0;
+    font-family: "Honk";
+}
+
+.menu-wrapper{
+    position: fixed;
+    width: fit-content;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+.burger-icon{
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    cursor: pointer;
+    font-size: 2rem;
+    color: black;
+    z-index: 3;
+    transition: color 0.1s ease-in-out;
+}
+.menu-wrapper:has(.sidebar:hover) .burger-icon, .burger-icon:hover{
+    color: rgb(255,194,205);
+    transition: color 0.1s ease-in-out;
+}
+.sidebar{
+    position: relative;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 15rem;
+    background-color: rgb(255, 8, 74);
+    color: rgb(255,194,205);
+    padding: 4rem 1rem;
+    box-sizing: border-box;
+    transition: 0.2s ease-in-out all;
+}
+.burger-icon:hover + .sidebar, .sidebar:hover{
+    left: 0;
+    transition: 0.3s ease-in-out all;
+    box-shadow: 0 0 100px 0 rgb(44, 47, 51);
+}
+.sidebar a{
+    font-size: 2rem;
+    display: block;
+    text-decoration: none;
+    color: rgb(255,194,205);
+    margin: 1.2rem 0;
+    opacity: 0.6;
+    transition: opacity 0.1s ease-in-out;
+    transition: all 0.1s ease-out;
+}
+.sidebar a:hover{
+    opacity: 1;
+    transform: translateX(0.5rem);
+    font-size: 2.5rem;
+    filter: drop-shadow(0 0 10px 0 rgb(145, 145, 145));
+}
+
+
+.page{
+    width: 100vw;
+    height: 100vh;
+    /*border: 0.3rem solid black;*/
+    overflow: hidden;
+    display: grid; /* grid layout */
+    place-items: center;
+    position:fixed; /* position fixed - klassen "show" viser pages */
+    left:-100vw;
+    transition: 1s ease-in-out all;
+}
+
+.show{
+    left: 0;
+}
+
+.page div{ /* all div's inside pages are treated as full wide grids */
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+h1{
+    color: rgb(223, 223, 223); /* text-farve*/
+    font-weight: 300;
+    font-size: 3rem;
+}
+
+#page2{
+    grid-template-rows:1fr 3fr;
+}
+#page2 .top{
+    background-color: rgb(66, 69, 73);
+}
+#page2 .bottom{
+    background-image: url(./assets/pomelo.jpg);
+    background-size: cover;
+}
+
+/* h2
+{
+
+} */
+
+#page3{
+    grid-template-columns: 1fr 1fr;
+}
+#page3 .left{
+    grid-template-rows: 1fr 3fr;
+    background-color: rgb(66, 69, 73);
+}
+#page3 .left .top{
+    background-color: rgb(66, 69, 73);
+    color: rgb(223, 223, 223)
+}
+#page3 .left .bottom{
+    background-color: rgb(44, 47, 51);
+    color: rgb(223, 223, 223)
+}
+#page3 .right{
+    background-color: rgb(53, 55, 57);
+    color: rgb(223, 223, 223)
+}
+#page3 .right .box{
+    height: 70%;
+    width: 80%;
+    background-color: rgb(118, 120, 122);
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+#page3 .right .box .bottom{
+    background-image: url(./assets/pomelo.jpg);
+    background-size: cover;
+}
+h3{
+    color: rgb(223, 223, 223); /* text-farve*/
+    font-weight: 300;
+    font-size: 3rem;
+}
+
+
+#page4 .colum1{
+    background-color: rgb(255,194,205);
+}
+#page4 .colum2{
+    background-color: rgb(255,147,172);
+}
+#page4 .colum3{
+    background-color: rgb(255,98,137);
+}
+#page4 .colum4{
+ background-color: rgb(252,52,104);
+}
+#page4{
+    grid-template-columns: repeat(4, 1fr);
+}
+
+
+#page5{
+    grid-template-columns: 1fr 1fr;
+}
+#page5 .right{
+    grid-template-rows: 1fr 1fr;
+}
+#page5 .left{
+    background-color: rgb(66, 69, 73);
+}
+#page5 .right .top{
+    background-color: rgb(53, 55, 57);
+}
+#page5 .right .bottom{
+    background-color: rgb(44, 47, 51);
+    color: white;
+    overflow: hidden;
+    height: 50vh;
+    position: relative;
+}
+#page5 .right .bottom video{
+    object-fit: cover;
+    object-position: center;
+}
+#page5 .right .bottom #overlay{
+    position: absolute;
+    display: grid;
+    place-items: center;
+}
+
+#page6{
+    grid-template-columns: 2fr 1fr;
+}
+#page6 .right{
+    grid-template-rows: 1fr 1.5fr;
+}
+#page6 .left{
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    background-image: url(./assets/menuBackground.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#page6 .right .top{
+    background-image: url(./assets/blackguyeatingburger.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#page6 .right .bottom{
+ background-image: url(./assets/fatmaneatingburger.jpg);
+ background-repeat: no-repeat;
+ background-size: cover;
+}
+
+#videoButton{
+    position:absolute;
+    bottom:1rem;
+    left:1rem;
+    padding:0.5rem 1rem 0.5rem 1rem;
+    border-radius:1rem;
+    background-color: rgba(100,100,100,0.9);
+    color:white;
+    border:1px solid lightgray;
+    z-index:1000;
+    transition: .3s ease-in-out all;
+    cursor: pointer;
+}
+
+#videoButton:hover{
+    background-color:white;
+    color:black;
+}
+
+
+/*
+
+            <a id="menu-side1" action="#page1">Deals!</a>
+            <a id="menu-side2" action="#page2">Menu</a>
+            <a id="menu-side3" action="#page3">Offers</a>
+            <a id="menu-side4" action="#page4">About us</a>
+            <a id="menu-side5" action="#page5">Among us</a>
+            <a id="menu-side6" action="#page6">Actual menu page</a>
+*/
+
+/* TABELLER OG ANDET SHII*/
+
+/*
+.usynligtabel
+{
+    padding: 25px;
+}
+.tabelFrugt
+{
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 700px;
+
+    td, th
+    {
+        font-size: 15px;
+        border: 3px solid #000000;
+        padding: 8px;
+        text-align: center;
+    }
+    th
+    {
+        font-size: 20px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        background-color: #b74bbf;
+        color: white;
+}
+}
+
+
+<table class="usynligtabel">
+    <tr>
+        <td></td>
+    </tr>
+<table class="tabelFrugt" align="center">
+    <tr>
+        <th>Frugt</th>
+        <th>Slags</th>
+        <th>Farve</th>
+    </tr>
+    <tr>
+        <td>Pomelo</td>
+        <td>Syrlig-grøn</td>
+        <td>Citrus</td>
+    </tr>
+    <tr>
+        <td>Æble</td>
+        <td>Rød</td>
+        <td>Kernefrugt</td>
+    </tr>
+</table>
+*/

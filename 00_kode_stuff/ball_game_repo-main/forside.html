@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web template with p5.js</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+        integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="forside.css">
+    <script src="./api_lib/myApi.js"></script>
+    <script src="./api_lib/myClasses.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.min.js"></script>
+</head>
+
+<body>
+    <main>
+        <div class="page show" id="page0" title="SplashScreen">
+            <div class="titleImg" id="splashTitle" style="height: 70%;">Title div starter her--------</div>
+            <button id="splashBtn">Til spilside</button>
+        </div>
+
+
+        <div class="page" id="page1" title="GameScreen">
+            <div class="titleImg" id="splashTitle">Title div starter her--------</div>
+            <div id="buttonsRow">
+                <div class="titleScreenButton" id="flappyBirdButton"></div>
+                <div class="titleScreenButton" id="billardButton"></div>
+                <div class="titleScreenButton" id="ricochetButton"></div>
+            </div>
+            <div id="gameTitlesRow">
+                <div class="gameTitles" id="flappyBirdTitle">Flappy Girth🤤</div>
+                <div class="gameTitles" id="billardTitle">Billard</div>
+                <div class="gameTitles" id="ricochetTitle">Ricochet</div>
+            </div>
+        </div>
+
+        <div class="page" id="page2" title="FlappyGirth"></div>
+        <div class="page" id="page3" title="Billard"></div>
+        <div class="page" id="page4" title="Ricochet"></div>
+    </main>
+    <script src="./forside.js"></script>
+</body>
+
+</html>

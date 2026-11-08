@@ -1,0 +1,312 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap'); /* Comic Relief*/
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap'); /* navn: Bungee */
+@import url('https://fonts.googleapis.com/css2?family=Ribeye&display=swap'); /* navn: Ribeye*/
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap');/* navn: Arimo*/
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap'); /* navn:*/
+@import url('https://fonts.googleapis.com/css2?family=Honk&display=swap'); /* navn: Honk*/
+
+@font-face {
+    font-family: AndyBold;
+    src: url(./fonts/AndyBold.OTF);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "AndyBold";
+}
+
+/*.menu-wrapper{
+    position: fixed;
+    width: fit-content;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+.burger-icon{
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    cursor: pointer;
+    font-size: 2rem;
+    color: black;
+    z-index: 3;
+    transition: color 0.1s ease-in-out;
+}
+.menu-wrapper:has(.sidebar:hover) .burger-icon, .burger-icon:hover{
+    color: rgb(255,194,205);
+    transition: color 0.1s ease-in-out;
+}
+.sidebar{
+    position: relative;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 15rem;
+    background-color: rgb(255, 8, 74);
+    color: rgb(255,194,205);
+    padding: 4rem 1rem;
+    box-sizing: border-box;
+    transition: 0.2s ease-in-out all;
+}
+.burger-icon:hover + .sidebar, .sidebar:hover{
+    left: 0;
+    transition: 0.3s ease-in-out all;
+    box-shadow: 0 0 100px 0 rgb(44, 47, 51);
+}
+.sidebar a{
+    font-size: 2rem;
+    display: block;
+    text-decoration: none;
+    color: rgb(255,194,205);
+    margin: 1.2rem 0;
+    opacity: 0.6;
+    transition: opacity 0.1s ease-in-out;
+    transition: all 0.1s ease-out;
+}
+.sidebar a:hover{
+    opacity: 1;
+    transform: translateX(0.5rem);
+    font-size: 2.5rem;
+    filter: drop-shadow(0 0 10px 0 rgb(145, 145, 145));
+}*/
+
+
+.page{
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    /*border: 0.3rem solid black;*/
+    overflow: hidden;
+    display: grid; /* grid layout */
+    place-items: center;
+    position:fixed; /* position fixed - klassen "show" viser pages */
+    left:-100vw;
+    transition: 1.5s ease-in-out all;
+}
+
+.show{
+    left: 0;
+}
+
+.page div{ /* all div's inside pages are treated as full wide grids */
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+#page1{
+    grid-template-columns: 1fr 1fr;
+}
+#page1 *{
+    font-size: 1.5rem;
+}
+
+#page1 .colum1{
+    grid-template-rows: 1fr 1fr;
+    background-color: rgb(94, 94, 94);
+}
+#page1 .colum1 .top{
+    background-image: url(./assets/acetoneO.jpg);
+    margin-top: 15%;
+    background-size: 50vh;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#page1 .colum2{
+    grid-template-rows: 1fr 1fr;
+    background-color: rgb(121, 121, 121);
+}
+#page1 .colum2 .top{
+    background-image: url(./assets/forsøg_reagensglas.jpg);
+    
+    margin-top: 15%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#page1 .colum3{
+    grid-template-rows: 1fr 1fr;
+    background-color: rgb(164, 164, 164);
+}
+#page1 .colum3 .top{
+    background-image: url(./assets/acetone_carboxsyre.jpg);
+    margin-top: 15%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#page2{
+    background-image: url(./assets/blue_background.jpg);
+    background-size: cover;
+    grid-template-rows: 3fr 2fr;
+    font-size: 6vh;
+}
+#page2 *{
+    font-size: 2rem;
+}
+#page2 .top{
+    grid-template-columns: 1fr 2fr;
+}
+#page2 .bottom{
+    background-color: rgb(130, 130, 130);
+}
+#page2 .top .left{
+    background-color: rgb(87, 87, 87);
+}
+#page2 .top .right{
+    background-color: rgb(107, 107, 107);
+}
+
+
+#page3{
+    font-size: 6vh;
+    overflow-y: scroll;
+    background-image: url(./assets/blue_background.jpg);
+    background-size: cover;
+}
+#page3 *{
+    font-size: 2rem;
+}
+#page3 .bottom{
+    background-color: rgb(119, 208, 119);
+}
+#page3 .top .left{
+    background-color: rgb(58, 153, 72);
+}
+#page3 .top .right{
+    background-color: rgb(71, 168, 92);
+}
+
+#page3 .buttonBack{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+}
+
+#page3 .scroll{
+    min-height:100%;    
+    overflow: scroll;
+    padding: 1.5rem;
+    gap: 1vh;
+}
+
+#page3 .box{
+    color: rgb(243, 243, 243);
+    max-width:30vw;
+    height: auto;
+    grid-template-rows: 1fr 7fr;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 1.5vh;
+    padding: 2.5vh;
+}
+#page3 .boxTitel{
+    max-width: 50vw;
+    height: fit-content;
+    font-size: 4vh;
+    color: rgb(243, 243, 243);
+    background-color: rgba(6, 72, 26, 0.8);
+    border-color: black;
+    border-style: solid;
+    border-width: 0.5vh;
+    border-radius: 1.5vh;
+    padding: 1rem;
+}
+#page3 .box .top{
+    font-family: "Ubuntu";
+    background-color: black;
+    border-radius: 1vh;
+    font-size: 2rem;
+}
+#page3 .box .bottom{
+    font-family: "Ubuntu";
+    font-size:1.9rem;
+    color: rgb(39, 39, 39);
+    background-color: rgba(rgb(0, 0, 0, 1));
+    border-radius: 1rem;
+}
+
+.parallax{
+    min-height: 100vh;
+    background-attachment: fixed;
+    background-size:cover;
+    background-repeat: no-repeat;
+    color: rgb(239, 239, 239);
+}
+
+
+#page2 .buttonBack{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+}
+#theButtonTilbage2{
+    background-color: rgb(0, 0, 0);
+}
+#aldehydForklaring2{
+    position: absolute;
+    top: 12%;
+    right: 5%; 
+}
+#aldehydForklaring3{
+    position: absolute;
+    top: 12%;
+    right: 5%; 
+}
+
+.tabelFrugt
+{
+    border-collapse: collapse;
+    max-width: 50vw;
+    background-color: rgb(255, 255, 255);
+
+    td{
+        font-family: "Ubuntu";
+    }
+    td, th{
+        border: 3px solid #000000;
+        padding: 8px;
+        text-align: center;
+    }
+    th{
+        padding-top: 15px;
+        padding-bottom: 15px;
+        background-color: #70d269;
+        color: rgb(0, 0, 0);
+    }
+    .side1{
+        background-color: #cbff86;
+    }
+    .side2{
+        background-color: #d3ff99;
+    }
+    .felt1{
+        background-color: #cbff86;
+    }
+    .felt2{
+        background-color: #d3ff99;
+    }
+}
+
+
+/*
+            <div class="colum3">
+                <div class="top"></div>
+                <button class="button" id="carboxysyreForklaring"></button>
+            </div>
+
+        <div title="alkohol2" class="page" id="page3">
+            <div class="top">
+                <div class="left">billede</div>
+                <div class="right">
+                    <button class="buttonBack" id="theButtonTilbage2"></button>
+                </div>
+            </div>
+            <div class="bottom">om aldehyd</div>
+        </div>   
+*/

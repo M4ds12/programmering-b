@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap');
+
+
+body,
+* {
+    font-family: "open sans";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+#cards{
+    position: fixed;
+    right: 10vw;
+}
+
+/* Timer */
+#timer {
+    top: 1rem;
+    left: 1.5rem;
+}
+
+
+#page1{
+    grid-template-rows: 5fr 3fr 2fr;
+    background-image: url(./assets/page1.png);
+    background-size: 10vw;
+    background-position: bottom 2rem left 2rem;
+    background-repeat: no-repeat;
+}
+
+#page2{
+    grid-template-rows: 5fr 3fr 2fr;
+    background-image: url(./assets/page2.png);
+    background-size: 10vw;
+    background-position: bottom 2rem left 2rem;
+    background-repeat: no-repeat;
+}
+
+#buttonContainer{
+    display: flex;
+    height: 15vh; 
+    width: 15vw; 
+    position: relative;
+}
+#buttonIdle{
+    background-image: url(./assets/button_idle.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    position: absolute;
+    width: 10vw;
+    height: 5vw;
+}
+#buttonIdle:hover{
+    filter: grayscale(20%);
+    cursor: pointer;
+}
+#buttonPressed{
+    background-image: url(./assets/button_pressed.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    position: absolute;
+    width: 10vw;
+    height: 5vw;
+}
+#buttonPressed:hover{
+    filter: grayscale(20%);
+}
+

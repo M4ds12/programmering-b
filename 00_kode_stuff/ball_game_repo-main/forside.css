@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap');
+
+
+body,
+* {
+    font-family: "open sans";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    /* grid layout */
+    display: grid;
+    left: -100vw;
+    /* transition: 1s ease-in-out all; */
+    place-items: center;
+    position: fixed;
+}
+
+.show {left: 0;}
+#page0{
+    grid-template-rows: 5fr 1fr;
+}
+
+#page1{
+    grid-template-rows: 7fr 5fr 1fr;
+}
+#buttonsRow{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 60vw;
+    height: 20vh;
+}
+#gameTitlesRow{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 60vw;
+    height: 20vh;
+}
+.titleImg{
+    background-image: url(./assets/splashCard.png);
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+ #flappyBirdButton{
+    background-image: url(./assets/flappyBird.png);
+}
+#billardButton{
+    background-image: url(./assets/8ballIcon.png);
+}
+#ricochetButton{
+    background-image: url(./assets/ricochetIcon.png);
+}
+
+.titleScreenButton{
+    background-size: 17vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.2s ease-in-out;
+}
+.titleScreenButton:hover{
+    background-size: 20vh;
+    rotate: calc(30);
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+.gameTitles{
+    text-align: center;
+}
+
